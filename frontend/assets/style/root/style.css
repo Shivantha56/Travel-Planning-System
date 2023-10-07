@@ -1,0 +1,74 @@
+*{
+    font-family: "Kumbh Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+/*----------- header --------*/
+
+/*upper header*/
+.upper-header-container{
+    background-color: rgb(49 , 145 ,10);
+    background-image: url("https://360tourslanka.com/wp-content/uploads/2022/12/pattern-topbar.png");
+    display: flex;
+    justify-content: space-between;
+}
+
+.upper-header-container-info{
+    display: flex;
+    color: white;
+    font-size:15px;
+    margin-left: 16px;
+}
+
+.upper-header-container-info>div:nth-child(1){
+    display: flex;
+    align-items: center;
+}
+
+.upper-header-container-info>div:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+
+.upper-header-container-info p{
+    display: inline;
+    align-items: center;
+    margin: 0;
+    padding: 11px 0;
+    font-weight: 500;
+}
+
+.upper-header-container-info i{
+    margin-right: 16px;
+}
+
+.upper-header-container-info>div>p{
+    margin-right: 28px;
+}
+
+.upper-header-container-info>div:nth-child(1)>p{
+    display: flex;
+    align-items: center;
+}
+
+.upper-header-container-info>div:nth-child(2)>p{
+    display: flex;
+    align-items: center;
+}
+
+.upper-header-container-social-media{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.upper-header-container-social-media i{
+   margin: 0 10px 0 10px;
+}
+.upper-header-container-social-media i:hover{
+   color: black;
+   cursor: pointer;
+}
+

@@ -79,7 +79,7 @@ header{
 
 /* media query for upper header container */
 
-@media (max-width: 680px) {
+@media (max-width: 694px) {
     .upper-header-container-info{
         display: none;
     }
@@ -98,6 +98,10 @@ header{
 }
 
 
+.header{
+    height: 100vh;
+}
+
 .nav-main-section-container{
     background-color: #0dcaf0;
 }
@@ -106,6 +110,7 @@ nav{
     background-color: white;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #e3e3e3;
 }
 
 .navigation-container{
@@ -114,10 +119,11 @@ nav{
 }
 
 .company-logo{
-    width: 200px;
+    width: 150px;
     object-fit: contain;
     align-items: center;
     margin-left: 10px;
+    /*position: relative;*/
 }
 
 
@@ -131,6 +137,17 @@ nav{
 .navigation-links a{
     margin-right: 20px;
     font-weight: 700;
+}
+.menu-btn{
+    display: none;
+    border:none;
+    background-color: white;
+}
+
+.menu-btn-close{
+    display: none;
+    border:none;
+    background-color: white;
 }
 
 .navigation-links li,a{
@@ -193,6 +210,7 @@ nav{
 
 .signup-btn a{
     color: white;
+
 }
 
 .form-control:focus {
@@ -200,9 +218,65 @@ nav{
     box-shadow: none;
 }
 
+.side-menu{
+    height: 100vh;
+    width: 250px;
+    background-color: white;
+    position: absolute;
+    left: -250px;
+}
 
+.side-menu-navigation-links{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
 
+.side-menu-navigation-links li,a{
+    text-decoration: none;
+    list-style: none;
+    color: #212529;
+    font-weight: 500;
+}
 
+.side-menu>div>ul>li{
+    margin-left: 20px;
+}
+
+.side-menu-navigation-links li{
+    margin-left: 0;
+    margin-top: 10px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+@media (max-width: 1100px) {
+    .navigation-links{
+        display: none;
+    }
+
+    .company-logo{
+        margin-left: 30px;
+    }
+
+    .menu-btn{
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 30px;
+    }
+
+    .menu-btn-close{
+        display: none;
+        font-size: 30px;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-search-btn{
+        display: none;
+    }
+
+}
 
 
 

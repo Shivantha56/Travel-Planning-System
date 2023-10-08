@@ -72,3 +72,22 @@
    cursor: pointer;
 }
 
+/* media query for upper header container */
+
+@media (max-width: 680px) {
+    .upper-header-container-info{
+        display: none;
+    }
+
+    .upper-header-container{
+        justify-content: center;
+    }
+
+    .upper-header-container-social-media{
+        padding: 15px 0;
+    }
+
+    .upper-header-container-social-media i{
+        font-size: 25px;
+    }
+}

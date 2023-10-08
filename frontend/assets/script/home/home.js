@@ -24,3 +24,10 @@ addEventListener("resize", (event) => {
         menuBtnOpen.style.display = "inline-block";
     }
 })
+
+// implement when scroll position
+
+addEventListener("scroll",ev => {
+    console.log(ev);
+
+})

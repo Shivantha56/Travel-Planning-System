@@ -98,19 +98,24 @@ header{
 }
 
 
-.header{
-    height: 100vh;
-}
+/*.header{*/
+/*    height: 100vh;*/
+/*}*/
 
 .nav-main-section-container{
     background-color: #0dcaf0;
+    height: 100vh;
 }
 nav{
+
+    width: 100%;
     height: 70px;
     background-color: white;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #e3e3e3;
+    position: fixed;
+    z-index: 15000;
 }
 
 .navigation-container{
@@ -219,11 +224,13 @@ nav{
 }
 
 .side-menu{
+    margin-top: 70px;
     height: 100vh;
     width: 250px;
     background-color: white;
     position: absolute;
     left: -250px;
+    z-index: 20000;
 }
 
 .side-menu-navigation-links{
@@ -277,6 +284,20 @@ nav{
     }
 
 }
+
+
+
+
+
+
+
+
+.hero-banner-container{
+    width: 100%;
+    height: 100%;
+}
+
+
 
 
 

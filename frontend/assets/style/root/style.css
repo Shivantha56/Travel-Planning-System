@@ -1,10 +1,12 @@
 *{
     font-family: "Kumbh Sans", sans-serif;
     box-sizing: border-box;
-    /*overscroll-behavior-y: none;*/
     overflow-x: hidden;
 }
 
+/*html{*/
+/*    overflow-y: hidden;*/
+/*}*/
 /*----------- sign up and login form --------*/
 
 
@@ -13,12 +15,14 @@
 
     z-index: 50010;
     background-color: rgba(0, 0, 0, 0.5);
-    position:absolute;
+    /*position:absolute;*/
+    position: fixed;
     width: 100vw;
     height: 100vh;
     align-items: center;
     justify-content: center;
     display: flex;
+    display: none;
 }
 
 .iframes-container>div{
@@ -29,7 +33,7 @@
 
 .iframes-container .signup-form{
     width: 500px;
-    height: 600px;
+    height: 650px;
     /*border: 1px solid black ;*/
     z-index: 5001;
 
@@ -37,7 +41,7 @@
 
 .iframes-container>div>button {
     position: relative;
-    top: -560px;
+    top: -603px;
     left: -50px;
     z-index: 5005;
     /*background-color: white;*/
@@ -50,7 +54,7 @@
 
 }
 
-
+/* todo: responsive sign up page*/
 
 
 /*/////// old one ///////////*/
@@ -279,6 +283,10 @@ nav{
 
 .signup-btn{
     margin-right: 10px;
+}
+
+.signup-btn>button{
+    color: white;
 }
 
 .login-btn{

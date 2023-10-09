@@ -1,3 +1,5 @@
+let htmlElement = $('html');
+
 let sideMenu = document.querySelector(".side-menu");
 let menuBtnClose = document.querySelector(".menu-btn-close");
 let menuBtnOpen = document.querySelector(".menu-btn");
@@ -31,3 +33,19 @@ addEventListener("scroll",ev => {
     console.log(ev);
 
 })
+
+
+//hide and visible sign up form
+
+let iframeContainer = $( ".iframes-container" );
+
+$( ".iframe-close-btn" ).click( "onclick", function( event ) {
+    iframeContainer.css('display','none');
+    htmlElement.css("overflow-Y","auto");
+});
+
+$( ".signup-button" ).click( "onclick", function( event ) {
+    iframeContainer.css('display','flex');
+    // document.body.style.overflowX = "hidden";
+    htmlElement.css("overflowY","hidden");
+});

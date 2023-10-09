@@ -7,7 +7,7 @@
 
 .signup-page-container{
     width: 500px;
-    padding: 50px;
+    padding: 20px 40px;
     /*background-color: gray;*/
 }
 .signup-page-container>div:nth-child(1)>p{
@@ -30,8 +30,17 @@
     font-family: Arial;
 }
 
+#signUpForm input::placeholder{
+    font-size: 14px;
+    color: #c5c5c5;
+}
+
 #signUpForm>div:nth-child(1){
     display: flex;
+}
+
+#signUpForm>div:nth-child(1) input{
+    width: 192px;
 }
 
 #signUpForm>div:nth-child(2){
@@ -61,10 +70,15 @@
     font-family: Arial;
     padding: 10px;
     border-radius: 50px;
+    margin-top: 25px;
 
 }
 
 #signUpForm input{
-
+    border: 2px solid #dadada;
+    padding: 15px;
+    border-radius: 3px;
+    height: 45px;
 }
+
 

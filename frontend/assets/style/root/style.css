@@ -7,52 +7,99 @@
 
 /*----------- sign up and login form --------*/
 
-.iframes{
-    /*display: flex;*/
-    justify-content: center;
-    position: absolute;
-    z-index: 50000;
-    height: 100vh;
-    width: 100vw;
+
+/*/////// new one ///////////*/
+.iframes-container{
+
+    z-index: 50010;
     background-color: rgba(0, 0, 0, 0.5);
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
     align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
-.iframes iframe{
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.iframes-container>div{
+    /*display: flex;*/
+    /*border: 1px solid red;*/
+    position: relative;
 }
 
-iframe>div>button {
-    position: absolute;
+.iframes-container .signup-form{
+    width: 500px;
+    height: 600px;
+    /*border: 1px solid black ;*/
     z-index: 5001;
-    top: 50%;
-    left: 50%;
+
 }
 
-.iframes>button{
-    position: absolute;
+.iframes-container>div>button {
+    position: relative;
+    top: -560px;
+    left: -50px;
     z-index: 5005;
-    font-size: 30px;
-    top: 70px;
-    left: 980px;
-    background-color: white;
+    /*background-color: white;*/
     border: none;
 
 }
+.iframes-container>div i{
 
-/*----------- header --------*/
-.signup-form{
-    width: 500px;
-    height: 600px;
-    position: absolute;
-    z-index: 5000;
+    font-size: 30px;
 
 }
+
+
+
+
+/*/////// old one ///////////*/
+
+/*.iframes{*/
+/*    !*display: flex;*!*/
+/*    justify-content: center;*/
+/*    position: absolute;*/
+/*    z-index: 50000;*/
+/*    height: 100vh;*/
+/*    width: 100vw;*/
+/*    background-color: rgba(0, 0, 0, 0.5);*/
+/*    align-items: center;*/
+/*}*/
+
+/*.iframes iframe{*/
+/*    position: absolute;*/
+/*    margin: auto;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*}*/
+
+/*iframe>div>button {*/
+/*    position: absolute;*/
+/*    z-index: 5001;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*}*/
+
+/*.iframes>button{*/
+/*    position: absolute;*/
+/*    z-index: 5005;*/
+/*    font-size: 30px;*/
+/*    top: 70px;*/
+/*    left: 980px;*/
+/*    background-color: white;*/
+/*    border: none;*/
+
+/*}*/
+
+/*----------- header --------*/
+/*.signup-form{*/
+/*    width: 500px;*/
+/*    height: 600px;*/
+/*    position: absolute;*/
+/*    z-index: 5000;*/
+/*}*/
 
 /*upper header*/
 .upper-header-container{

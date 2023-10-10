@@ -5,13 +5,18 @@
     font-family: "Kumbh Sans" ,sans-serif;
 }
 
+.signup-logo{
+    width: 100px;
+}
+
 .signup-page-container{
     width: 500px;
     padding: 20px 40px;
     /*background-color: gray;*/
 }
 .signup-page-container>div:nth-child(1)>p{
-    color: #F75940;
+    font-size: 35px;
+    color:#63AB45;
     font-weight: 800;
     margin-bottom: 30px;
 }

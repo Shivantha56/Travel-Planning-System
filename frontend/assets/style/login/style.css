@@ -11,9 +11,10 @@
     /*background-color: gray;*/
 }
 .signup-page-container>div:nth-child(1)>p{
-    color: #F75940;
+    color: #63AB45;
     font-weight: 800;
     margin-bottom: 30px;
+    font-size: 35px;
 }
 .signup-page-container>div:nth-child(2)>p{
     font-family: Kumbh Sans;

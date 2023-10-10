@@ -228,7 +228,7 @@ nav{
 }
 
 .company-logo{
-    width: 150px;
+    width: 90px;
     object-fit: contain;
     align-items: center;
     margin-left: 80px;
@@ -251,7 +251,9 @@ nav{
     margin-right: 20px;
     font-weight: bolder;
     /*color: #82828a;*/
-    color: black;
+    /*color: black;*/
+    /*color: #4A723A;*/
+    color: #1D231F;
 }
 .menu-btn{
     display: none;
@@ -318,7 +320,9 @@ nav{
 }
 
 .login-btn{
-    color: #212529;
+    /*color: #212529;*/
+    /*color: #4A723A;*/
+    color: #1D231F;
     font-weight: 700;
     margin-right: 20px;
     align-items: center;
@@ -328,7 +332,9 @@ nav{
     border-radius: 10px;
     font-weight: 700;
     /*background-color: #63AB45;*/
-    background-color: black;
+    /*background-color: black;*/
+    /*background-color: #4A723A;*/
+    background-color: #1D231F;
     border: 0;
     padding: 10px;
 }

@@ -15,7 +15,15 @@ public class UserController {
 
     }
     @GetMapping
-    public void getUser(){
+    public void getAllUser(){
+
+    }
+    @GetMapping
+    public void getUserDetailsByEmail(){
+
+    }
+    @GetMapping
+    public void getUserDetailsByNIC(){
 
     }
     @DeleteMapping

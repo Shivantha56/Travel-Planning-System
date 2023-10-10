@@ -299,6 +299,7 @@ nav{
 
 .login-signup-btn{
     display: flex;
+    align-items: center;
 }
 
 .signup-btn{
@@ -312,9 +313,11 @@ nav{
 .login-btn{
     display: flex;
     align-items: center;
+    background-color: white;
+    border: none;
 }
 
-.login-btn a{
+.login-btn{
     color: #212529;
     font-weight: 700;
     margin-right: 20px;

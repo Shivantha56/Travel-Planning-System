@@ -18,7 +18,7 @@ document.querySelector(".menu-btn-close").onclick = function () {
 }
 
 addEventListener("resize", (event) => {
-    if (window.innerWidth >= 1100){
+    if (window.innerWidth >= 1200){
         menuBtnClose.style.display = "none";
         menuBtnOpen.style.display = "none";
         sideMenu.style.left = "-250px"

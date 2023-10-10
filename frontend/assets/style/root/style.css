@@ -212,13 +212,14 @@
 nav{
 
     width: 100%;
-    height: 70px;
+    height: 90px;
     background-color: white;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #e3e3e3;
     position: fixed;
     z-index: 500;
+    /*top: 0;*/
 }
 
 .navigation-container{
@@ -230,12 +231,14 @@ nav{
     width: 150px;
     object-fit: contain;
     align-items: center;
-    margin-left: 10px;
+    margin-left: 80px;
     /*position: relative;*/
 }
 
 
 .navigation-links{
+    display: flex;
+    align-items: center;
     text-decoration: none;
     list-style: none;
     margin: 0;
@@ -243,8 +246,12 @@ nav{
 }
 
 .navigation-links a{
+    font-size: 18px;
+    margin-top: 5px;
     margin-right: 20px;
-    font-weight: 700;
+    font-weight: bolder;
+    /*color: #82828a;*/
+    color: black;
 }
 .menu-btn{
     display: none;
@@ -262,8 +269,14 @@ nav{
     margin: 0;
     text-decoration: none;
     display: inline-block;
-    color: #212529;
+    /*color: #82828a;*/
     align-items: center;
+}
+.navigation-links a:hover{
+    color: #63AB45;
+}
+.navigation-links a:active{
+    color: #63AB45;
 }
 
 .nav-function{
@@ -289,7 +302,7 @@ nav{
 }
 
 .signup-btn{
-    margin-right: 10px;
+    margin-right: 50px;
 }
 
 .signup-btn>button{
@@ -311,13 +324,14 @@ nav{
 .signup-btn>button{
     border-radius: 10px;
     font-weight: 700;
-    background-color: #F75940;
+    /*background-color: #63AB45;*/
+    background-color: black;
     border: 0;
-    padding: 8px;
+    padding: 10px;
 }
 
 .signup-btn>button:hover{
-    background-color: #e3492e;
+    background-color: #63AB45;
 }
 
 .signup-btn a{
@@ -403,7 +417,7 @@ nav{
     position: absolute;
     z-index: 10000;
     color: white;
-    top: 120px;
+    top: 185px;
     height: auto;
     margin: 120px;
 }
@@ -431,11 +445,50 @@ nav{
 .hero-text>a>button{
     margin: 0;
     margin-top: 20px;
-    background-color: #F75940;
+    background-color: #63AB45;
     border: none;
     color: white;
     padding: 10px;
+    width: 150px;
+    height: 55px;
+    font-weight: bold;
 
+}
+
+.background-imager{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+}
+
+.slides>li::before{
+    content: "";
+    background-color: black;
+    position: relative;
+}
+.slides>li>img{
+
+
+
+}
+
+.background-imager{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+}
+.background-imager1{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
 }
 
 
@@ -464,4 +517,45 @@ nav{
 
 
 
+.contact-whatsapp-btn{
+    position: fixed;
+    z-index: 100000;
+    bottom: 50px;
+    right: 20px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.contact-whatsapp-btn>div:nth-child(2){
+    width: 60px;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    background-color: #63AB45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.contact-whatsapp-btn>i{
+
+}
+
+.contact-us-tooltip{
+    border-radius: 5px;
+    width: 166px;
+    height: 40px;
+    background-color: white;
+    color: #43444e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+
+}
+
+.contact-us-tooltip>p{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}

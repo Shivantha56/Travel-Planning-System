@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kumbh Sans" ,sans-serif;
+}
+
+.signup-page-container{
+    width: 500px;
+    padding: 20px 40px;
+    /*background-color: gray;*/
+}
+.signup-page-container>div:nth-child(1)>p{
+    color: #F75940;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+.signup-page-container>div:nth-child(2)>p{
+    font-family: Kumbh Sans;
+    color: black;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+
+#signUpForm{
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-family: Arial;
+}
+
+#signUpForm input::placeholder{
+    font-size: 14px;
+    color: #c5c5c5;
+}
+
+#signUpForm>div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+#signUpForm>div:nth-child(1)>div{
+    display: flex;
+    flex-direction: column;
+}
+#signUpForm>div:nth-child(3){
+    display: flex;
+    flex-direction: column;
+}
+
+
+#signUpForm>div:nth-child(3)>button{
+    color: white;
+    flex: 1;
+    background-color: black;
+    font-weight: 550;
+    font-family: Arial;
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 25px;
+
+}
+
+#signUpForm input{
+    border: 2px solid #dadada;
+    padding: 15px;
+    border-radius: 3px;
+    height: 45px;
+    margin-bottom: 15px;
+}
+
+

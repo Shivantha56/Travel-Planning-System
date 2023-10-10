@@ -34,26 +34,29 @@ addEventListener("scroll",ev => {
 
 })
 
-
-//hide and visible sign up form
+//-------------------------------------------------------------------------------------------------------------------------------
+//hide and visible sign up form manage iframes
+//-------------------------------------------------------------------------------------------------------------------------------
 
 let iframeContainer = $( ".iframes-container" );
 let signUpIframe = $( ".iframes-container>div:nth-child(1)" );
 let logInIframe = $( ".iframes-container>div:nth-child(2)" );
+let iframeCloseIcon = $(".iframe-close-btn>i");
 
-
-$( ".iframe-close-btn" ).click( "onclick", function( event ) {
+$(".iframe-close-btn").click( "onclick", function( event ) {
     iframeContainer.css('display','none');
     htmlElement.css("overflow-Y","auto");
 });
 
 $( ".signup-button" ).click( "onclick", function( event ) {
     iframeContainer.css('display','flex');
-    logInIframe.css('display',"none")
+    logInIframe.css('display',"none");
+    signUpIframe.css("display","block")
     htmlElement.css("overflowY","hidden");
 });
 $( ".login-btn" ).click( "onclick", function( event ) {
     iframeContainer.css('display','flex');
-    signUpIframe.css('display',"none")
+    logInIframe.css('display',"block");
+    signUpIframe.css('display',"none");
     htmlElement.css("overflowY","hidden");
 });

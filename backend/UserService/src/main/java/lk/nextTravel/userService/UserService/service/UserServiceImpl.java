@@ -23,6 +23,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(UserDTO userDTO) {
 
+        userDTO.setUserEmail(userDTO.getUserEmail().toLowerCase());
+
         if (userRepository.existsUserByUserEmail(userDTO.getUserEmail())){
             System.out.println("This email is not avaialble to register");
             throw new RuntimeException("error");
@@ -39,18 +41,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void checkUserLogin(String userEmail,String userPassword) {
-//        System.out.println(userEmail+userPassword);
 
-        //get user salt
-
-//        User user = userRepository.getUserByUserEmail(userEmail);
-//        String generatedSalt = user.getGeneratedSalt();
-
-        //recreate hash
-//        String generatedHashPaw = BCrypt.hashpw(userPassword, generatedSalt);
-
-        //get the hash code stored in database and check the equality with generatedHashpa
-        //if both hash equals user can login to account
+        userEmail = userEmail.toLowerCase();
 
         if (userRepository.existsUserByUserEmail(userEmail)){
 
@@ -64,6 +56,11 @@ public class UserServiceImpl implements UserService {
 
                 if ((userEmail1.equals(userEmail)) && generatedHashPaw.equals(user.get().getUserPassword()) ){
                     System.out.println("password ok");
+
+                    // if user enable OTP send a otp to the client
+                    // if OTP wrong 5 times set the google recaptcha
+
+
                 }else {
                     throw new RuntimeException("user password not ok");
                 }
@@ -72,19 +69,6 @@ public class UserServiceImpl implements UserService {
                 throw new RuntimeException("user cannot found");
             }
 
-//            System.out.println(userEmail+userPassword);
-//            //get user salt
-//            User user = userRepository.getUserByUserEmail(userEmail);
-//            String generatedSalt = user.getGeneratedSalt();
-//            //recreate hash
-//            String generatedHashPaw = BCrypt.hashpw(userPassword, generatedSalt);
-//            //get the hash code stored in database and check the equality with generatedHashpa
-//            //if both hash equals user can login to account
-//            // check user has enable the otp
-//            //send otp to the email
-//            // handle authentication
-//            // get google recaptcha
-//            System.out.println("you can login");
 
         }else {
             System.out.println("Please check your email and password");

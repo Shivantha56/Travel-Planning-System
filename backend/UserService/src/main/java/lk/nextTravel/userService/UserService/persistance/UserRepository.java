@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 @Repository
@@ -18,5 +19,7 @@ public interface UserRepository extends MongoRepository<User, String> {
     boolean existsUserByUserEmail(String email);
 
     User getUserByUserEmail(String email);
+
+    Optional<User> findUserByUserEmail(String userEmail);
 
 }

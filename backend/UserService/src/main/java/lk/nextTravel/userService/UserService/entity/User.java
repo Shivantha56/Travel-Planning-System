@@ -2,6 +2,7 @@ package lk.nextTravel.userService.UserService.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.lang.Nullable;
 
 
@@ -14,6 +15,7 @@ public class User{
     @Id
     String userId;
     String userName;
+    @Indexed(unique = true)
     String userEmail;
     String userNic;
     String userPassword;

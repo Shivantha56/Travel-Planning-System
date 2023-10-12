@@ -40,4 +40,13 @@ public class UserController {
         userService.checkUserLogin(userDTO.getUserEmail(),userDTO.getUserPassword());
     }
 
+    @GetMapping("{userEmail}")
+    public void userDelete(@PathVariable String userEmail){
+
+        userService.deleteUser(userEmail);
+
+
+    }
+
+
 }

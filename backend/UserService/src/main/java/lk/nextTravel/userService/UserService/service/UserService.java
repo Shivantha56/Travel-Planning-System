@@ -8,4 +8,7 @@ public interface UserService {
 
     void checkUserLogin(String userEmail,String userPassword);
 
+    void deleteUser(String userEmail);
+
+
 }

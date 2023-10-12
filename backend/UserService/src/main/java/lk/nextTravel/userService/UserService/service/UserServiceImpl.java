@@ -57,6 +57,7 @@ public class UserServiceImpl implements UserService {
                 if ((userEmail1.equals(userEmail)) && generatedHashPaw.equals(user.get().getUserPassword()) ){
                     System.out.println("password ok");
 
+                    // use webflux for return all data related to the customer
                     // if user enable OTP send a otp to the client
                     // if OTP wrong 5 times set the google recaptcha
 
@@ -74,6 +75,23 @@ public class UserServiceImpl implements UserService {
             System.out.println("Please check your email and password");
             throw new RuntimeException("error");
         }
+    }
+
+    @Override
+    public void deleteUser(String userEmail) {
+
+        byte[] decode = Base64.getDecoder().decode(userEmail);
+        String decodeEmail = new String(decode);
+
+        if (userRepository.existsUserByUserEmail(decodeEmail)){
+
+            userRepository.deleteByUserEmail(decodeEmail);
+
+        }else {
+            throw new RuntimeException("something happen");
+        }
+
+
     }
 
 }

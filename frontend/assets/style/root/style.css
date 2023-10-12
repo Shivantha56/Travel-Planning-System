@@ -14,7 +14,7 @@
 .iframes-container{
 
     z-index: 50010;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     /*position:absolute;*/
     position: fixed;
     width: 100vw;

@@ -10,5 +10,5 @@ public interface UserService {
 
     void deleteUser(String userEmail);
 
-
+    void updateUser(UserDTO userDTO);
 }

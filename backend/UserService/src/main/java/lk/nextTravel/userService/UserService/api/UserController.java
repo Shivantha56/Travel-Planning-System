@@ -36,7 +36,6 @@ public class UserController {
     @ResponseBody
     @GetMapping(value = {"/login"} , consumes = MediaType.APPLICATION_JSON_VALUE)
     public void userLoginDetails(@RequestBody UserDTO userDTO){
-//        System.out.println(userDTO.getUserEmail());
         userService.checkUserLogin(userDTO.getUserEmail(),userDTO.getUserPassword());
     }
 
@@ -45,7 +44,12 @@ public class UserController {
 
         userService.deleteUser(userEmail);
 
+    }
 
+    @PatchMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void userUpdate(UserDTO userDTO){
+//        System.out.println(String.valueOf(userDTO));
+        userService.updateUser(userDTO);
     }
 
 

@@ -1,5 +1,8 @@
 package lk.nextTravel.userService.UserService.service;
 
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 import lk.nextTravel.userService.UserService.dto.UserDTO;
 import lk.nextTravel.userService.UserService.entity.User;
 import lk.nextTravel.userService.UserService.persistance.UserRepository;
@@ -8,9 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.Optional;
+
+import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,6 +23,9 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
     @Autowired
     ModelMapping modelMapping;
+
+
+
 
     @Override
     public void registerUser(UserDTO userDTO) {
@@ -61,15 +68,12 @@ public class UserServiceImpl implements UserService {
                     // if user enable OTP send a otp to the client
                     // if OTP wrong 5 times set the google recaptcha
 
-
                 }else {
                     throw new RuntimeException("user password not ok");
                 }
-
             }else {
                 throw new RuntimeException("user cannot found");
             }
-
 
         }else {
             System.out.println("Please check your email and password");
@@ -84,13 +88,25 @@ public class UserServiceImpl implements UserService {
         String decodeEmail = new String(decode);
 
         if (userRepository.existsUserByUserEmail(decodeEmail)){
-
             userRepository.deleteByUserEmail(decodeEmail);
-
         }else {
             throw new RuntimeException("something happen");
         }
+    }
 
+    @Override
+    public void updateUser(UserDTO userDTO) {
+
+//        if (userRepository.existsUserByUserEmail(userDTO.getUserEmail())){
+//            System.out.println("This email is not avaialble to register");
+//            throw new RuntimeException("error");
+//        }
+//
+//        String s = Base64.getEncoder().encodeToString(userDTO.getUserProfilePic());
+//        User user = modelMapping.convertToEntity(userDTO);
+//        user.setUserProfilePic(s);
+//        userRepository.updateUserByUserEmail(user.getUserEmail(),user.getUserPassword(),user.getUserProfilePic(),
+//                user.getUserName());
 
     }
 

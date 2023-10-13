@@ -13,6 +13,7 @@ public class UserDTO {
     String userName;
     String userEmail;
     String userNic;
+    String userAddress;
     String userPassword;
     byte[] userProfilePic;
 

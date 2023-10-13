@@ -27,28 +27,28 @@
         <p>Join to unlock the best<br> of Travel</p>
     </div>
     <div>
-        <form id="signUpForm">
+        <form id="signUpForm" method="post">
             <div>
                 <div>
                     <label for="userRegName">User Name</label>
-                    <input type="text" placeholder="First Name" id="userRegName">
+                    <input type="text" placeholder="First Name" id="userRegName" name="userName">
                 </div>
                 <div>
                     <label for="userRegNic">NIC/Passport</label>
-                    <input type="text" placeholder="NIC/Passport" id="userRegNic">
+                    <input type="text" placeholder="NIC/Passport" id="userRegNic"  name="userNic">
                 </div>
             </div>
             <div class="signUp-email-container">
                 <label for="userRegEmail">Email address</label>
-                <input type="email" placeholder="Email" id="userRegEmail">
+                <input required type="email" placeholder="Email" id="userRegEmail" name="userEmail">
             </div>
             <div>
                 <label for="userRegAddress">Address</label>
-                <input type="text" placeholder="Address" id="userRegAddress">
+                <input type="text" placeholder="Address" id="userRegAddress" name="userAddress">
             </div>
             <div>
                 <label for="userRegPassword">Password</label>
-                <input required autocomplete="new-password" type="password" placeholder="Password" id="userRegPassword">
+                <input required autocomplete="new-password" type="password" placeholder="Password" id="userRegPassword" name="userPassword">
             </div>
             <div>
                 <button type="button" id="signUpBtn">Join</button>

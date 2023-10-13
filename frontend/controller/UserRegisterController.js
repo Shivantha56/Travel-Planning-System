@@ -6,6 +6,7 @@ let userNic = $('#userRegNic');
 let userEmail = $('#userRegEmail');
 let userAddress = $('#userRegAddress');
 let userPassword = $('#userRegPassword');
+let userRegisterForm = $('#signUpForm');
 
 //regex values
 const nameRegexVal = "^[A-Za-z\\s]{1,20}$";
@@ -40,6 +41,27 @@ userPassword.on("keyup",function () {
     let userTextValue = userPassword.val();
     console.log(userTextValue);
     regexCheck(userTextValue,passwordRegex);
+});
+
+
+$('#signUpBtn').on("click",function () {
+
+    let user = new UserModel(userName.val(),userNic.val(),userEmail.val(),userAddress.val(),userPassword.val());
+    console.log(user);
+
+    userRegisterForm.serialize();
+
+    $.ajax({
+        url : "http://localhost:9095/business/api/v1/user/register",
+        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+        method : "POST",
+        data:userRegisterForm.serialize()
+    })
+
+
+
+
+
 });
 
 

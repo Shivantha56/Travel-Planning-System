@@ -75,7 +75,7 @@
     font-family: Arial;
     padding: 10px;
     border-radius: 50px;
-    margin-top: 25px;
+    margin-top: 8px;
 
 }
 
@@ -90,4 +90,11 @@
 /*#userRegName:focus{*/
 /*    outline: 1px solid green;*/
 /*}*/
+
+.signup-error-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    color: red;
+}
 

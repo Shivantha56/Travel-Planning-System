@@ -48,10 +48,13 @@
             </div>
             <div>
                 <label for="userRegPassword">Password</label>
-                <input type="password" placeholder="Password" id="userRegPassword">
+                <input required autocomplete="new-password" type="password" placeholder="Password" id="userRegPassword">
             </div>
             <div>
-                <button id="signUpBtn">Join</button>
+                <button type="button" id="signUpBtn">Join</button>
+            </div>
+            <div class="signup-error-container">
+                <p class="show-error"></p>
             </div>
         </form>
     </div>

@@ -26,7 +26,7 @@ public class UserController {
 
 
 //    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/register",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/register",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void registerUser(UserDTO userDTO){
 
         userService.registerUser(userDTO);

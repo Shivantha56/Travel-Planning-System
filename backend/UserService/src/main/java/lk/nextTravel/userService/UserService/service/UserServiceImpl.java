@@ -97,16 +97,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(UserDTO userDTO) {
 
-//        if (userRepository.existsUserByUserEmail(userDTO.getUserEmail())){
-//            System.out.println("This email is not avaialble to register");
-//            throw new RuntimeException("error");
-//        }
-//
-//        String s = Base64.getEncoder().encodeToString(userDTO.getUserProfilePic());
-//        User user = modelMapping.convertToEntity(userDTO);
-//        user.setUserProfilePic(s);
-//        userRepository.updateUserByUserEmail(user.getUserEmail(),user.getUserPassword(),user.getUserProfilePic(),
-//                user.getUserName());
+        if (userRepository.existsUserByUserEmail(userDTO.getUserEmail())){
+            System.out.println("This email is not avaialble to register");
+            throw new RuntimeException("error");
+        }
+
+        String s = Base64.getEncoder().encodeToString(userDTO.getUserProfilePic());
+        User user = modelMapping.convertToEntity(userDTO);
+
+//        userRepository.save(user.getUserName(),user.getUserNic(),user.)
+
 
     }
 

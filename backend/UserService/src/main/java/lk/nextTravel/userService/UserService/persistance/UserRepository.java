@@ -24,5 +24,4 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     void deleteByUserEmail(String userEmail);
 
-
 }

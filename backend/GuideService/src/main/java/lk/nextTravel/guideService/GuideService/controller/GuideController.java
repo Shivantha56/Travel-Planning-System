@@ -1,12 +1,13 @@
 package lk.nextTravel.guideService.GuideService.controller;
 
 import lk.nextTravel.guideService.GuideService.dto.GuideDTO;
+import lk.nextTravel.guideService.GuideService.entity.Guide;
 import lk.nextTravel.guideService.GuideService.service.GuideService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Base64;
+import java.util.List;
 
 //@MultipartConfig(maxFileSize = -1,location = "/tmp")
 @RestController
@@ -69,9 +70,9 @@ public class GuideController {
 
     }
 
-
-    public void getAllGuide(){
-
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Guide> getAllGuide(){
+        return guideService.getAllGuideDetails();
     }
 
     public void getGuideByPhoneNumber(){

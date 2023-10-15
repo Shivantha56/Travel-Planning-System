@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -67,12 +68,14 @@ public class GuideServiceImpl implements GuideService {
 
             }else {
                 throw new RuntimeException("guide can not found");
-
             }
-
-
         }else {
             throw new RuntimeException("guide Cannot found");
         }
+    }
+
+    @Override
+    public List<Guide> getAllGuideDetails() {
+       return guideRepository.findAll();
     }
 }

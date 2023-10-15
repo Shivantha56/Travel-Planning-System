@@ -7,6 +7,8 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ModelsMapper {
 
@@ -17,10 +19,9 @@ public class ModelsMapper {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return modelMapper.map(guideDTO , Guide.class);
     }
-    public GuideDTO entityToDtoConversion(Guide guide){
+    public GuideDTO entityToDtoConversion(Guide guide) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        return modelMapper.map(guide , GuideDTO.class);
+        return modelMapper.map(guide, GuideDTO.class);
     }
-
 
 }

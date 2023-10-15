@@ -21,6 +21,7 @@ public class Guide {
     String guideAddress;
     String guideAge;
     String gender;
+    @Indexed(unique = true)
     int guideContactNo;
     String guideImage;
     String nicImageFront;

@@ -102,6 +102,7 @@
     flex: 1;
     /*background-color: #0d6efd;*/
     margin-left: 50px;
+    flex-shrink: 0;
 }
 .guide-details-save{
     /*flex: 1;*/
@@ -109,7 +110,7 @@
 }
 
 .container{
-    width: 200px;
+    width: 250px;
     height: 200px;
     border: 5px dashed #dadada;
     border-radius: 30px;
@@ -135,6 +136,15 @@
     align-items: center;
     justify-content: center;
     font-size: 30px;
+    flex-shrink: 0;
+}
+
+.imageLabel>svg{
+    /*background-color: #0dcaf0;*/
+    fill: #0dcaf0;
+    width: 50px;
+    aspect-ratio: 1/1;
+    margin-bottom: 20px;
 }
 
 .imageUploader[type="file"]{
@@ -167,6 +177,7 @@
     flex-direction: column;
     /*position: absolute;*/
     /*top: 127px;*/
+    flex-shrink: 0;
     /*left: 53px;*/
 }
 

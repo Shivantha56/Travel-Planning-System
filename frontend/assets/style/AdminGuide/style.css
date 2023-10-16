@@ -177,6 +177,13 @@
     /*left: 53px;*/
 }
 
+.file-controllers-container>p:nth-child(3){
+    color: #a8a8a8;
+    margin-top: 8px;
+    font-size: 8px;
+    text-wrap: avoid;
+}
+
 .fileName{
     margin-top: 5px;
 }
@@ -262,7 +269,7 @@
     /*align-items: center;*/
 }
 
-#customerSaveBtn{
+#guideSaveBtn{
     position: absolute;
     left: 50%;
     right: 50%;

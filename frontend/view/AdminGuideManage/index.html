@@ -47,11 +47,11 @@
                 <p>Add new guide</p>
                 <div></div>
             </div>
-            <form id="guideSaveForm" action="">
+            <form id="guideSaveForm" method="post" enctype="multipart/form-data">
                 <div class="guide-save-images">
                     <div class="container">
                         <div class="containers">
-                            <label class="imageLabel" for="guideImage">
+                            <label id="labelGuideImage" class="imageLabel" for="guideImage">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                                     <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"/>
                                 </svg>
@@ -59,15 +59,15 @@
                                        accept="image/png, image/jpg, image/jpeg">
                             </label>
                             <div class="file-controllers-container">
-                                <p>upload your NIC image</p>
+                                <p>upload your profile image</p>
                                 <label class="imageUploadBtn" for="guideImage">Browse files</label>
-                                <p class="guideNicFront">fileName</p>
+                                <p id="guideImageLocation" class="guideNicFront"></p>
                             </div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="containers">
-                            <label class="imageLabel" for="guideNicBack">
+                            <label class="imageLabel" for="guideNicFront">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                                     <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"/>
                                 </svg>
@@ -75,9 +75,9 @@
                                        accept="image/png, image/jpg, image/jpeg">
                             </label>
                             <div class="file-controllers-container">
-                                <p>upload your NIC image</p>
-                                <label class="imageUploadBtn" for="guideNicBack">Browse files</label>
-                                <p class="fileName">fileName</p>
+                                <p>upload NIC front</p>
+                                <label class="imageUploadBtn" for="guideNicFront">Browse files</label>
+                                <p id="guideNicFrontImageLocation" class="fileName"></p>
                             </div>
                         </div>
                     </div>
@@ -91,9 +91,9 @@
                                        accept="image/png, image/jpg, image/jpeg">
                             </label>
                             <div class="file-controllers-container">
-                                <p>upload your NIC image</p>
+                                <p>upload NIC back</p>
                                 <label class="imageUploadBtn" for="guideNicBack">Browse files</label>
-                                <p class="fileName">fileName</p>
+                                <p id="guideNicBackImageLocation" class="fileName"></p>
                             </div>
                         </div>
                     </div>
@@ -107,9 +107,9 @@
                                        accept="image/png, image/jpg, image/jpeg">
                             </label>
                             <div class="file-controllers-container">
-                                <p>upload your NIC image</p>
+                                <p>upload guide Id front</p>
                                 <label class="imageUploadBtn" for="guideIdFront">Browse files</label>
-                                <p class="fileName">fileName</p>
+                                <p id="guideIdFrontImageLocation" class="fileName"></p>
                             </div>
                         </div>
                     </div>
@@ -123,9 +123,9 @@
                                        accept="image/png, image/jpg, image/jpeg">
                             </label>
                             <div class="file-controllers-container">
-                                <p>upload your NIC image</p>
+                                <p>upload guide id back</p>
                                 <label class="imageUploadBtn" for="guideIdBack">Browse files</label>
-                                <p class="fileName">fileName</p>
+                                <p id="guideIdBackImageLocation" class="fileName"></p>
                             </div>
                         </div>
                     </div>
@@ -133,77 +133,68 @@
                 <div class="guide-details-save">
                     <div class="text-field-container">
                         <div>
-                            <p>User Name</p>
+                            <p>Guide name</p>
                             <label>*</label>
                         </div>
-                        <input type="text" placeholder="Guide name">
+                        <input type="text" placeholder="Guide name" name="guideName">
+                        <p>Dilshan shivantha</p>
+                    </div>
+
+                    <div class="text-field-container">
+                        <div>
+                            <p>Guide Address</p>
+                            <label>*</label>
+                        </div>
+                        <input type="text" placeholder="Guide address" name="guideAddress">
+                        <p>217/A-Pandura,Galle</p>
+                    </div>
+
+                    <div class="text-field-container">
+                        <div>
+                            <p>Guide Age</p>
+                            <label>*</label>
+                        </div>
+                        <input type="text" placeholder="Guide age" name="guideAge">
+                        <p>34</p>
+                    </div>
+
+                    <div class="text-field-container">
+                        <div>
+                            <p>guide Contact</p>
+                            <label>*</label>
+                        </div>
+                        <input type="text" placeholder="Guide contact no" name="guideContactNo">
+                        <p>0725335646</p>
+                    </div>
+
+                    <div class="text-field-container">
+                        <div>
+                            <p>Guide Email</p>
+                            <label>*</label>
+                        </div>
+                        <input type="text" placeholder="Guide Email" name="guideEmail">
                         <p>validation-text</p>
                     </div>
 
                     <div class="text-field-container">
                         <div>
-                            <p>User Name</p>
+                            <p>Man day value</p>
                             <label>*</label>
                         </div>
-                        <input type="text" placeholder="Guide name">
-                        <p>validation-text</p>
+                        <input type="text" placeholder="Man day value" name="manDayValue">
+                        <p>2500.00</p>
                     </div>
-
-                    <div class="text-field-container">
-                        <div>
-                            <p>User Name</p>
-                            <label>*</label>
-                        </div>
-                        <input type="text" placeholder="Guide name">
-                        <p>validation-text</p>
-                    </div>
-
-                    <div class="text-field-container">
-                        <div>
-                            <p>User Name</p>
-                            <label>*</label>
-                        </div>
-                        <input type="text" placeholder="Guide name">
-                        <p>validation-text</p>
-                    </div>
-
-                    <div class="text-field-container">
-                        <div>
-                            <p>User Name</p>
-                            <label>*</label>
-                        </div>
-                        <input type="text" placeholder="Guide name">
-                        <p>validation-text</p>
-                    </div>
-
-                    <div class="text-field-container">
-                        <div>
-                            <p>User Name</p>
-                            <label>*</label>
-                        </div>
-                        <input type="text" placeholder="Guide name">
-                        <p>validation-text</p>
-                    </div>
-                    <!--                    <div class="text-field-container">-->
-                    <!--                        <div>-->
-                    <!--                            <p>User Name</p>-->
-                    <!--                            <label>*</label>-->
-                    <!--                        </div>-->
-                    <!--&lt;!&ndash;                        <input type="text" placeholder="Guide name">&ndash;&gt;-->
-                    <!--                        <textarea></textarea>-->
-                    <!--                        <p>validation-text</p>-->
-                    <!--                    </div>-->
                 </div>
                 <div class="guide-remark-container">
-                    <textarea class="guide-remark" placeholder="Enter your remark"></textarea>
+                    <textarea class="guide-remark" placeholder="Enter your remark" name="remarks"></textarea>
                 </div>
-                <button id="customerSaveBtn">Save</button>
+                <button type="button" id="guideSaveBtn">Save</button>
             </form>
         </div>
     </div>
 </section>
 
-
-<!--<script src="/assets/boostrap/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>-->
+<script src="/assets/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script type="module" src="/controller/GuideSaveController.js"></script>
 </body>
 </html>

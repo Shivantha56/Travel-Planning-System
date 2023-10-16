@@ -25,7 +25,7 @@
     font-size: 40px;
     font-weight: bold;
     color: white;
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .guide-navigation>div:nth-child(2){
@@ -73,16 +73,34 @@
 
 
 .guide-save-header{
-    flex: 1;
-    background-color: deeppink;
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+    /*background-color: deeppink;*/
+    justify-content: center;
+    /*align-items: center;*/
 }
 
-.guide-save-images{
-    flex: 1;
-    background-color: #0d6efd;
+.guide-save-header>p{
+    color: #1C054C;
+    font-size: 24px;
+    margin-left: 50px;
+    font-weight: bold;
 }
-.guide-details-save{
-    flex: 1;
-    background-color: yellow;
+.guide-save-header>div{
+    margin-top: 5px;
+    width: 170px;
+    height: 5px;
+    background-color: #1C054C;
+    margin-left: 50px
 }
+
+/*.guide-save-images{*/
+/*    flex: 1;*/
+/*    background-color: #0d6efd;*/
+/*}*/
+/*.guide-details-save{*/
+/*    flex: 1;*/
+/*    background-color: yellow;*/
+/*}*/
 

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Inter,sans-serif;
 }
 
 .main-guide-container{
@@ -11,10 +12,49 @@
 }
 
 .guide-navigation{
-    height: 70px;
+    height: 83px;
     width: 100%;
-    background-color: black;
+    background-color: #1C054C;
     position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guide-navigation>p:nth-child(1){
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;
+}
+
+.guide-navigation>div:nth-child(2){
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.guide-navigation>div:nth-child(2) a{
+    text-decoration: none;
+    color: white;
+    margin-right: 30px;
+    font-size: 15px;
+}
+
+.guide-navigation>div:nth-child(2)>div:nth-child(5) a{
+    text-decoration: none;
+    color: white;
+    margin-right: 0;
+}
+
+.guide-navigation>div:nth-child(2) a{
+    text-decoration: none;
+    color: white;
+}
+
+.guide-navigation>div:nth-child(2)>div:nth-child(5){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-content-container{
@@ -24,7 +64,8 @@
 }
 
 .main-content{
-    background-color: #63AB45;
+    background-color: white;
     height: 100%;
     width: 100%;
 }
+

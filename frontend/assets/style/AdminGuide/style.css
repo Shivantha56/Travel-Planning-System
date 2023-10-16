@@ -104,9 +104,6 @@
     margin-left: 50px;
     flex-shrink: 0;
 }
-.guide-details-save{
-
-}
 
 .container{
     width: 250px;
@@ -256,4 +253,25 @@
 .guide-remark:focus{
 
     outline: 2px solid gray;
+}
+
+#guideSaveForm{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+#customerSaveBtn{
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    width: 150px;
+    height: 45px;
+    margin-top: 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: #1C054C;
+    cursor: pointer;
 }

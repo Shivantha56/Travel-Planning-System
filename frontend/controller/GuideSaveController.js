@@ -30,17 +30,19 @@ guideIdBack.on('input',function () {
 });
 
 $('#guideSaveBtn').on('click',function () {
-    let guideSaveFormData = $('#guideSaveForm').serialize();
+    // let guideSaveFormData = $('#guideSaveForm')[0];
+
+    let formData = new FormData($('#guideSaveForm')[0]);
 
     $.ajax({
         method: "POST",
-        data: guideSaveFormData,
+        data: formData,
         url : "http://localhost:8080/business/api/v1/guide",
         enctype: 'multipart/form-data',
         processData: false,  // Important!
-        contentType: 'multipart/form-data',
+        contentType: false,
         cache: false,
-        timeout: 600000
+        // timeout: 600000
     });
 
 

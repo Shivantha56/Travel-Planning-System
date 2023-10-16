@@ -63,9 +63,26 @@
     padding-top:70px ;
 }
 
-.main-content{
+.guide-save-context{
     background-color: white;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.guide-save-header{
+    flex: 1;
+    background-color: deeppink;
+}
+
+.guide-save-images{
+    flex: 1;
+    background-color: #0d6efd;
+}
+.guide-details-save{
+    flex: 1;
+    background-color: yellow;
 }
 

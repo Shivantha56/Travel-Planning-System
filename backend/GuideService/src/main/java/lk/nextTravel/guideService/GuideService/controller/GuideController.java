@@ -11,6 +11,7 @@ import java.util.List;
 
 //@MultipartConfig(maxFileSize = -1,location = "/tmp")
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/guide")
 public class GuideController {
 
@@ -18,7 +19,8 @@ public class GuideController {
     GuideService guideService;
 
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseBody
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public void saveGuide(@RequestPart String guideName,
                           @RequestPart String guideAddress,
                           @RequestPart String guideAge,

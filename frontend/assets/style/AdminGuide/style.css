@@ -282,3 +282,21 @@
     background-color: #1C054C;
     cursor: pointer;
 }
+
+
+/* guide update interface */
+
+.guide-update-header>p{
+    margin-top: 30px;
+    color: #1C054C;
+    font-size: 24px;
+    margin-left: 50px;
+    font-weight: bold;
+}
+.guide-update-header>div{
+    margin-top: 5px;
+    width: 230px;
+    height: 5px;
+    background-color: #1C054C;
+    margin-left: 50px
+}

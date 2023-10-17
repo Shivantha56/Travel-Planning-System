@@ -77,8 +77,11 @@ public class GuideController {
         return guideService.getAllGuideDetails();
     }
 
-    public void getGuideByPhoneNumber(){
 
+
+    @GetMapping(value = "{phoneNumber}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public GuideDTO getGuideByPhoneNumber(@PathVariable("phoneNumber") String phoneNumber){
+        return guideService.searchGuide(phoneNumber);
     }
 
 

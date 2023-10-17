@@ -78,4 +78,40 @@ public class GuideServiceImpl implements GuideService {
     public List<Guide> getAllGuideDetails() {
        return guideRepository.findAll();
     }
+
+    @Override
+    public GuideDTO searchGuide(String phoneNumber) {
+        Optional<Guide> guide = guideRepository.findByGuideContactNo(Integer.parseInt(phoneNumber));
+        GuideDTO guidedto;
+
+        if (guide.isPresent()){
+            String guideName = guide.get().getGuideName();
+            String guideAddress = guide.get().getGuideAddress();
+            int guideAge = guide.get().getGuideAge();
+            String gender = guide.get().getGender();
+            int guideContactNo = guide.get().getGuideContactNo();
+            String guideImage = guide.get().getGuideImage();
+            String nicImageFront = guide.get().getNicImageFront();
+            String nicImageBack = guide.get().getNicImageBack();
+            String guideIdFront = guide.get().getGuideIdFront();
+            String guideIdBack = guide.get().getGuideIdBack();
+            double manDayValue = guide.get().getManDayValue();
+            String remarks = guide.get().getRemarks();
+
+            byte[] guideImageDecode = Base64.getDecoder().decode(guideImage);
+            byte[] nicImageFrontDecoder = Base64.getDecoder().decode(nicImageFront);
+            byte[] nicImageBackDecoder = Base64.getDecoder().decode(nicImageBack);
+            byte[] guideIdFrontDecode = Base64.getDecoder().decode(guideIdFront);
+            byte[] guideIdBackDecode = Base64.getDecoder().decode(guideIdBack);
+
+
+            return guidedto = new GuideDTO(guideName,guideAddress,guideAge,gender,
+                    guideContactNo,guideImageDecode,nicImageFrontDecoder,nicImageBackDecoder,guideIdFrontDecode,
+                    guideIdBackDecode,manDayValue,remarks);
+
+        }else {
+            throw new RuntimeException("guide cannot found");
+        }
+
+    }
 }

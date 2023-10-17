@@ -13,4 +13,7 @@ public interface GuideService {
     void guideUpdate(GuideDTO guideDTO);
 
     List<Guide> getAllGuideDetails();
+
+    GuideDTO searchGuide(String phoneNumber);
+
 }

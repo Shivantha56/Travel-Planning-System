@@ -5,6 +5,29 @@
     font-family: Inter,sans-serif;
 }
 
+.guideImagesSett{
+    width: 500px;
+    height: 500px;
+    /*background-color: #1a1d20;*/
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -250px;
+    margin-left: -250px;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    /*margin-left: -37.5%;*/
+}
+
+#guideImages{
+    width: 200px;
+}
+
+
 .main-guide-container{
     width: 100vw;
     height: 100vh;

@@ -21,7 +21,6 @@ let resGuideIdBack;
 let resGuideManDayValue;
 let resGuideRemarks;
 
-
 guideImage.on('input', function () {
     let imageLocation = guideImage.val();
     $('#guideImageLocation').text(imageLocation);
@@ -133,4 +132,52 @@ $('#guideSearchBtn').on('click', function () {
 
     });
 
+})
+
+// hide and visible image container
+
+let hoverImageContainer = $('.guideImagesSett');
+let guidesImageElement = $('#guideImages');
+
+$('#seenGuideImage,#seenGuideNicFront,#seenGuideNicBack,#seenGuideIdFront,#seenGuideIdBack').on('mouseover', function (event) {
+    hoverImageContainer.css("display", "flex");
+    // console.log(event)
+    let targetBtnAttribute = event.target.getAttribute("id");
+
+
+    if (targetBtnAttribute === "seenGuideImage") {
+        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideImage}`);
+        console.log("a")
+    }else if (targetBtnAttribute === "seenGuideNicFront") {
+        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideImageFront}`);
+        console.log("b")
+    }else if (targetBtnAttribute === "seenGuideNicBack") {
+        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideImageBack}`);
+        console.log("c")
+    }else if (targetBtnAttribute === "seenGuideIdFront") {
+        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideIdFront}`);
+        console.log("d")
+    }else if (targetBtnAttribute === "seenGuideIdBack") {
+        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideIdBack}`);
+        console.log("e")
+    }
+
+})
+$('#seenGuideImage,#seenGuideNicFront,#seenGuideNicBack,#seenGuideIdFront,#seenGuideIdBack').on('mouseout', function () {
+    hoverImageContainer.css("display", "none");
+    // guidesImageElement.attr("src","");
+})
+
+$('#guideUpdateBtn').on('click',function () {
+    let formData = new FormData($('#guideUpdateForm')[0]);
+    $.ajax({
+        method: "PUT",
+        data: formData,
+        url: "http://localhost:8080/business/api/v1/guide",
+        enctype: 'multipart/form-data',
+        processData: false,  // Important!
+        contentType: false,
+        cache: false,
+        // timeout: 600000
+    });
 })

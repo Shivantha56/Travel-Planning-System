@@ -1,4 +1,23 @@
+window.addEventListener('load',function () {
 
+    $('.hotel-update-context').css("display","none")
+
+});
+
+$('#updateSaveNavigation').on('click',function () {
+
+    $('.hotel-update-context').css("display","block");
+    $('.hotel-save-context').css("display","none");
+
+
+});
+$('#hotelSaveNavigation').on('click',function () {
+
+    $('.hotel-update-context').css("display","none");
+    $('.hotel-save-context').css("display","block");
+
+
+});
 
 
 $('#hotelSaveBtn').on('click',function () {

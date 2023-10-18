@@ -1,4 +1,9 @@
 // import GuideModel from "../model/GuideModel";
+// window.addEventListener("load", (event) => {
+//     $('.guide-update-context').css("display","none")
+//     $('.delete-and-viewAll-Context').css("display","none")
+// });
+
 
 let guideImage = $('#guideImage');
 let guideNicFront = $('#guideNicFront');
@@ -66,18 +71,29 @@ $('#guideSaveBtn').on('click', function () {
 
 let guideSaveContextNavBtn = $('#guideSaveContext');
 let guideUpdateContextNavBtn = $('#guideUpdateContext');
+let guideDeleteViewContext = $('#guideDeleteViewContext');
 
 let guideSaveContext = $('.guide-save-context');
 let guideUpdateContext = $('.guide-update-context');
+let deleteAndViewContext = $('.delete-and-viewAll-Context');
 
 guideSaveContextNavBtn.on('click', function () {
     guideSaveContext.css("display", "block");
     guideUpdateContext.css("display", "none");
+    deleteAndViewContext.css("display", "none");
+
 });
 guideUpdateContextNavBtn.on('click', function () {
     guideUpdateContext.css("display", "block");
     guideSaveContext.css("display", "none");
+    deleteAndViewContext.css("display", "none");
 });
+
+guideDeleteViewContext.on('click',function () {
+    guideUpdateContext.css("display", "none");
+    guideSaveContext.css("display", "none");
+    deleteAndViewContext.css("display", "block");
+})
 
 
 //updateGuideDetails contextControllers
@@ -181,3 +197,50 @@ $('#guideUpdateBtn').on('click',function () {
         // timeout: 600000
     });
 })
+
+
+//delete context container
+
+ let guidePhoneNumberInputField = $('#deleteGuideContactNoInputField');
+
+guidePhoneNumberInputField.on("enter", (e)=>{
+    console.log("dilshan")
+});
+
+guidePhoneNumberInputField.keypress(function (event) {
+    let which = event.which;
+    if (which == 13){
+
+        $.ajax({
+            url: `http://localhost:8080/business/api/v1/guide/${guidePhoneNumberInputField.val()}`,
+            dataType: "JSON",
+            method: "GET",
+            error: function (error) {
+                console.log(error);
+            },
+
+            success: function (response) {
+                console.log(response);
+
+                resGuideName = response.guideName;
+                resGuideAddress = response.guideAddress;
+                resGuideAge = response.guideAge;
+                resGuideContactNo = response.guideContactNo;
+
+                $('#deleteGuideName').text(resGuideName);
+                $('#deleteGuideAge').text(resGuideAge);
+                $('#deleteGuideAddress').text(resGuideAddress);
+                $('#deleteGuideContact').text(resGuideContactNo);
+
+                console.log(resGuideName);
+
+            }
+
+        });
+    }
+
+    $('#deleteGuideName').val(resGuideName);
+    $('#deleteGuideAge').val(resGuideAge);
+    $('#deleteGuideAddress').val(resGuideAddress);
+    $('#deleteGuideContact').val(resGuideContactNo);
+});

@@ -15,7 +15,6 @@ public class Hotel {
     String hotelId;
     String hotelName;
     int starRate;
-    String category;
     String hotelLocation;
     String hotelLocationLink;
     String hotelContactEmail;
@@ -29,10 +28,9 @@ public class Hotel {
     String cancellation;
     String remarks;
 
-    public Hotel(String hotelName, int starRate, String category, String hotelLocation, String hotelLocationLink, String hotelContactEmail, int contactNoOne, int contactNoTwo, String petsAllowedOrNot, double hotelFeeOption1, double hotelFeeOption2, double hotelFeeOption3, double hotelFeeOption4, String cancellation, String remarks) {
+    public Hotel(String hotelName, int starRate, String hotelLocation, String hotelLocationLink, String hotelContactEmail, int contactNoOne, int contactNoTwo, String petsAllowedOrNot, double hotelFeeOption1, double hotelFeeOption2, double hotelFeeOption3, double hotelFeeOption4, String cancellation, String remarks) {
         this.hotelName = hotelName;
         this.starRate = starRate;
-        this.category = category;
         this.hotelLocation = hotelLocation;
         this.hotelLocationLink = hotelLocationLink;
         this.hotelContactEmail = hotelContactEmail;

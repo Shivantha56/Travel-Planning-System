@@ -21,7 +21,7 @@ public class HotelServiceImpl implements HotelService{
 
 
         Hotel hotel = modelsMapper.dtoToEntityConversion(hotelDto);
-        Hotel hotel1 = new Hotel(hotel.getHotelName(),hotel.getStarRate(),hotel.getCategory(),hotel.getHotelLocation(),hotel.getHotelLocationLink(),hotel.getHotelContactEmail(),hotel.getContactNoOne(),hotel.getContactNoTwo(),hotel.getPetsAllowedOrNot(),hotel.getHotelFeeOption1(),hotel.getHotelFeeOption2(),hotel.getHotelFeeOption3(),hotel.getHotelFeeOption4(),hotel.getCancellation(),hotel.getRemarks());
+        Hotel hotel1 = new Hotel(hotel.getHotelName(),hotel.getStarRate(),hotel.getHotelLocation(),hotel.getHotelLocationLink(),hotel.getHotelContactEmail(),hotel.getContactNoOne(),hotel.getContactNoTwo(),hotel.getPetsAllowedOrNot(),hotel.getHotelFeeOption1(),hotel.getHotelFeeOption2(),hotel.getHotelFeeOption3(),hotel.getHotelFeeOption4(),hotel.getCancellation(),hotel.getRemarks());
 
         hotelRepository.save(hotel1);
     }

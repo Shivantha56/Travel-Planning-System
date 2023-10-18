@@ -1,7 +1,7 @@
 // import GuideModel from "../model/GuideModel";
 window.addEventListener("load", (event) => {
-    // $('.guide-update-context').css("display","none");
-    // $('.delete-and-viewAll-Context').css("display","none");
+    $('.guide-update-context').css("display","none");
+    $('.delete-and-viewAll-Context').css("display","none");
     getAllGuideData();
 });
 

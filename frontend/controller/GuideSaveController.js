@@ -1,9 +1,9 @@
 // import GuideModel from "../model/GuideModel";
-// window.addEventListener("load", (event) => {
-//     $('.guide-update-context').css("display","none")
-//     $('.delete-and-viewAll-Context').css("display","none")
-// });
-
+window.addEventListener("load", (event) => {
+    // $('.guide-update-context').css("display","none");
+    // $('.delete-and-viewAll-Context').css("display","none");
+    getAllGuideData();
+});
 
 let guideImage = $('#guideImage');
 let guideNicFront = $('#guideNicFront');
@@ -89,7 +89,7 @@ guideUpdateContextNavBtn.on('click', function () {
     deleteAndViewContext.css("display", "none");
 });
 
-guideDeleteViewContext.on('click',function () {
+guideDeleteViewContext.on('click', function () {
     guideUpdateContext.css("display", "none");
     guideSaveContext.css("display", "none");
     deleteAndViewContext.css("display", "block");
@@ -162,19 +162,19 @@ $('#seenGuideImage,#seenGuideNicFront,#seenGuideNicBack,#seenGuideIdFront,#seenG
 
 
     if (targetBtnAttribute === "seenGuideImage") {
-        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideImage}`);
+        guidesImageElement.attr("src", `data:image/jpeg;base64,${resGuideImage}`);
         console.log("a")
-    }else if (targetBtnAttribute === "seenGuideNicFront") {
-        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideImageFront}`);
+    } else if (targetBtnAttribute === "seenGuideNicFront") {
+        guidesImageElement.attr("src", `data:image/jpeg;base64,${resGuideImageFront}`);
         console.log("b")
-    }else if (targetBtnAttribute === "seenGuideNicBack") {
-        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideImageBack}`);
+    } else if (targetBtnAttribute === "seenGuideNicBack") {
+        guidesImageElement.attr("src", `data:image/jpeg;base64,${resGuideImageBack}`);
         console.log("c")
-    }else if (targetBtnAttribute === "seenGuideIdFront") {
-        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideIdFront}`);
+    } else if (targetBtnAttribute === "seenGuideIdFront") {
+        guidesImageElement.attr("src", `data:image/jpeg;base64,${resGuideIdFront}`);
         console.log("d")
-    }else if (targetBtnAttribute === "seenGuideIdBack") {
-        guidesImageElement.attr("src",`data:image/jpeg;base64,${resGuideIdBack}`);
+    } else if (targetBtnAttribute === "seenGuideIdBack") {
+        guidesImageElement.attr("src", `data:image/jpeg;base64,${resGuideIdBack}`);
         console.log("e")
     }
 
@@ -184,7 +184,7 @@ $('#seenGuideImage,#seenGuideNicFront,#seenGuideNicBack,#seenGuideIdFront,#seenG
     // guidesImageElement.attr("src","");
 })
 
-$('#guideUpdateBtn').on('click',function () {
+$('#guideUpdateBtn').on('click', function () {
     let formData = new FormData($('#guideUpdateForm')[0]);
     $.ajax({
         method: "PUT",
@@ -201,15 +201,18 @@ $('#guideUpdateBtn').on('click',function () {
 
 //delete context container
 
- let guidePhoneNumberInputField = $('#deleteGuideContactNoInputField');
+let guidePhoneNumberInputField = $('#deleteGuideContactNoInputField');
 
-guidePhoneNumberInputField.on("enter", (e)=>{
+guidePhoneNumberInputField.on("enter", (e) => {
     console.log("dilshan")
 });
 
 guidePhoneNumberInputField.keypress(function (event) {
+
+
     let which = event.which;
-    if (which == 13){
+    if (which == 13) {
+
 
         $.ajax({
             url: `http://localhost:8080/business/api/v1/guide/${guidePhoneNumberInputField.val()}`,
@@ -239,8 +242,68 @@ guidePhoneNumberInputField.keypress(function (event) {
         });
     }
 
-    $('#deleteGuideName').val(resGuideName);
-    $('#deleteGuideAge').val(resGuideAge);
-    $('#deleteGuideAddress').val(resGuideAddress);
-    $('#deleteGuideContact').val(resGuideContactNo);
+});
+
+// get all guides details and load in to the table
+
+function getAllGuideData() {
+
+    $.ajax({
+        url: `http://localhost:8080/business/api/v1/guide`,
+        dataType: "JSON",
+        method: "GET",
+        error: function (error) {
+            console.log(error);
+        },
+
+        success: function (response) {
+            // console.log(response);
+
+
+            for (let i in response) {
+
+                let name = response[i].guideName;
+                let address = response[i].guideAddress;
+                let age = response[i].guideAge;
+                let contactNo = response[i].guideContactNo
+                let gender = response[i].gender;
+                let manDayValue = response[i].manDayValue;
+
+                let setTableContent = `<tr>
+<td>${name}</td>
+<td>${address}</td>
+<td>${age}</td>
+<td>${contactNo}</td>
+<td>${gender}</td>
+<td>${manDayValue}</td>
+</tr>`
+                $('.guide-table-body').append(setTableContent);
+
+            }
+        }
+
+    });
+
+
+}
+
+
+$('#deleteBtn').on('click',function () {
+    $.ajax({
+        url: `http://localhost:8080/business/api/v1/guide/${$('#deleteGuideContactNoInputField').val()}`,
+        dataType: "JSON",
+        method: "DELETE",
+        error: function (error) {
+            console.log(error);
+        },
+
+        success: function (response) {
+
+            getAllGuideData();
+
+            console.log('delete suceess')
+
+        }
+
+    });
 });

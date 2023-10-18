@@ -1,0 +1,125 @@
+*{
+    /*color: white;*/
+}
+
+body{
+    background:#eee;
+}
+.navbar{
+    position: fixed;
+    width: 100vw;
+    z-index: 1000000;
+}
+
+.navigation-bar{
+    background-color: deeppink;
+
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.nav-item>a{
+    color: white;
+}
+
+.navigation-admin-image{
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.main-hotels-container{
+    /*background-color: deeppink;*/
+    height: 100%;
+
+}
+
+
+/*.container-fluid{*/
+/*    height: 100vh;*/
+/*    background-color: deeppink;*/
+/*}*/
+
+.contact-details{
+    padding-top: 60px;
+}
+
+
+
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 1rem;
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.5rem 1.5rem;
+}
+
+.remarks{
+    height: 59%;
+}
+
+/* star rating */
+
+
+.rate{
+
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+
+}
+
+
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}

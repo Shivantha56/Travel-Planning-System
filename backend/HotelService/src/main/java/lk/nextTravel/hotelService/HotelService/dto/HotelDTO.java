@@ -13,7 +13,6 @@ public class HotelDTO {
 
     String hotelName;
     int starRate;
-    String category;
     String hotelLocation;
     String hotelLocationLink;
     String hotelContactEmail;

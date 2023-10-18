@@ -4,7 +4,7 @@ package lk.nextTravel.hotelService.HotelService.entity;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -22,13 +22,28 @@ public class Hotel {
     int contactNoOne;
     int contactNoTwo;
     String petsAllowedOrNot;
-    String hotelFeeOption1;
-    String hotelFeeOption2;
-    String hotelFeeOption3;
-    String hotelFeeOption4;
+    double hotelFeeOption1;
+    double hotelFeeOption2;
+    double hotelFeeOption3;
+    double hotelFeeOption4;
     String cancellation;
     String remarks;
 
-
-
+    public Hotel(String hotelName, int starRate, String category, String hotelLocation, String hotelLocationLink, String hotelContactEmail, int contactNoOne, int contactNoTwo, String petsAllowedOrNot, double hotelFeeOption1, double hotelFeeOption2, double hotelFeeOption3, double hotelFeeOption4, String cancellation, String remarks) {
+        this.hotelName = hotelName;
+        this.starRate = starRate;
+        this.category = category;
+        this.hotelLocation = hotelLocation;
+        this.hotelLocationLink = hotelLocationLink;
+        this.hotelContactEmail = hotelContactEmail;
+        this.contactNoOne = contactNoOne;
+        this.contactNoTwo = contactNoTwo;
+        this.petsAllowedOrNot = petsAllowedOrNot;
+        this.hotelFeeOption1 = hotelFeeOption1;
+        this.hotelFeeOption2 = hotelFeeOption2;
+        this.hotelFeeOption3 = hotelFeeOption3;
+        this.hotelFeeOption4 = hotelFeeOption4;
+        this.cancellation = cancellation;
+        this.remarks = remarks;
+    }
 }

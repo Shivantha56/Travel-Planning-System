@@ -20,10 +20,10 @@ public class HotelDTO {
     int contactNoOne;
     int contactNoTwo;
     String petsAllowedOrNot;
-    String hotelFeeOption1;
-    String hotelFeeOption2;
-    String hotelFeeOption3;
-    String hotelFeeOption4;
+    double hotelFeeOption1;
+    double hotelFeeOption2;
+    double hotelFeeOption3;
+    double hotelFeeOption4;
     String cancellation;
     String remarks;
 }

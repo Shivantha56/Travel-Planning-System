@@ -35,8 +35,8 @@ public class HotelController {
     ) {
 
         HotelDTO hotelDto = new HotelDTO(hotelName,Integer.parseInt(starRate),category,hotelLocation,hotelLocationLink,
-                hotelContactEmail,Integer.parseInt(contactNoOne),Integer.parseInt(contactNoTwo),petsAllowedOrNot,hotelFeeOption1,
-                hotelFeeOption2,hotelFeeOption3,hotelFeeOption4,cancellation,remarks);
+                hotelContactEmail,Integer.parseInt(contactNoOne),Integer.parseInt(contactNoTwo),petsAllowedOrNot,Double.parseDouble(hotelFeeOption1),
+                Double.parseDouble(hotelFeeOption2),Double.parseDouble(hotelFeeOption3),Double.parseDouble(hotelFeeOption4),cancellation,remarks);
         hotelService.saveHotel(hotelDto);
 
     }

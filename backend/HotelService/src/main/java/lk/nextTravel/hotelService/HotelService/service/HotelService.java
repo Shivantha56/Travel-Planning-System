@@ -8,4 +8,5 @@ import org.springframework.stereotype.Controller;
 public interface HotelService {
     void saveHotel(HotelDTO hotelDto);
 
+    HotelDTO getHotelSearchDetails(String hotelEmail);
 }

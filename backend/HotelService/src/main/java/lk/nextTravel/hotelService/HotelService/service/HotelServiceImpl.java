@@ -7,6 +7,8 @@ import lk.nextTravel.hotelService.HotelService.util.ModelsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class HotelServiceImpl implements HotelService{
 
@@ -24,5 +26,39 @@ public class HotelServiceImpl implements HotelService{
         Hotel hotel1 = new Hotel(hotel.getHotelName(),hotel.getStarRate(),hotel.getHotelLocation(),hotel.getHotelLocationLink(),hotel.getHotelContactEmail(),hotel.getContactNoOne(),hotel.getContactNoTwo(),hotel.getPetsAllowedOrNot(),hotel.getHotelFeeOption1(),hotel.getHotelFeeOption2(),hotel.getHotelFeeOption3(),hotel.getHotelFeeOption4(),hotel.getCancellation(),hotel.getRemarks());
 
         hotelRepository.save(hotel1);
+    }
+
+    @Override
+    public HotelDTO getHotelSearchDetails(String hotelEmail) {
+
+
+        Optional<Hotel> hotel = hotelRepository.findByHotelContactEmail(hotelEmail);
+
+        if (hotel.isPresent()){
+            String hotelName = hotel.get().getHotelName();
+            int starRate = hotel.get().getStarRate();
+            String hotelLocation = hotel.get().getHotelLocation();
+            String hotelLocationLink = hotel.get().getHotelLocationLink();
+            String hotelContactEmail = hotel.get().getHotelContactEmail();
+            int contactNoOne = hotel.get().getContactNoOne();
+            int contactNoTwo = hotel.get().getContactNoTwo();
+            String petsAllowedOrNot = hotel.get().getPetsAllowedOrNot();
+            double hotelFeeOption1 = hotel.get().getHotelFeeOption1();
+            double hotelFeeOption2 = hotel.get().getHotelFeeOption2();
+            double hotelFeeOption3 = hotel.get().getHotelFeeOption3();
+            double hotelFeeOption4 = hotel.get().getHotelFeeOption4();
+            String cancellation = hotel.get().getCancellation();
+            String remarks = hotel.get().getRemarks();
+
+            Hotel hotelDetails = new Hotel(hotelName,starRate,hotelLocation,hotelLocationLink,hotelContactEmail,
+                    contactNoOne,contactNoTwo,petsAllowedOrNot,hotelFeeOption1,hotelFeeOption2,hotelFeeOption3,
+                    hotelFeeOption4,cancellation,remarks);
+
+            HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotelDetails);
+            return hotelDTO;
+        }else {
+            throw new RuntimeException("hotel connot found with that email");
+        }
+
     }
 }

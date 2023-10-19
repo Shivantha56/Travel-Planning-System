@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -83,6 +85,26 @@ public class HotelServiceImpl implements HotelService{
         }else {
             throw new RuntimeException("hotel cannot found");
         }
+
+    }
+
+    @Override
+    public List<HotelDTO> getAllHotelData() {
+
+        ArrayList<HotelDTO> hotels = new ArrayList<>();
+
+
+        List<Hotel> all = hotelRepository.findAll();
+
+        for (Hotel hotel:all){
+//            hotel = new Hotel();
+            HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+            hotels.add(hotelDTO);
+        }
+
+
+        return hotels;
+
 
     }
 

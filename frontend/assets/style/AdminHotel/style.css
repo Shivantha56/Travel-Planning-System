@@ -123,3 +123,7 @@ body{
 .rating:hover>input:checked~label:before {
     opacity: 0.4
 }
+
+/*.hotel-delete-modal{*/
+/*    position: absolute;*/
+/*}*/

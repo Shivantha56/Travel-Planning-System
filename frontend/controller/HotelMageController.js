@@ -115,11 +115,7 @@ function searchHotelDetails(hotelEmail) {
 
             $('#remarks').val(response.remarks);
 
-
-
-
         }
-
 
     });
 
@@ -138,6 +134,21 @@ $('#hotelUpdateBtn').on('click',function () {
 })
 
 $('#hotelDeleteBtn').on('click',function () {
+
+    $.ajax({
+        method: "Delete",
+        url: `http://localhost:8085/business/api/v1/hotel/${$('#hotelEmail').val()}`,
+        dataType:'Json',
+        error:function (error) {
+
+        },
+
+        success:function (response) {
+
+        }
+
+
+    });
 
 })
 

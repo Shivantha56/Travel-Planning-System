@@ -51,8 +51,9 @@
                     <!--                </li>-->
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input id="hotelSearchInputField" class="form-control me-2" type="search" placeholder="Search"
+                           aria-label="Search">
+                    <button id="searchBtn" class="btn btn-outline-success" type="button">Search</button>
                 </form>
 
                 <div class="dropdown navigation-admin-image">
@@ -79,8 +80,9 @@
                             <h2 class="h5 mb-3 mb-lg-0"><a href="../../pages/admin/customers.html" class="text-muted"><i
                                     class="bi bi-arrow-left-square me-2"></i></a> Add new hotel </h2>
                             <div class="hstack gap-3">
-                                <button type="reset" class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i> <span
-                                        class="text">Cancel</span>
+                                <button type="reset" class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i>
+                                    <span
+                                            class="text">Cancel</span>
                                 </button>
                                 <button type="button" id="hotelSaveBtn" class="btn btn-primary btn-sm btn-icon-text"><i
                                         class="bi bi-save"></i> <span
@@ -256,10 +258,12 @@
                             <h2 class="h5 mb-3 mb-lg-0"><a href="../../pages/admin/customers.html" class="text-muted"><i
                                     class="bi bi-arrow-left-square me-2"></i></a> Update and Delete </h2>
                             <div class="hstack gap-3">
-                                <button type="reset" class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i> <span
-                                        class="text">Cancel</span>
+                                <button type="reset" class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i>
+                                    <span
+                                            class="text">Cancel</span>
                                 </button>
-                                <button id="hotelUpdateBtn" class="btn btn-sm btn-icon-text btn-primary"><i class="bi bi-x"></i> <span
+                                <button type="button" id="hotelUpdateBtn" class="btn btn-sm btn-icon-text btn-primary"><i
+                                        class="bi bi-x"></i> <span
                                         class="text">Update</span>
                                 </button>
                                 <button type="button" id="hotelDeleteBtn" class="btn btn-danger btn-sm btn-icon-text"><i
@@ -281,13 +285,15 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Hotel name</label>
-                                                    <input type="text" class="form-control" name="hotelName">
+                                                    <input id="hotelName" type="text" class="form-control"
+                                                           name="hotelName">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Hotel Location</label>
-                                                    <input type="text" class="form-control" name="hotelLocation">
+                                                    <input id="hotelLocation" type="text" class="form-control"
+                                                           name="hotelLocation">
                                                 </div>
                                             </div>
                                         </div>
@@ -295,13 +301,15 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Hotel email</label>
-                                                    <input type="email" class="form-control" name="hotelContactEmail">
+                                                    <input id="hotelEmail" type="email" class="form-control"
+                                                           name="hotelContactEmail">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Hotel location link</label>
-                                                    <input type="text" class="form-control" name="hotelLocationLink">
+                                                    <input id="hotelLocationLink" type="text" class="form-control"
+                                                           name="hotelLocationLink">
                                                 </div>
                                             </div>
                                         </div>
@@ -315,14 +323,16 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">1 Full Board with A/C Luxury Room –
                                                         Double</label>
-                                                    <input type="text" class="form-control" name="hotelFeeOption1">
+                                                    <input id="hotelOption1" type="text" class="form-control"
+                                                           name="hotelFeeOption1">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">2 Half Board with A/C Luxury Room -
                                                         Double</label>
-                                                    <input type="text" class="form-control" name="hotelFeeOption2">
+                                                    <input id="hotelOption2" type="text" class="form-control"
+                                                           name="hotelFeeOption2">
                                                 </div>
                                             </div>
 
@@ -330,14 +340,16 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">3 Full Board with A/C Luxury Room –
                                                         Triple</label>
-                                                    <input type="text" class="form-control" name="hotelFeeOption3">
+                                                    <input id="hotelOption3" type="text" class="form-control"
+                                                           name="hotelFeeOption3">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">4 Half Board with A/C Luxury Room -
                                                         Triple</label>
-                                                    <input type="text" class="form-control" name="hotelFeeOption4">
+                                                    <input id="hotelOption4" type="text" class="form-control"
+                                                           name="hotelFeeOption4">
                                                 </div>
                                             </div>
 
@@ -345,13 +357,15 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Contact no 1</label>
-                                                    <input type="text" class="form-control" name="contactNoOne">
+                                                    <input id="contactNo1" type="text" class="form-control"
+                                                           name="contactNoOne">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Contact no 2</label>
-                                                    <input type="text" class="form-control" name="contactNoTwo">
+                                                    <input id="contactNo2" type="text" class="form-control"
+                                                           name="contactNoTwo">
                                                 </div>
                                             </div>
                                         </div>
@@ -359,7 +373,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Pets</label>
-                                                    <select name="petsAllowedOrNot"
+                                                    <select id="petsAllowedOrNot" name="petsAllowedOrNot"
                                                             class="select2 form-control select2-hidden-accessible"
                                                             data-select2-placeholder="Select city"
                                                             data-select2-id="select2-data-7-809c" tabindex="-1"
@@ -386,7 +400,7 @@
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <h3 class="h6">Cancellation-criteria</h3>
-                                        <select name="cancellation" class="form-select">
+                                        <select id="cancellationCriteria" name="cancellation" class="form-select">
                                             <option value="Free">Free</option>
                                             <option value="None-free">Non-free</option>
                                         </select>
@@ -396,16 +410,17 @@
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <h3 class="h6">Star rate</h3>
-                                        <div class="rating"><input type="radio" name="starRate" value="5" id="u5"><label
-                                                for="u5">☆</label> <input type="radio" name="starRate" value="4"
-                                                                         id="u4"><label
-                                                for="u4">☆</label> <input type="radio" name="starRate" value="3"
-                                                                         id="u3"><label
-                                                for="u3">☆</label> <input type="radio" name="starRate" value="2"
-                                                                         id="u2"><label
-                                                for="u2">☆</label> <input type="radio" name="starRate" value="1"
-                                                                         id="u1"><label
-                                                for="u1">☆</label>
+                                        <div class="rating">
+                                            <input type="radio" name="starRate" value="5" id="u5">
+                                            <label for="u5">☆</label>
+                                            <input type="radio" name="starRate" value="4" id="u4">
+                                            <label for="u4">☆</label>
+                                            <input type="radio" name="starRate" value="3" id="u3">
+                                            <label for="u3">☆</label>
+                                            <input type="radio" name="starRate" value="2" id="u2">
+                                            <label for="u2">☆</label>
+                                            <input type="radio" name="starRate" value="1" id="u1">
+                                            <label for="u1">☆</label>
                                         </div>
 
                                     </div>
@@ -414,7 +429,8 @@
                                 <div class="card mb-4 remarks">
                                     <div class="card-body remarks">
                                         <h3 class="h6">Remarks</h3>
-                                        <textarea name="remarks" class="form-control remarks" rows="3"></textarea>
+                                        <textarea id="remarks" name="remarks" class="form-control remarks"
+                                                  rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -424,12 +440,6 @@
             </form>
         </section>
     </section>
-
-
-
-
-
-
 
 
 </section>

@@ -4,7 +4,7 @@ package lk.nextTravel.hotelService.HotelService.entity;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter

@@ -18,12 +18,11 @@ public class HotelServiceImpl implements HotelService{
     ModelsMapper modelsMapper;
 
     @Override
-    public void saveHotel(HotelDTO hotelDto) {
-
+    public void saveHotel(HotelDTO hotelDto,String hotelId) {
 
 
         Hotel hotel = modelsMapper.dtoToEntityConversion(hotelDto);
-        Hotel hotel1 = new Hotel(hotel.getHotelName(),hotel.getStarRate(),hotel.getHotelLocation(),hotel.getHotelLocationLink(),hotel.getHotelContactEmail(),hotel.getContactNoOne(),hotel.getContactNoTwo(),hotel.getPetsAllowedOrNot(),hotel.getHotelFeeOption1(),hotel.getHotelFeeOption2(),hotel.getHotelFeeOption3(),hotel.getHotelFeeOption4(),hotel.getCancellation(),hotel.getRemarks());
+        Hotel hotel1 = new Hotel(hotelId,hotel.getHotelName(),hotel.getStarRate(),hotel.getHotelLocation(),hotel.getHotelLocationLink(),hotel.getHotelContactEmail(),hotel.getContactNoOne(),hotel.getContactNoTwo(),hotel.getPetsAllowedOrNot(),hotel.getHotelFeeOption1(),hotel.getHotelFeeOption2(),hotel.getHotelFeeOption3(),hotel.getHotelFeeOption4(),hotel.getCancellation(),hotel.getRemarks());
 
         hotelRepository.save(hotel1);
     }
@@ -54,11 +53,22 @@ public class HotelServiceImpl implements HotelService{
                     contactNoOne,contactNoTwo,petsAllowedOrNot,hotelFeeOption1,hotelFeeOption2,hotelFeeOption3,
                     hotelFeeOption4,cancellation,remarks);
 
-            HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotelDetails);
-            return hotelDTO;
+            return modelsMapper.entityToDtoConversion(hotelDetails);
         }else {
             throw new RuntimeException("hotel connot found with that email");
         }
+
+    }
+
+    @Override
+    public void updateHotel(HotelDTO hotelDto) {
+        Optional<Hotel> hotel = hotelRepository.findByHotelContactEmail(hotelDto.getHotelContactEmail());
+        if (hotel.isPresent()){
+            saveHotel(hotelDto,hotel.get().getHotelId());
+        }else {
+            throw new RuntimeException("hotel cannot found");
+        }
+
 
     }
 }

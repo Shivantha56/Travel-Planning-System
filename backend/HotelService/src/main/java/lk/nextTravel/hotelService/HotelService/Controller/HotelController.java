@@ -37,7 +37,7 @@ public class HotelController {
         HotelDTO hotelDto = new HotelDTO(hotelName,Integer.parseInt(starRate),hotelLocation,hotelLocationLink,
                 hotelContactEmail,Integer.parseInt(contactNoOne),Integer.parseInt(contactNoTwo),petsAllowedOrNot,Double.parseDouble(hotelFeeOption1),
                 Double.parseDouble(hotelFeeOption2),Double.parseDouble(hotelFeeOption3),Double.parseDouble(hotelFeeOption4),cancellation,remarks);
-        hotelService.saveHotel(hotelDto);
+        hotelService.saveHotel(hotelDto,null);
 
     }
 
@@ -45,6 +45,32 @@ public class HotelController {
     public HotelDTO getSearchHotel(@PathVariable String hotelEmail){
 
         return hotelService.getHotelSearchDetails(hotelEmail);
+
+    }
+
+
+    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void update(
+            @RequestPart String hotelName,
+            @RequestPart String starRate,
+            @RequestPart String hotelLocation,
+            @RequestPart String hotelLocationLink,
+            @RequestPart String hotelContactEmail,
+            @RequestPart String contactNoOne,
+            @RequestPart String contactNoTwo,
+            @RequestPart String petsAllowedOrNot,
+            @RequestPart String hotelFeeOption1,
+            @RequestPart String hotelFeeOption2,
+            @RequestPart String hotelFeeOption3,
+            @RequestPart String hotelFeeOption4,
+            @RequestPart String cancellation,
+            @RequestPart String remarks
+    ) {
+
+        HotelDTO hotelDto = new HotelDTO(hotelName,Integer.parseInt(starRate),hotelLocation,hotelLocationLink,
+                hotelContactEmail,Integer.parseInt(contactNoOne),Integer.parseInt(contactNoTwo),petsAllowedOrNot,Double.parseDouble(hotelFeeOption1),
+                Double.parseDouble(hotelFeeOption2),Double.parseDouble(hotelFeeOption3),Double.parseDouble(hotelFeeOption4),cancellation,remarks);
+        hotelService.updateHotel(hotelDto);
 
     }
 

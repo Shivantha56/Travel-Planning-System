@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public interface HotelService {
-    void saveHotel(HotelDTO hotelDto);
+    void saveHotel(HotelDTO hotelDto,String hotelId);
 
     HotelDTO getHotelSearchDetails(String hotelEmail);
+
+    void updateHotel(HotelDTO hotelDto);
 }

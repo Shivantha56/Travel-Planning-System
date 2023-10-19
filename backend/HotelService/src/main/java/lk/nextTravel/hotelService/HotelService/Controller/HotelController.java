@@ -75,4 +75,11 @@ public class HotelController {
     }
 
 
+    @DeleteMapping("{email}")
+    public void deleteHotel(@PathVariable String email){
+
+        hotelService.deleteHotel(email);
+
+    }
+
 }

@@ -11,4 +11,6 @@ public interface HotelService {
     HotelDTO getHotelSearchDetails(String hotelEmail);
 
     void updateHotel(HotelDTO hotelDto);
+
+    void deleteHotel(String email);
 }

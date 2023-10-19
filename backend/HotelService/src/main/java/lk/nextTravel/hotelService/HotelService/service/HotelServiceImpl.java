@@ -6,6 +6,8 @@ import lk.nextTravel.hotelService.HotelService.persistence.HotelRepository;
 import lk.nextTravel.hotelService.HotelService.util.ModelsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -71,4 +73,18 @@ public class HotelServiceImpl implements HotelService{
 
 
     }
+
+    @Override
+    public void deleteHotel(String email) {
+
+        Optional<Hotel> hotel = hotelRepository.findByHotelContactEmail(email);
+        if (hotel.isPresent()){
+            hotelRepository.deleteByHotelContactEmail(email);
+        }else {
+            throw new RuntimeException("hotel cannot found");
+        }
+
+    }
+
+
 }

@@ -11,4 +11,6 @@ public interface HotelRepository extends MongoRepository<Hotel,String> {
 
 
     Optional<Hotel> findByHotelContactEmail(String email);
+
+    void deleteByHotelContactEmail(String email);
 }

@@ -3,6 +3,7 @@ package lk.nextTravel.hotelService.HotelService.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class Hotel {
     int starRate;
     String hotelLocation;
     String hotelLocationLink;
+    @Indexed(unique = true)
     String hotelContactEmail;
     int contactNoOne;
     int contactNoTwo;

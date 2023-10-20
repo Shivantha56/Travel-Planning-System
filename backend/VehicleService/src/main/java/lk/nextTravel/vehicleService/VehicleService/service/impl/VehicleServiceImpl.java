@@ -10,6 +10,7 @@ import lk.nextTravel.vehicleService.VehicleService.service.VehicleService;
 import lk.nextTravel.vehicleService.VehicleService.util.ModelsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;

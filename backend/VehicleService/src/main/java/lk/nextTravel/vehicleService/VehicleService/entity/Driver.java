@@ -18,10 +18,10 @@ public class Driver {
     String driverName;
     String driverContactNo;
     @Lob
-    @Column(nullable = false,columnDefinition = "LongText", length = 10000000)
+    @Column(nullable = false, columnDefinition = "LongText", length = 10000000)
     String driverLicenseFront;
     @Lob
-    @Column(nullable = false,columnDefinition = "LongText", length = 10000000)
+    @Column(nullable = false, columnDefinition = "LongText", length = 10000000)
     String driverLicenseRear;
     String remarks;
 

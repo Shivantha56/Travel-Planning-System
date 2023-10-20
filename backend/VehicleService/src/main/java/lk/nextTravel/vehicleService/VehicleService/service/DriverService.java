@@ -8,4 +8,5 @@ import org.springframework.stereotype.Controller;
 public interface DriverService {
     void saveDriver(DriverDTO driverDTO);
 
+    DriverDTO searchDriver(String driverId);
 }

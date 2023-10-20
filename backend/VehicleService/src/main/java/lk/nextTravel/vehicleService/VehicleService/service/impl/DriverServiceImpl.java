@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
+import java.util.Optional;
 
 @Service
 public class DriverServiceImpl implements DriverService {
@@ -33,5 +34,25 @@ public class DriverServiceImpl implements DriverService {
         driverRepository.save(driver);
 
 
+    }
+
+    @Override
+    public DriverDTO searchDriver(String driverId) {
+
+        DriverDTO driverDTO;
+        Optional<Driver> driver = driverRepository.findById(Long.parseLong(driverId));
+
+        if (driver.isPresent()){
+
+            long getDriverId = driver.get().getDriverId();
+            driverDTO = new DriverDTO(getDriverId);
+
+            System.out.println(driverDTO);
+
+            return driverDTO;
+
+        }else{
+            throw new RuntimeException("driver cannot found");
+        }
     }
 }

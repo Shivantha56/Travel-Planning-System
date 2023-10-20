@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class DriverDTO {
 
-    String driverId;
+    long driverId;
     String driverName;
     int driverContactNo;
     byte[] driverLicenseFront;
@@ -25,5 +25,9 @@ public class DriverDTO {
         this.driverLicenseFront = driverLicenseFront;
         this.driverLicenseRear = driverLicenseRear;
         this.remarks = remarks;
+    }
+
+    public DriverDTO(long driverId) {
+        this.driverId = driverId;
     }
 }

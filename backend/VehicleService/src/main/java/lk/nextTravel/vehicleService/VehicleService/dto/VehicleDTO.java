@@ -11,18 +11,18 @@ import lombok.Setter;
 @Setter
 public class VehicleDTO {
 
-    String vehicleId;
+//    String vehicleId;
     String vehicleNo;
     String vehicleBrand;
     String category;
     String fuelType;
     String hybrid;
     double fuelUsage;
-    String vehicleFrontImage;
-    String vehicleRearImage;
-    String vehicleSideImage;
-    String vehicleFrontInteriorImage;
-    String vehicleRearInteriorImage;
+    byte[] vehicleFrontImage;
+    byte[] vehicleRearImage;
+    byte[] vehicleSideImage;
+    byte[] vehicleFrontInteriorImage;
+    byte[] vehicleRearInteriorImage;
     int seatCapacity;
     String vehicleType;
     String transmissionType;

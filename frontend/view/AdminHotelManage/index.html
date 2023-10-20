@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap-utilities.min.css">
 
 
-
-<!--    <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="/assets/style/AdminHotel/style.css">
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
     <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>-->
@@ -21,10 +20,6 @@
 
 </head>
 <body>
-
-
-
-
 
 
 <section class="main-hotels-container">
@@ -57,6 +52,9 @@
                             <li><a id="hotelsViewnavigation" class="dropdown-item" href="#">View details</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a data-bs-toggle="modal" data-bs-target="#viewMap"  class="nav-link" href="#">Location</a>
+                    </li>
                     <!--                <li class="nav-item">-->
                     <!--                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
                     <!--                </li>-->
@@ -80,8 +78,9 @@
         </div>
     </nav>
 
-<!--    modal-->
-    <div class=" hotel-delete-modal modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!--    modal-->
+    <div class=" hotel-delete-modal modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -94,6 +93,31 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button id="hotelDeleteBtn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" hotel-delete-modal modal fade" id="viewMap" data-bs-backdrop="static" data-bs-keyboard="false"
+         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="viewMapModalLabel">Map</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe
+                            width="450"
+                            height="250"
+                            frameborder="0" style="border:0"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -292,11 +316,13 @@
                                     <span
                                             class="text">Cancel</span>
                                 </button>
-                                <button type="button" id="hotelUpdateBtn" class="btn btn-sm btn-icon-text btn-primary"><i
-                                        class="bi bi-x"></i> <span
+                                <button type="button" id="hotelUpdateBtn" class="btn btn-sm btn-icon-text btn-primary">
+                                    <i
+                                            class="bi bi-x"></i> <span
                                         class="text">Update</span>
                                 </button>
-                                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" class="btn btn-danger btn-sm btn-icon-text"><i
+                                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"
+                                        class="btn btn-danger btn-sm btn-icon-text"><i
                                         class="bi bi-save"></i> <span
                                         class="text">Delete</span>
                                 </button>
@@ -490,18 +516,18 @@
                 </tr>
                 </thead>
                 <tbody class="hotel-tbody">
-<!--                <tr>-->
-<!--                    <td>Mark</td>-->
-<!--                    <td>Otto</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                    <td>@mdo</td>-->
-<!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <td>Mark</td>-->
+                <!--                    <td>Otto</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                    <td>@mdo</td>-->
+                <!--                </tr>-->
                 </tbody>
             </table>
         </div>
@@ -511,9 +537,6 @@
 
 
 </section>
-
-
-
 
 
 <!-- delete confirmation modal -->
@@ -542,17 +565,6 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--<script src="/assets/boostrap/bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>-->

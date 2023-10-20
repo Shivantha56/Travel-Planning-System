@@ -12,6 +12,7 @@ import lombok.Setter;
 public class VehicleDTO {
 
     String vehicleId;
+    String vehicleNo;
     String vehicleBrand;
     String category;
     String fuelType;

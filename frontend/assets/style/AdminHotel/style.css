@@ -32,6 +32,7 @@ body{
 .main-hotels-container{
     /*background-color: deeppink;*/
     height: 100%;
+    padding-bottom: 50px;
 
 }
 
@@ -130,3 +131,10 @@ body{
 /*.hotel-delete-modal{*/
 /*    position: absolute;*/
 /*}*/
+
+
+footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}

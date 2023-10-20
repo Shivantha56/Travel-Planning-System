@@ -13,9 +13,17 @@ public class DriverDTO {
 
     String driverId;
     String driverName;
-    String driverContactNo;
-    String driverLicenseFront;
-    String driverLicenseRear;
+    int driverContactNo;
+    byte[] driverLicenseFront;
+    byte[] driverLicenseRear;
     String remarks;
 
+
+    public DriverDTO(String driverName, int driverContactNo, byte[] driverLicenseFront, byte[] driverLicenseRear, String remarks) {
+        this.driverName = driverName;
+        this.driverContactNo = driverContactNo;
+        this.driverLicenseFront = driverLicenseFront;
+        this.driverLicenseRear = driverLicenseRear;
+        this.remarks = remarks;
+    }
 }

@@ -1,8 +1,6 @@
 package lk.nextTravel.vehicleService.VehicleService.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +13,15 @@ import lombok.Setter;
 @Setter
 public class Driver {
     @Id
-    String driverId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long driverId;
     String driverName;
     String driverContactNo;
+    @Lob
+    @Column(nullable = false,columnDefinition = "LongText", length = 10000000)
     String driverLicenseFront;
+    @Lob
+    @Column(nullable = false,columnDefinition = "LongText", length = 10000000)
     String driverLicenseRear;
     String remarks;
 

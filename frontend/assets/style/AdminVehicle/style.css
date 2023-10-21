@@ -1,0 +1,26 @@
+body{
+    background:#eee;
+}
+.navbar{
+    position: fixed;
+    width: 100vw;
+    z-index: 1000000;
+}
+
+.navigation-bar{
+    background-color: deeppink;
+
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.nav-item>a{
+    color: white;
+}
+
+.navigation-admin-image{
+    margin-left: 10px;
+    margin-right: 20px;
+}

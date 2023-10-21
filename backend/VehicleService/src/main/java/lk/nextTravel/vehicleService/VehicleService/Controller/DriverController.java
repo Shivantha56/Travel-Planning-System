@@ -6,15 +6,13 @@ import lk.nextTravel.vehicleService.VehicleService.entity.Driver;
 import lk.nextTravel.vehicleService.VehicleService.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
 
 @RestController
 @RequestMapping("api/v1/driver")
+@CrossOrigin("*")
 public class DriverController {
 
     @Autowired
@@ -24,10 +22,9 @@ public class DriverController {
     public void saveDriver(@RequestPart String driverName,
                            @RequestPart String driverContactNo,
                            @RequestPart byte[] driverLicenseFront,
-                           @RequestPart byte[] driverLicenseRear,
-                           @RequestPart String remarks){
+                           @RequestPart byte[] driverLicenseRear){
 
-        DriverDTO driverDTO = new DriverDTO(driverName,Integer.parseInt(driverContactNo),driverLicenseFront,driverLicenseRear,remarks);
+        DriverDTO driverDTO = new DriverDTO(driverName,Integer.parseInt(driverContactNo),driverLicenseFront,driverLicenseRear);
 
         driverService.saveDriver(driverDTO);
 

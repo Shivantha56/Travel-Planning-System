@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/driver")
@@ -27,6 +28,14 @@ public class DriverController {
         DriverDTO driverDTO = new DriverDTO(driverName,Integer.parseInt(driverContactNo),driverLicenseFront,driverLicenseRear);
 
         driverService.saveDriver(driverDTO);
+
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DriverDTO> getDriverDTO(){
+
+        return driverService.getAllDriverDetails();
+
 
     }
 

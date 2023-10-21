@@ -27,4 +27,5 @@ public class VehicleDTO {
     String vehicleType;
     String transmissionType;
     String driverId;
+    String remarks;
 }

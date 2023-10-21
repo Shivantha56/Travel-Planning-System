@@ -64,7 +64,8 @@ public class VehicleServiceImpl implements VehicleService {
                     vehicle.getSeatCapacity(),
                     vehicle.getVehicleType(),
                     vehicle.getTransmissionType(),
-                    driver
+                    driver,
+                    vehicle.getRemarks()
 
             );
 

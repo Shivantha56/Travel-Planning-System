@@ -41,8 +41,9 @@ public class Vehicle {
     @OneToOne
     @JoinColumn(name = "driverId")
     Driver driver;
+    String remarks;
 
-    public Vehicle(String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, String vehicleFrontImage, String vehicleRearImage, String vehicleSideImage, String vehicleFrontInteriorImage, String vehicleRearInteriorImage, int seatCapacity, String vehicleType, String transmissionType, Driver driver) {
+    public Vehicle(String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, String vehicleFrontImage, String vehicleRearImage, String vehicleSideImage, String vehicleFrontInteriorImage, String vehicleRearInteriorImage, int seatCapacity, String vehicleType, String transmissionType, Driver driver,String remarks) {
         this.vehicleNo = vehicleNo;
         this.vehicleBrand = vehicleBrand;
         this.category = category;
@@ -58,6 +59,7 @@ public class Vehicle {
         this.vehicleType = vehicleType;
         this.transmissionType = transmissionType;
         this.driver = driver;
+        this.remarks = remarks;
     }
 
     //    public Vehicle(String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, String vehicleFrontImage, String vehicleRearImage, String vehicleSideImage, String vehicleFrontInteriorImage, String vehicleRearInteriorImage, int seatCapacity, String vehicleType, String transmissionType, Driver driver) {

@@ -8,7 +8,9 @@ import lk.nextTravel.vehicleService.VehicleService.util.ModelsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -54,5 +56,19 @@ public class DriverServiceImpl implements DriverService {
         }else{
             throw new RuntimeException("driver cannot found");
         }
+    }
+
+    @Override
+    public List<DriverDTO> getAllDriverDetails() {
+        ArrayList<DriverDTO> driverDTO = new ArrayList<>();
+
+        Iterable<Driver> all = driverRepository.findAll();
+
+        for (Driver driver: all) {
+            DriverDTO drivers = modelsMapper.driverEntityToDtoConversion(driver);
+            driverDTO.add(drivers);
+        }
+
+        return driverDTO;
     }
 }

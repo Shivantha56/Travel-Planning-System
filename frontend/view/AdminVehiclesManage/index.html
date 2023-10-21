@@ -85,9 +85,9 @@
                             <li><a id="hotelsViewnavigation" class="dropdown-item" href="#">View details</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a data-bs-toggle="modal" data-bs-target="#viewMap" class="nav-link" href="#">Location</a>
-                    </li>
+                    <!--                    <li class="nav-item">-->
+                    <!--                        <a data-bs-toggle="modal" data-bs-target="#viewMap" class="nav-link" href="#">Location</a>-->
+                    <!--                    </li>-->
                 </ul>
                 <form class="d-flex" role="search">
                     <input id="hotelSearchInputField" class="form-control me-2" type="search" placeholder="Search"
@@ -121,168 +121,170 @@
                     <div class="hstack gap-3">
                         <button class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i> <span class="text">Cancel</span>
                         </button>
-                        <button class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span
-                                class="text">Save</span></button>
+                        <button id="vehicleSaveBtn" class="btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span
+                                class="text">Save Vehicle</span></button>
                         <button data-bs-toggle="modal" data-bs-target="#driverSaveModal"
                                 class="  btn btn-primary btn-sm btn-icon-text"><i class="bi bi-save"></i> <span
                                 class="text">Save driver</span></button>
                     </div>
                 </div>
 
-                <!-- Main content -->
-                <div class="row">
-                    <!-- Left side -->
-                    <div class="col-lg-8">
-                        <!-- Basic information -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="h6 mb-4">Basic information</h3>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Vehicle no</label>
-                                            <input type="text" class="form-control">
+                <form id="vehicleSaveForm">
+                    <!-- Main content -->
+                    <div class="row">
+                        <!-- Left side -->
+                        <div class="col-lg-8">
+                            <!-- Basic information -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h3 class="h6 mb-4">Basic information</h3>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Vehicle no</label>
+                                                <input name="vehicleNo" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Vehicle brand</label>
+                                                <input name="vehicleBrand" type="text" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Vehicle brand</label>
-                                            <input type="text" class="form-control">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Fuel usage</label>
+                                                <input name="fuelUsage" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Seat capacity</label>
+                                                <input name="seatCapacity" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Transmission type</label>
+                                            <select name="transmissionType"
+                                                    class="select2 form-control select2-hidden-accessible"
+                                                    data-select2-placeholder="Select country"
+                                                    data-select2-id="select2-data-1-gy14" tabindex="-1"
+                                                    aria-hidden="true">
+                                                <option data-select2-id="select2-data-3-ibs9"></option>
+                                                <option value="Auto transmission">Auto transmission</option>
+                                                <option value="Manual transmission">Manual transmission</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Vehicle type</label>
+                                            <select name="vehicleType"
+                                                    class="select2 form-control select2-hidden-accessible"
+                                                    data-select2-placeholder="Select country"
+                                                    data-select2-id="select2-data-1-gy14" tabindex="-1"
+                                                    aria-hidden="true">
+                                                <option data-select2-id="select2-data-3-ibs9"></option>
+                                                <option value="Car">Car</option>
+                                                <option value="Van (7-12 seats)">Van (7-12 seats)</option>
+                                                <option value="SUV">SUV</option>
+                                                <option value="Bus (30-40 seats)">Bus (30-40 seats)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Category</label>
+                                            <select name="category"
+                                                    class="select2 form-control select2-hidden-accessible"
+                                                    data-select2-placeholder="Select country"
+                                                    data-select2-id="select2-data-1-gy14" tabindex="-1"
+                                                    aria-hidden="true">
+                                                <option data-select2-id="select2-data-3-ibs9"></option>
+                                                <option value="Economy">Economy</option>
+                                                <option value="Mid-Range">Mid-Range</option>
+                                                <option value="Luxury">Luxury</option>
+                                                <option value="Super luxury">Super luxury</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Fuel type</label>
+                                            <select name="fuelType"
+                                                    class="select2 form-control select2-hidden-accessible"
+                                                    data-select2-placeholder="Select country"
+                                                    data-select2-id="select2-data-1-gy14" tabindex="-1"
+                                                    aria-hidden="true">
+                                                <option data-select2-id="select2-data-3-ibs9"></option>
+                                                <option value="Diesel">Diesel</option>
+                                                <option value="Petrol">Petrol</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Hybrid</label>
+                                            <select name="hybrid" class="select2 form-control select2-hidden-accessible"
+                                                    data-select2-placeholder="Select country"
+                                                    data-select2-id="select2-data-1-gy14" tabindex="-1"
+                                                    aria-hidden="true">
+                                                <option data-select2-id="select2-data-3-ibs9"></option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <h3 class="h6">Remarks</h3>
+                                            <textarea name="remarks" class="form-control" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Fuel usage</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <!-- Right side -->
+                        <div class="col-lg-4">
+                            <!-- Status -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h3 class="h6">Select driver</h3>
+                                    <select id="driverId" name="driverId" class="form-select">
+                                        <option value="draft" selected=""></option>
+<!--                                        <option value="active">Active</option>-->
+<!--                                        <option value="active">Inactive</option>-->
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Avatar -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h3 class="h6">Vehicle front image</h3>
+                                    <input name="vehicleFrontImage" class="form-control" type="file">
+                                </div>
 
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Seat capacity</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
+                                <div class="card-body">
+                                    <h3 class="h6">Vehicle rear image</h3>
+                                    <input name="vehicleRearImage" class="form-control" type="file">
+                                </div>
 
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Transmission type</label>
-                                        <select class="select2 form-control select2-hidden-accessible"
-                                                data-select2-placeholder="Select country"
-                                                data-select2-id="select2-data-1-gy14" tabindex="-1"
-                                                aria-hidden="true">
-                                            <option data-select2-id="select2-data-3-ibs9"></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
+                                <div class="card-body">
+                                    <h3 class="h6">Vehicle side image</h3>
+                                    <input name="vehicleSideImage" class="form-control" type="file">
+                                </div>
 
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Vehicle type</label>
-                                        <select class="select2 form-control select2-hidden-accessible"
-                                                data-select2-placeholder="Select country"
-                                                data-select2-id="select2-data-1-gy14" tabindex="-1"
-                                                aria-hidden="true">
-                                            <option data-select2-id="select2-data-3-ibs9"></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
+                                <div class="card-body">
+                                    <h3 class="h6">Vehicle front interior image</h3>
+                                    <input name="vehicleFrontInteriorImage" class="form-control" type="file">
+                                </div>
 
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Category</label>
-                                        <select class="select2 form-control select2-hidden-accessible"
-                                                data-select2-placeholder="Select country"
-                                                data-select2-id="select2-data-1-gy14" tabindex="-1"
-                                                aria-hidden="true">
-                                            <option data-select2-id="select2-data-3-ibs9"></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Fuel type</label>
-                                        <select class="select2 form-control select2-hidden-accessible"
-                                                data-select2-placeholder="Select country"
-                                                data-select2-id="select2-data-1-gy14" tabindex="-1"
-                                                aria-hidden="true">
-                                            <option data-select2-id="select2-data-3-ibs9"></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Hybrid</label>
-                                        <select class="select2 form-control select2-hidden-accessible"
-                                                data-select2-placeholder="Select country"
-                                                data-select2-id="select2-data-1-gy14" tabindex="-1"
-                                                aria-hidden="true">
-                                            <option data-select2-id="select2-data-3-ibs9"></option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <h3 class="h6">Remarks</h3>
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
+                                <div class="card-body">
+                                    <h3 class="h6">Vehicle rear interior image</h3>
+                                    <input name="vehicleRearInteriorImage" class="form-control" type="file">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Right side -->
-                    <div class="col-lg-4">
-                        <!-- Status -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="h6">Select driver</h3>
-                                <select class="form-select">
-                                    <option value="draft" selected="">Draft</option>
-                                    <option value="active">Active</option>
-                                    <option value="active">Inactive</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Avatar -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="h6">Vehicle front image</h3>
-                                <input class="form-control" type="file">
-                            </div>
-
-                            <div class="card-body">
-                                <h3 class="h6">Vehicle rear image</h3>
-                                <input class="form-control" type="file">
-                            </div>
-
-                            <div class="card-body">
-                                <h3 class="h6">Vehicle side image</h3>
-                                <input class="form-control" type="file">
-                            </div>
-
-                            <div class="card-body">
-                                <h3 class="h6">Vehicle front interior image</h3>
-                                <input class="form-control" type="file">
-                            </div>
-
-                            <div class="card-body">
-                                <h3 class="h6">Vehicle rear interior image</h3>
-                                <input class="form-control" type="file">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
 
         </div>

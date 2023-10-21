@@ -2,6 +2,7 @@ body{
     background:#eee;
 }
 .navbar{
+    top: 0;
     position: fixed;
     width: 100vw;
     z-index: 1000000;
@@ -24,3 +25,11 @@ body{
     margin-left: 10px;
     margin-right: 20px;
 }
+
+.main-context{
+    padding-top: 50PX;
+}
+
+/*.vehicle-save-form{*/
+/*    margin-top: 20px;*/
+/*}*/

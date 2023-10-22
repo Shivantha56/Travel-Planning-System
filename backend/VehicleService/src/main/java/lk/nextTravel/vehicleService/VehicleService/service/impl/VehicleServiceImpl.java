@@ -1,6 +1,7 @@
 package lk.nextTravel.vehicleService.VehicleService.service.impl;
 
 import lk.nextTravel.vehicleService.VehicleService.dto.DriverDTO;
+import lk.nextTravel.vehicleService.VehicleService.dto.DriverVehicleDTO;
 import lk.nextTravel.vehicleService.VehicleService.dto.VehicleDTO;
 import lk.nextTravel.vehicleService.VehicleService.entity.Driver;
 import lk.nextTravel.vehicleService.VehicleService.entity.Vehicle;
@@ -10,11 +11,9 @@ import lk.nextTravel.vehicleService.VehicleService.service.VehicleService;
 import lk.nextTravel.vehicleService.VehicleService.util.ModelsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import java.util.Base64;
-import java.util.StringTokenizer;
+import java.util.*;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
@@ -76,4 +75,125 @@ public class VehicleServiceImpl implements VehicleService {
 
         }
     }
+
+    @Override
+    public void updateVehicleDetails(VehicleDTO vehicleDTO) {
+        Optional<Vehicle> byId = vehicleRepository.findById(vehicleDTO.getVehicleId());
+
+        if (byId.isPresent()) {
+            String vehicleFrontImage = Base64.getEncoder().encodeToString(vehicleDTO.getVehicleFrontImage());
+            String vehicleRearImage = Base64.getEncoder().encodeToString(vehicleDTO.getVehicleRearImage());
+            String vehicleSideImage = Base64.getEncoder().encodeToString(vehicleDTO.getVehicleSideImage());
+            String vehicleInteriorFrontImage = Base64.getEncoder().encodeToString(vehicleDTO.getVehicleFrontInteriorImage());
+            String vehicleInteriorRearImage = Base64.getEncoder().encodeToString(vehicleDTO.getVehicleRearInteriorImage());
+
+            Vehicle vehicle = modelsMapper.vehicleDtoToEntityConversion(vehicleDTO);
+
+            DriverDTO driverDTO = driverService.searchDriver(vehicleDTO.getDriverId());
+            Driver driver = modelsMapper.driverDtoToEntityConversion(driverDTO);
+
+
+            Vehicle addVehicle = new Vehicle(
+                    vehicle.getVehicleId(),
+                    vehicle.getVehicleNo(),
+                    vehicle.getVehicleBrand(),
+                    vehicle.getCategory(),
+                    vehicle.getFuelType(),
+                    vehicle.getHybrid(),
+                    vehicle.getFuelUsage(),
+                    vehicleFrontImage,
+                    vehicleRearImage,
+                    vehicleSideImage,
+                    vehicleInteriorFrontImage,
+                    vehicleInteriorRearImage,
+                    vehicle.getSeatCapacity(),
+                    vehicle.getVehicleType(),
+                    vehicle.getTransmissionType(),
+                    driver,
+                    vehicle.getRemarks()
+
+            );
+
+            vehicleRepository.save(addVehicle);
+
+        } else {
+            throw new RuntimeException("can not update");
+        }
+
+    }
+
+    @Override
+    public DriverVehicleDTO getvehicleDetailsById(String vehicleId) {
+        ArrayList<String> list = new ArrayList<>();
+
+        DriverVehicleDTO addVehicle;
+
+
+        Optional<Vehicle> vehicle = vehicleRepository.findVehicleByVehicleNo(vehicleId);
+
+
+        if (vehicle.isPresent()) {
+
+            Driver driver = vehicle.get().getDriver();
+            driver.getDriverName();
+            driver.getDriverId();
+            driver.getDriverContactNo();
+
+            addVehicle = new DriverVehicleDTO(
+                    driver.getDriverId(),
+                    driver.getDriverName(),
+                    driver.getDriverContactNo(),
+                    vehicle.get().getVehicleId(),
+                    vehicle.get().getVehicleNo(),
+                    vehicle.get().getVehicleBrand(),
+                    vehicle.get().getCategory(),
+                    vehicle.get().getFuelType(),
+                    vehicle.get().getHybrid(),
+                    vehicle.get().getFuelUsage(),
+                    vehicle.get().getVehicleFrontImage(),
+                    vehicle.get().getVehicleRearImage(),
+                    vehicle.get().getVehicleSideImage(),
+                    vehicle.get().getVehicleFrontInteriorImage(),
+                    vehicle.get().getVehicleRearInteriorImage(),
+                    vehicle.get().getSeatCapacity(),
+                    vehicle.get().getVehicleType(),
+                    vehicle.get().getTransmissionType(),
+//                    vehicle.get().getDriver(),
+                    vehicle.get().getRemarks()
+
+                    );
+
+//            VehicleDTO vehicleDTO = modelsMapper.vehicleEntityToDtoConversion(addVehicle);
+//            vehicleList.add(vehicleDTO);
+//
+//            Driver driver = addVehicle.getDriver();
+//
+//            vehicleList.add(driver.getDriverId());
+//            System.out.println(driver.getDriverName());
+
+        } else {
+            throw new RuntimeException("vehicle can not found");
+        }
+//        Vehicle vehicle1 = new Vehicle();
+//        Driver driver = vehicle1.getDriver();
+////        driver.getDriverName();
+
+//        System.out.println(driver.getDriverName());
+
+        return addVehicle;
+    }
+
+    @Override
+    public void delete(String vehicleId) {
+
+        Optional<Vehicle> byId = vehicleRepository.findById(Long.parseLong(vehicleId));
+        if (byId.isPresent()){
+            vehicleRepository.deleteById(Long.parseLong(vehicleId));
+        }else {
+            throw new RuntimeException("vehicle can not found with that name");
+        }
+
+
+    }
+
 }

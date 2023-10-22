@@ -2,6 +2,7 @@
 
 let vehicleSaveContext = $('.vehicle-save-form')
 let vehicleUpdateContext = $('.vehicle-update-form')
+let vehicleViewContext = $('.vehicle-view-context');
 
 //details update context input fields
 let updateVehicleNo = $('#updateVehicleNo');
@@ -16,16 +17,36 @@ let updateHybrid = $('#updateHybrid');
 let updateRemarks = $('#updateRemarks');
 // let updateDriverId = $('#updateDriverId');
 
-window.addEventListener('load',function () {
-    // vehicleUpdateContext.css("display","none");
+window.addEventListener('load', function () {
+    vehicleUpdateContext.css("display", "none");
+    vehicleViewContext.css("display", "none")
     getAllDriverDetails();
+    getAllData();
 })
 
 
-$('#saveDriverBtn').on('click',function () {
+$('#vehicleSaveNavigation').on('click', function () {
+    vehicleSaveContext.css("display", "block")
+    vehicleUpdateContext.css("display", "none");
+    vehicleViewContext.css("display", "none")
+})
+
+$('#updateSaveNavigation').on('click', function () {
+    vehicleSaveContext.css("display", "none")
+    vehicleUpdateContext.css("display", "block");
+    vehicleViewContext.css("display", "none")
+})
+
+$('#vehicleViewNavigation').on('click', function () {
+    vehicleSaveContext.css("display", "none")
+    vehicleUpdateContext.css("display", "none");
+    vehicleViewContext.css("display", "block")
+})
+
+
+$('#saveDriverBtn').on('click', function () {
     saveDriver();
 })
-
 
 
 function saveDriver() {
@@ -43,14 +64,14 @@ function saveDriver() {
         contentType: false,
         cache: false,
         // timeout: 600000
-        success:function (response) {
+        success: function (response) {
             getAllDriverDetails();
         }
     });
 
 }
 
-$('#vehicleSaveBtn').on('click',function () {
+$('#vehicleSaveBtn').on('click', function () {
     let vehicleForm = new FormData($('#vehicleSaveForm')[0]);
 
     $.ajax({
@@ -62,7 +83,7 @@ $('#vehicleSaveBtn').on('click',function () {
         contentType: false,
         cache: false,
         // timeout: 600000
-        success:function (response) {
+        success: function (response) {
 
         }
     });
@@ -80,9 +101,9 @@ function getAllDriverDetails() {
         // processData: false,  // Important!
         // contentType: false,
         // cache: false,
-        dataType:"json",
+        dataType: "json",
         // timeout: 600000
-        success:function (response) {
+        success: function (response) {
 
             for (const responseKey in response) {
                 let driverId = response[responseKey].driverId;
@@ -101,7 +122,7 @@ function getAllDriverDetails() {
 }
 
 
-$('#searchBtn').on('click',function () {
+$('#searchBtn').on('click', function () {
 
     // getAllDriverDetails();
 
@@ -122,41 +143,41 @@ $('#searchBtn').on('click',function () {
 
             // for (const responseKey in response) {
 
-                // let driverId = response.driverId;
-                // let driverName = response.driverName;
-                // let driverContactNo = response[responseKey].driverContactNo;
-                let vehicleId = response.vehicleId;
-                let vehicleNo = response.vehicleNo;
-                let vehicleBrand = response.vehicleBrand;
-                let category = response.category;
-                let fuelType = response.fuelType;
-                let hybrid = response.hybrid;
-                let fuelUsage = response.fuelUsage;
-                let vehicleFrontImage = response.vehicleFrontImage;
-                let vehicleRearImage = response.vehicleRearImage;
-                let vehicleSideImage = response.vehicleSideImage;
-                let vehicleFrontInteriorImage = response.vehicleFrontInteriorImage;
-                let vehicleRearInteriorImage = response.vehicleRearInteriorImage;
-                let seatCapacity = response.seatCapacity;
-                let vehicleType = response.vehicleType;
-                let transmissionType = response.transmissionType;
-                let remarks = response.remarks;
+            // let driverId = response.driverId;
+            // let driverName = response.driverName;
+            // let driverContactNo = response[responseKey].driverContactNo;
+            let vehicleId = response.vehicleId;
+            let vehicleNo = response.vehicleNo;
+            let vehicleBrand = response.vehicleBrand;
+            let category = response.category;
+            let fuelType = response.fuelType;
+            let hybrid = response.hybrid;
+            let fuelUsage = response.fuelUsage;
+            let vehicleFrontImage = response.vehicleFrontImage;
+            let vehicleRearImage = response.vehicleRearImage;
+            let vehicleSideImage = response.vehicleSideImage;
+            let vehicleFrontInteriorImage = response.vehicleFrontInteriorImage;
+            let vehicleRearInteriorImage = response.vehicleRearInteriorImage;
+            let seatCapacity = response.seatCapacity;
+            let vehicleType = response.vehicleType;
+            let transmissionType = response.transmissionType;
+            let remarks = response.remarks;
 
-                $('#vehicleId').val(vehicleId);
+            $('#vehicleId').val(vehicleId);
 
-                // $("p[title|='Tomorrow']")
-                // $('#driverId>option')
+            // $("p[title|='Tomorrow']")
+            // $('#driverId>option')
 
-                updateVehicleNo.val(vehicleNo);
-                updateVehicleBrand.val(vehicleBrand);
-                updateFuelUsage.val(fuelUsage);
-                updateSeatCapacity.val(seatCapacity);
-                // updateTransmissionType.text(transmissionType);
-                updateVehicleType.val(vehicleType);
-                updateCategory.val(category);
-                updateFuelType.val(fuelType);
-                updateHybrid.val(hybrid);
-                updateRemarks.val(remarks);
+            updateVehicleNo.val(vehicleNo);
+            updateVehicleBrand.val(vehicleBrand);
+            updateFuelUsage.val(fuelUsage);
+            updateSeatCapacity.val(seatCapacity);
+            // updateTransmissionType.text(transmissionType);
+            updateVehicleType.val(vehicleType);
+            updateCategory.val(category);
+            updateFuelType.val(fuelType);
+            updateHybrid.val(hybrid);
+            updateRemarks.val(remarks);
 
 
         },
@@ -165,7 +186,7 @@ $('#searchBtn').on('click',function () {
 
 })
 
-$('#vehicleUpdateBtn').on('click',function () {
+$('#vehicleUpdateBtn').on('click', function () {
     let vehicleForm = new FormData($('#vehicleUpdateForm')[0]);
 
 
@@ -178,28 +199,113 @@ $('#vehicleUpdateBtn').on('click',function () {
         contentType: false,
         cache: false,
         // timeout: 600000
-        success:function (response) {
+        success: function (response) {
             getAllDriverDetails();
         }
     });
 })
-$('#vehicleDeleteBtn').on('click',function () {
+$('#vehicleDeleteBtn').on('click', function () {
 
     let val = $('#vehicleId').val();
 
     $.ajax({
         method: "DELETE",
         // data: vehicleForm,
-        url: "http://localhost:8086/business/api/v1/vehicle/"+val,
+        url: "http://localhost:8086/business/api/v1/vehicle/" + val,
         // enctype: 'multipart/form-data',
         // processData: false,  // Important!
         // contentType: false,
         // cache: false,
         // timeout: 600000
-        success:function (response) {
+        success: function (response) {
             // getAllDriverDetails();
         }
     });
 
 
 })
+
+function getAllData() {
+
+
+    $.ajax({
+        dataType: "json",
+        // data: vehicleForm,
+        error: function (error) {
+            console.log(error);
+        },
+        url: "http://localhost:8086/business/api/v1/vehicle",
+        // enctype: 'multipart/form-data',
+        // processData: false,  // Important!
+        // contentType: false,
+        // cache: false,
+        method: "GET",
+        // timeout: 600000
+        success: function (response) {
+
+            for (const responseKey in response) {
+
+                let driverId = response[responseKey].driverId;
+                let driverName = response[responseKey].driverName;
+                let driverContactNo = response[responseKey].driverContactNo;
+                let vehicleId = response[responseKey].vehicleId;
+                let vehicleNo = response[responseKey].vehicleNo;
+                let vehicleBrand = response[responseKey].vehicleBrand;
+                let category = response[responseKey].category;
+                let fuelType = response[responseKey].fuelType;
+                let hybrid = response[responseKey].hybrid;
+                let fuelUsage = response[responseKey].fuelUsage;
+                let vehicleFrontImage = response[responseKey].vehicleFrontImage;
+                let vehicleRearImage = response[responseKey].vehicleRearImage;
+                let vehicleSideImage = response[responseKey].vehicleSideImage;
+                let vehicleFrontInteriorImage = response[responseKey].vehicleFrontInteriorImage;
+                let vehicleRearInteriorImage = response[responseKey].vehicleRearInteriorImage;
+                let seatCapacity = response[responseKey].seatCapacity;
+                let vehicleType = response[responseKey].vehicleType;
+                let transmissionType = response[responseKey].transmissionType;
+                let remarks = response[responseKey].remarks;
+
+
+                let vehicleTableTemplate = `<tr>
+<td>${vehicleId}</td>
+<td>${driverId}</td>
+<td>${driverName}</td>
+<td>${driverContactNo}</td>
+<td>${vehicleNo}</td>
+<td>${vehicleBrand}</td>
+<td>${category}</td>
+<td>${fuelType}</td>
+<td>${seatCapacity}</td>
+<td>${transmissionType}</td>
+</tr>`;
+
+            $('.vehicle-body').append(vehicleTableTemplate);
+
+            }
+
+
+
+
+            // $('#vehicleId').val(vehicleId);
+            //
+            // // $("p[title|='Tomorrow']")
+            // // $('#driverId>option')
+            //
+            // updateVehicleNo.val(vehicleNo);
+            // updateVehicleBrand.val(vehicleBrand);
+            // updateFuelUsage.val(fuelUsage);
+            // updateSeatCapacity.val(seatCapacity);
+            // // updateTransmissionType.text(transmissionType);
+            // updateVehicleType.val(vehicleType);
+            // updateCategory.val(category);
+            // updateFuelType.val(fuelType);
+            // updateHybrid.val(hybrid);
+            // updateRemarks.val(remarks);
+
+
+        }
+
+    });
+
+
+}

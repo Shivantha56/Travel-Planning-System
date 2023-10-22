@@ -135,9 +135,6 @@ public class VehicleServiceImpl implements VehicleService {
         if (vehicle.isPresent()) {
 
             Driver driver = vehicle.get().getDriver();
-            driver.getDriverName();
-            driver.getDriverId();
-            driver.getDriverContactNo();
 
             addVehicle = new DriverVehicleDTO(
                     driver.getDriverId(),
@@ -194,6 +191,49 @@ public class VehicleServiceImpl implements VehicleService {
         }
 
 
+    }
+
+    @Override
+    public List<DriverVehicleDTO> getAll() {
+
+        List<DriverVehicleDTO> list = new ArrayList<>();
+        DriverVehicleDTO addVehicle;
+
+        Iterable<Vehicle> all = vehicleRepository.findAll();
+
+        for (Vehicle vehicle: all) {
+
+            Driver driver = vehicle.getDriver();
+
+            addVehicle = new DriverVehicleDTO(
+                    driver.getDriverId(),
+                    driver.getDriverName(),
+                    driver.getDriverContactNo(),
+                    vehicle.getVehicleId(),
+                    vehicle.getVehicleNo(),
+                    vehicle.getVehicleBrand(),
+                    vehicle.getCategory(),
+                    vehicle.getFuelType(),
+                    vehicle.getHybrid(),
+                    vehicle.getFuelUsage(),
+                    vehicle.getVehicleFrontImage(),
+                    vehicle.getVehicleRearImage(),
+                    vehicle.getVehicleSideImage(),
+                    vehicle.getVehicleFrontInteriorImage(),
+                    vehicle.getVehicleRearInteriorImage(),
+                    vehicle.getSeatCapacity(),
+                    vehicle.getVehicleType(),
+                    vehicle.getTransmissionType(),
+                    vehicle.getRemarks()
+
+            );
+
+            list.add(addVehicle);
+        }
+
+
+
+        return list;
     }
 
 }

@@ -92,5 +92,11 @@ public class VehicleController {
         vehicleService.delete(vehicleId);
     }
 
+    @ResponseBody
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DriverVehicleDTO> getAll(){
+       return vehicleService.getAll();
+    }
+
 
 }

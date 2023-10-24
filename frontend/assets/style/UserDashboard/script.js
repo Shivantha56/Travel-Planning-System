@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     requestAllHotelDetails();
     getAllVehicleData();
+    getAllGuideData();
 
 });
 
@@ -75,6 +76,36 @@ vehicleRow.on('click', '.vehicleDetailsBody > .vehicle-table-data', function (ev
 
 
 });
+
+//get table value when click
+let guideRow = $('.table-guides');
+// let hotelRow = document.querySelector(".hotelDetailsBody tr")
+
+guideRow.on('click', '.guideDetailsBody > .guide-table-data', function (event) {
+
+
+    // console.log(event.target.parentElement.attributes);
+    let attributes = event.target.parentElement.attributes;
+
+    tableId = attributes.item(0).value;
+    console.log(tableId);
+
+
+    let guideNo = $(`#${tableId} > .guideContactNo`).text();
+    getGuideDetailsByNumber(guideNo)
+
+    guideDetailsModal.css("display", "flex")
+    guideDetailsModal.css("transition", "1s")
+
+
+});
+
+
+
+
+
+
+
 
 $('#vehicleDetails').on('click',function () {
 
@@ -231,9 +262,11 @@ let modalHotelRemarks = $('.modalHotelRemarks');
 let modalClose = $('.x-mark');
 let hotelDetailsModal = $('.hotels-details-modal');
 let vehicleDetailsModal = $('.vehicle-details-modal');
+let guideDetailsModal = $('.guide-details-modal');
 modalClose.on("click", function () {
     hotelDetailsModal.css("display", "none");
     vehicleDetailsModal.css("display", "none");
+    guideDetailsModal.css("display","none");
 
 });
 
@@ -396,10 +429,116 @@ function getVehicleById(vehicleId) {
 
 }
 
+$('#guideDetailsBtn').on('click',function () {
+    getAllGuideData();
+});
+
+function getAllGuideData() {
+
+    let count = 1;
+
+    $('.guideDetailsBody>tr').empty();
+
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:8080/business/api/v1/guide`,
+        // dataType: 'JSON',
+        error: function (error) {
+
+        },
+
+        success: function (response) {
+
+            for (const responseKey in response) {
+
+                let guideId = response[responseKey].guideId;
+                let guideName = response[responseKey].guideName;
+                let guideAddress = response[responseKey].guideAddress;
+                let guideAge = response[responseKey].guideAge;
+                let gender = response[responseKey].gender;
+                let guideContactNo = response[responseKey].guideContactNo;
+                let guideImage = response[responseKey].guideImage;
+                let nicImageFront = response[responseKey].nicImageFront;
+                let guideIdBack = response[responseKey].guideIdBack;
+                let manDayValue = response[responseKey].manDayValue;
+                let remarks = response[responseKey].remarks;
 
 
+                let vehicleTableTemplate = `<tr id="row${count}" class="guide-table-data">
+<td>${guideId}</td>
+<td>${guideName}</td>
+<td>${guideAddress}</td>
+<td>${guideAge}</td>
+<td>${gender}</td>
+<td class="guideContactNo">${guideContactNo}</td>
+<td>${manDayValue}</td>
+</tr>`;
+
+                $('.guideDetailsBody').append(vehicleTableTemplate);
+
+                count++;
+            }
+        }
 
 
+    });
+
+}
+
+function getGuideDetailsByNumber(number) {
+
+    $.ajax({
+        dataType: "json",
+        // data: vehicleForm,
+        error: function (error) {
+            console.log(error);
+        },
+        url: "http://localhost:8080/business/api/v1/guide/" +number,
+        // enctype: 'multipart/form-data',
+        // processData: false,  // Important!
+        // contentType: false,
+        // cache: false,
+        method: "GET",
+        // timeout: 600000
+        success: function (response) {
+
+            // for (const responseKey in response) {
+
+            let guideId = response.guideId;
+            let guideName = response.guideName;
+            let guideAddress = response.guideAddress;
+            let guideAge = response.guideAge;
+            let gender = response.gender;
+            let guideContactNo = response.guideContactNo;
+            let manDayValue = response.manDayValue;
+            let remarks = response.remarks;
+            let guideImage = response.guideImage;
+            let nicImageFront = response.nicImageFront;
+            let nicImageBack = response.nicImageBack;
+            let guideIdFront = response.guideIdFront;
+            let guideIdBack = response.guideIdBack;
+
+            $('.modalGuideId').text(guideId);
+            $('.modalGuideName').text(guideName);
+            $('.modalGuideAddress').text(guideAddress);
+            $('.modalGuideAge').text(guideAge);
+            $('.modalGuideGender').text(gender);
+            $('.modalGuideContactNo').text(guideContactNo);
+            $('.modalGuideManDayValue').text(manDayValue);
+            $('.remarks').text(remarks);
+
+            $('.modalGuideImage').attr("src",`data:image/jpeg;base64,${guideImage}`);
+            $('.modalNicImageFront').attr("src",`data:image/jpeg;base64,${nicImageFront}`);
+            $('.modalNicImageBack').attr("src",`data:image/jpeg;base64,${nicImageBack}`);
+            $('.modalGuideIdFront').attr("src",`data:image/jpeg;base64,${guideIdFront}`);
+            $('.modalGuideIdBack').attr("src",`data:image/jpeg;base64,${guideIdBack}`);
+
+
+        },
+
+    });
+
+}
 
 
 

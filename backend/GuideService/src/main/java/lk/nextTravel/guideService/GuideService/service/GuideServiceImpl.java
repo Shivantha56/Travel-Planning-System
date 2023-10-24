@@ -85,6 +85,7 @@ public class GuideServiceImpl implements GuideService {
         GuideDTO guidedto;
 
         if (guide.isPresent()){
+            String guideId = guide.get().getGuideId();
             String guideName = guide.get().getGuideName();
             String guideAddress = guide.get().getGuideAddress();
             int guideAge = guide.get().getGuideAge();
@@ -105,7 +106,7 @@ public class GuideServiceImpl implements GuideService {
             byte[] guideIdBackDecode = Base64.getDecoder().decode(guideIdBack);
 
 
-            return guidedto = new GuideDTO(guideName,guideAddress,guideAge,gender,
+            return guidedto = new GuideDTO(guideId,guideName,guideAddress,guideAge,gender,
                     guideContactNo,guideImageDecode,nicImageFrontDecoder,nicImageBackDecoder,guideIdFrontDecode,
                     guideIdBackDecode,manDayValue,remarks);
 

@@ -1,10 +1,11 @@
 // let dataTable;
 //
-$(document).ready( function () {
+$(document).ready(function () {
 
     requestAllHotelDetails();
+    getAllVehicleData();
 
-} );
+});
 
 let tableId;
 
@@ -30,7 +31,7 @@ let hotelColumn5;
 let hotelRow = $('.table-hotels');
 // let hotelRow = document.querySelector(".hotelDetailsBody tr")
 
-hotelRow.on('click', '.hotelDetailsBody > .hotel-table-data',function (event) {
+hotelRow.on('click', '.hotelDetailsBody > .hotel-table-data', function (event) {
 
 
     // console.log(event.target.parentElement.attributes);
@@ -40,49 +41,65 @@ hotelRow.on('click', '.hotelDetailsBody > .hotel-table-data',function (event) {
     console.log(tableId);
 
 
-
-
-    let hotelEmail = $(`#${tableId}>.hotelEmail`).text();
+    let hotelEmail = $(`#${tableId} > .hotelEmail`).text();
     console.log(hotelEmail)
     getAllHotelData(hotelEmail);
 
-    hotelDetailsModal.css("display","flex")
-    hotelDetailsModal.css("transition","1s")
+    hotelDetailsModal.css("display", "flex")
+    hotelDetailsModal.css("transition", "1s")
 
+
+});
+
+//get table value when click
+let vehicleRow = $('.table-vehicle');
+// let hotelRow = document.querySelector(".hotelDetailsBody tr")
+
+vehicleRow.on('click', '.vehicleDetailsBody > .vehicle-table-data', function (event) {
+
+
+    // console.log(event.target.parentElement.attributes);
+    let attributes = event.target.parentElement.attributes;
+
+    tableId = attributes.item(0).value;
+    console.log(tableId);
+
+
+    let vehicleId = $(`#${tableId} > .vehicleColId`).text();
+    console.log(vehicleId);
+    console.log(vehicleId);
+    getVehicleById(vehicleId);
+
+    vehicleDetailsModal.css("display", "flex")
+    vehicleDetailsModal.css("transition", "1s")
+
+
+});
+
+$('#vehicleDetails').on('click',function () {
+
+    getAllVehicleData();
 
 })
 
-
-function getRequestedHotelDataData(){
-
-    
-
-
-}
-
-
+// function getRequestedHotelDataData(){
+//
+//
+//
+//
+// }
+//
 
 
-
-
-
-
-
-
-
-function countTableRowId(){
-    console.log($('.hotel-table-data').attr("id"))
-}
-
+// function countTableRowId(){
+//     console.log($('.hotel-table-data').attr("id"))
+// }
 
 
 //
 // hotelRow.addEventListener('click', .hotelDetailsBody tr,function () {
 //     console.log("a");
 // })
-
-
-
 
 
 // Attach a click event listener to the table
@@ -125,7 +142,6 @@ function countTableRowId(){
 // }
 
 
-
 $('.show-hotel-details').on('click', function () {
 
     requestAllHotelDetails();
@@ -135,20 +151,17 @@ $('.show-hotel-details').on('click', function () {
 function requestAllHotelDetails() {
 
 
-
     let count = 1;
-    
-    let tableBody =  $('.hotelDetailsBody>tr');
+
+    let tableBody = $('.hotelDetailsBody>tr');
     tableBody.empty();
 
 
-
-
     $.ajax({
-        method:"GET",
-        url:"http://localhost:8085/business/api/v1/hotel",
+        method: "GET",
+        url: "http://localhost:8085/business/api/v1/hotel",
         // data:"JSON",
-        success:function (response) {
+        success: function (response) {
 
             for (const i in response) {
 
@@ -168,7 +181,7 @@ function requestAllHotelDetails() {
 <td>${contactNoTwo}</td>
 <td class="hotelEmail">${hotelContactEmail}</td>
 <td>${starRate}</td>
-</tr>` ;
+</tr>`;
                 count++;
 
                 // let tabless = document.querySelector('.hotelDetailsBody').innerHTML = setTableRow;
@@ -196,7 +209,6 @@ function requestAllHotelDetails() {
 }
 
 
-
 //hotel details pop up model controller
 
 let modalHotelId = $('.modalHotelId');
@@ -216,43 +228,44 @@ let modalHotelCancellation = $('.modalHotelCancellation');
 let modalHotelRemarks = $('.modalHotelRemarks');
 
 
-
 let modalClose = $('.x-mark');
 let hotelDetailsModal = $('.hotels-details-modal');
-modalClose.on("click",function () {
-    hotelDetailsModal.css("display","none");
+let vehicleDetailsModal = $('.vehicle-details-modal');
+modalClose.on("click", function () {
+    hotelDetailsModal.css("display", "none");
+    vehicleDetailsModal.css("display", "none");
 
 });
 
 
-function getAllHotelData(email){
+function getAllHotelData(email) {
     $.ajax({
-        url: "http://localhost:8085/business/api/v1/hotel/"+email,
+        url: "http://localhost:8085/business/api/v1/hotel/" + email,
         method: "GET",
         success: function (response) {
 
             // $('.modalHotelCancellation').val(response.cancellation);
-           modalHotelCancellation.text(response.cancellation);
-           modalHotelContactNo1.text(response.contactNoOne);
-           modalHotelContactNo2.text(response.contactNoTwo);
-           modalHotelContactEmail.text(response.hotelContactEmail);
-           modalHotelFeeOption1.text(response.hotelFeeOption1);
+            modalHotelCancellation.text(response.cancellation);
+            modalHotelContactNo1.text(response.contactNoOne);
+            modalHotelContactNo2.text(response.contactNoTwo);
+            modalHotelContactEmail.text(response.hotelContactEmail);
+            modalHotelFeeOption1.text(response.hotelFeeOption1);
             modalHotelFeeOption2.text(response.hotelFeeOption2);
             modalHotelFeeOption3.text(response.hotelFeeOption3);
             modalHotelFeeOption4.text(response.hotelFeeOption4);
-           modalHotelId.text(response.hotelId);
-           modalHotelLocation.text(response.hotelLocation);
-           modalHotelLocationLink.text(response.hotelLocationLink);
-           modalHotelName.text(response.hotelName);
-           modalPetAllowed.text(response.petsAllowedOrNot);
-           modalHotelRemarks.text(response.remarks);
-           modalStarRate.text(response.starRate);
-           //
-           // console.log(resp.cancellation)
+            modalHotelId.text(response.hotelId);
+            modalHotelLocation.text(response.hotelLocation);
+            modalHotelLocationLink.text(response.hotelLocationLink);
+            modalHotelName.text(response.hotelName);
+            modalPetAllowed.text(response.petsAllowedOrNot);
+            modalHotelRemarks.text(response.remarks);
+            modalStarRate.text(response.starRate);
+            //
+            // console.log(resp.cancellation)
 
             document.querySelector('.modalHotelName').innerText = response.hotelName;
 
-            
+
         }
 
     })
@@ -260,7 +273,128 @@ function getAllHotelData(email){
 }
 
 
+function getAllVehicleData() {
 
+    let count = 1;
+
+    $('.vehicleDetailsBody>tr').empty();
+
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:8086/business/api/v1/vehicle`,
+        // dataType: 'JSON',
+        error: function (error) {
+
+        },
+
+        success: function (response) {
+
+            for (const responseKey in response) {
+
+                let driverId = response[responseKey].driverId;
+                let driverName = response[responseKey].driverName;
+                let driverContactNo = response[responseKey].driverContactNo;
+                let vehicleId = response[responseKey].vehicleId;
+                let vehicleNo = response[responseKey].vehicleNo;
+                let vehicleBrand = response[responseKey].vehicleBrand;
+                let category = response[responseKey].category;
+                let fuelType = response[responseKey].fuelType;
+                let hybrid = response[responseKey].hybrid;
+                let fuelUsage = response[responseKey].fuelUsage;
+                let vehicleFrontImage = response[responseKey].vehicleFrontImage;
+                let vehicleRearImage = response[responseKey].vehicleRearImage;
+                let vehicleSideImage = response[responseKey].vehicleSideImage;
+                let vehicleFrontInteriorImage = response[responseKey].vehicleFrontInteriorImage;
+                let vehicleRearInteriorImage = response[responseKey].vehicleRearInteriorImage;
+                let seatCapacity = response[responseKey].seatCapacity;
+                let vehicleType = response[responseKey].vehicleType;
+                let transmissionType = response[responseKey].transmissionType;
+                let remarks = response[responseKey].remarks;
+
+
+                let vehicleTableTemplate = `<tr id="row${count}" class="vehicle-table-data">
+<td>${vehicleId}</td>
+<td>${category}</td>
+<td class="vehicleColId">${vehicleNo}</td>
+<td>${vehicleBrand}</td>
+<td>${driverName}</td>
+<td>${fuelType}</td>
+<td>${seatCapacity}</td>
+<td>${vehicleType}</td>
+</tr>`;
+
+                $('.vehicleDetailsBody').append(vehicleTableTemplate);
+
+                count++;
+            }
+        }
+
+
+    });
+
+}
+
+
+function getVehicleById(vehicleId) {
+
+    $.ajax({
+        dataType: "json",
+        // data: vehicleForm,
+        error: function (error) {
+            console.log(error);
+        },
+        url: "http://localhost:8086/business/api/v1/vehicle/" +vehicleId,
+        // enctype: 'multipart/form-data',
+        // processData: false,  // Important!
+        // contentType: false,
+        // cache: false,
+        method: "GET",
+        // timeout: 600000
+        success: function (response) {
+
+            // for (const responseKey in response) {
+
+            let driverId = response.driverId;
+            let driverName = response.driverName;
+            let driverContactNo = response.driverContactNo;
+            let vehicleId = response.vehicleId;
+            let vehicleNo = response.vehicleNo;
+            let vehicleBrand = response.vehicleBrand;
+            let category = response.category;
+            let fuelType = response.fuelType;
+            let hybrid = response.hybrid;
+            let fuelUsage = response.fuelUsage;
+            let vehicleFrontImage = response.vehicleFrontImage;
+            let vehicleRearImage = response.vehicleRearImage;
+            let vehicleSideImage = response.vehicleSideImage;
+            let vehicleFrontInteriorImage = response.vehicleFrontInteriorImage;
+            let vehicleRearInteriorImage = response.vehicleRearInteriorImage;
+            let seatCapacity = response.seatCapacity;
+            let vehicleType = response.vehicleType;
+            let transmissionType = response.transmissionType;
+            let remarks = response.remarks;
+
+            $('.modalVehicleId').text(vehicleId);
+            $('.modalVehicleNo').text(vehicleNo);
+            $('.modalVehicleCategory').text(category);
+            $('.modalVehicleFuelType').text(fuelType);
+            $('.modalVehicleHybrid').text(hybrid);
+            $('.modalVehicleSeatCapacity').text(seatCapacity);
+            $('.modalVehicleType').text(vehicleType);
+            $('.modalVehicleTransmissionType').text(transmissionType);
+            $('.modalVehicleDriverId').text(driverId);
+            $('.modalVehicleDriverName').text(driverName);
+            $('.modalVehicleDriverContact').text(driverContactNo);
+
+            $('.imageVehicleFrontImage').attr("src",`data:image/jpeg;base64,${vehicleFrontImage}`);
+            $('.imageVehicleRearImage').attr("src",`data:image/jpeg;base64,${vehicleRearImage}`);
+            $('.imageVehicleSideImage').attr("src",`data:image/jpeg;base64,${vehicleSideImage}`);
+
+        },
+
+    });
+
+}
 
 
 

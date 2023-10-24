@@ -328,11 +328,26 @@
     width: 1050px;
 }
 
-
+.hotel-data-fields{
+    overflow: hidden;
+}
 
 
 /* hotel details modal */
-.hotels-details-modal{
+.hotels-details-modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1d20;
+    background-color: rgba(26, 29, 32, 0.3);
+    /*opacity: 0.4;*/
+    padding: 70px 50px;
+    position: fixed;
+    top: 0;
+    z-index: 10000000000;
+    display: none;
+}
+
+.vehicle-details-modal{
     width: 100vw;
     height: 100vh;
     background-color: #1a1d20;
@@ -353,6 +368,15 @@
     background-color: white;
     width: 100%;
     height: 100%;
+}
+
+.vehicle-details-popup{
+    position: relative;
+    /*padding: 10px;*/
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .x-mark {
@@ -382,9 +406,10 @@
 .column01{
     /*background-color: #0d6efd;*/
 }
-.column02{
-    /*background-color: green;*/
-}
+/*.column02{*/
+/*    !*background-color: green;*!*/
+/*    overflow: hidden;*/
+/*}*/
 
 .header{
     color: #1a1d20;
@@ -397,15 +422,30 @@
     font-weight: bold;
 }
 
+/*.textcol{*/
+/*    overflow-y: hidden;*/
+/*}*/
+.vehicleImageModal>img{
+    height: 250px;
+    margin-bottom: 10px;
+}
 
-
-
-
+.vehicleImageModal{
+    /*border: 1px solid red;*/
+    height: 250px;
+    /*overflow-y: scroll;*/
+    margin-bottom: 10px;
+}
 
 .dashboard-right-section{
     background-color: white;
     height: 100vh;
     width: 295px;
+}
+
+.vehicleImageModalContainer{
+    border: 1px solid red;
+    height: 250px;
 }
 
 

@@ -36,4 +36,20 @@ public class DriverVehicleDTO {
     String remarks;
 
 
+    public DriverVehicleDTO(long driverId, String driverName, String driverContactNo, long vehicleId, String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, int seatCapacity, String vehicleType, String transmissionType, String remarks) {
+        this.driverId = driverId;
+        this.driverName = driverName;
+        this.driverContactNo = driverContactNo;
+        this.vehicleId = vehicleId;
+        this.vehicleNo = vehicleNo;
+        this.vehicleBrand = vehicleBrand;
+        this.category = category;
+        this.fuelType = fuelType;
+        this.hybrid = hybrid;
+        this.fuelUsage = fuelUsage;
+        this.seatCapacity = seatCapacity;
+        this.vehicleType = vehicleType;
+        this.transmissionType = transmissionType;
+        this.remarks = remarks;
+    }
 }

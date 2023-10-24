@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="/assets/style/UserDashboard/style.css">
     <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap.css">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"/>
 
-<!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>-->
+    <!--    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>-->
 </head>
 <body>
 
@@ -98,7 +98,8 @@
                 <div class="col-lg-12">
 
                     <section>
-                        <button class="btn btn-primary mb-2 collapse-btn show-hotel-details" type="button" data-bs-toggle="collapse"
+                        <button class="btn btn-primary mb-2 collapse-btn show-hotel-details" type="button"
+                                data-bs-toggle="collapse"
                                 data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Show hotel details
                         </button>
@@ -118,8 +119,8 @@
                                 <tbody class="hotelDetailsBody">
                                 <tr id="row3" class="hotel-table-data">
                                     <td class="dataColumn1">1</td>
-                                    <td class="dataColumn2" >2</td>
-                                    <td class="dataColumn3" >3</td>
+                                    <td class="dataColumn2">2</td>
+                                    <td class="dataColumn3">3</td>
                                     <td class="dataColumn4">4</td>
                                     <td class="dataColumn5 hotelEmail">5</td>
                                     <td class="row3">
@@ -138,7 +139,8 @@
 
                     <section>
 
-                        <button class="btn btn-primary mb-2 collapse-btn" type="button" data-bs-toggle="collapse"
+                        <button id="vehicleDetails" class="btn btn-primary mb-2 collapse-btn" type="button"
+                                data-bs-toggle="collapse"
                                 data-bs-target="#collapseVehicle" aria-expanded="false" aria-controls="collapseExample">
                             Show vehicle details
                         </button>
@@ -147,23 +149,25 @@
                             <table class="table table-vehicle">
                                 <thead>
                                 <tr>
-                                    <th>HotelId</th>
-                                    <th>Hotel name</th>
-                                    <th>Hotel location</th>
-                                    <th>Hotel contact</th>
-                                    <th>Star Rate</th>
-                                    <th></th>
+                                    <th>Vehicle Id</th>
+                                    <th>Vehicle category</th>
+                                    <th>Vehicle no</th>
+                                    <th>Vehicle brand</th>
+                                    <th>Driver name</th>
+                                    <th>Fuel type</th>
+                                    <th>Seat capacity</th>
+                                    <th>Vehicle type</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-
+                                <tbody class="vehicleDetailsBody">
+                                <tr id="row111" class="vehicle-table-data">
+                                    <td>hi</td>
+                                    <td>hi</td>
+                                    <td>hi</td>
+                                    <td>hi</td>
                                 </tr>
+                                </tbody>
+
                             </table>
                         </div>
 
@@ -220,81 +224,208 @@
                 </div>
 
 
-<!--                    <div class="col-lg">-->
+                <!--                    <div class="col-lg">-->
 
-<!--                        <table class="table">-->
-<!--                            <thead>-->
-<!--                            <tr>-->
-<!--                                <th>Product Name</th>-->
-<!--                                <th>Action</th>-->
-<!--                            </tr>-->
-<!--                            </thead>-->
-<!--                            <tbody>-->
-<!--                            <tr>-->
-<!--                                <td>Product 1</td>-->
-<!--                                <td>-->
-<!--                                    <button class="btn btn-primary add-to-cart">Add to Cart</button>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td>Product 2</td>-->
-<!--                                <td>-->
-<!--                                    <button class="btn btn-primary add-to-cart">Add to Cart</button>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            &lt;!&ndash; Add more products as needed &ndash;&gt;-->
-<!--                            </tbody>-->
-<!--                        </table>-->
-<!--                    </div>-->
-
-                </div>
-
-                <!--            <div style="background-color: black; width: 100px; height: 100px">-->
-
-                <!--            </div>-->
-                <!--            <div class="col-lg-8">-->
-
-                <!--                <table class="table">-->
-                <!--                    <thead>-->
-                <!--                    <tr>-->
-                <!--                        <th>Product Name</th>-->
-                <!--                        <th>Action</th>-->
-                <!--                    </tr>-->
-                <!--                    </thead>-->
-                <!--                    <tbody>-->
-                <!--                    <tr>-->
-                <!--                        <td>Product 1</td>-->
-                <!--                        <td><button class="btn btn-primary add-to-cart">Add to Cart</button></td>-->
-                <!--                    </tr>-->
-                <!--                    <tr>-->
-                <!--                        <td>Product 2</td>-->
-                <!--                        <td><button class="btn btn-primary add-to-cart">Add to Cart</button></td>-->
-                <!--                    </tr>-->
-                <!--                    &lt;!&ndash; Add more products as needed &ndash;&gt;-->
-                <!--                    </tbody>-->
-                <!--                </table>-->
-                <!--            </div>-->
+                <!--                        <table class="table">-->
+                <!--                            <thead>-->
+                <!--                            <tr>-->
+                <!--                                <th>Product Name</th>-->
+                <!--                                <th>Action</th>-->
+                <!--                            </tr>-->
+                <!--                            </thead>-->
+                <!--                            <tbody>-->
+                <!--                            <tr>-->
+                <!--                                <td>Product 1</td>-->
+                <!--                                <td>-->
+                <!--                                    <button class="btn btn-primary add-to-cart">Add to Cart</button>-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>Product 2</td>-->
+                <!--                                <td>-->
+                <!--                                    <button class="btn btn-primary add-to-cart">Add to Cart</button>-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            &lt;!&ndash; Add more products as needed &ndash;&gt;-->
+                <!--                            </tbody>-->
+                <!--                        </table>-->
+                <!--                    </div>-->
 
             </div>
 
+            <!--            <div style="background-color: black; width: 100px; height: 100px">-->
+
+            <!--            </div>-->
+            <!--            <div class="col-lg-8">-->
+
+            <!--                <table class="table">-->
+            <!--                    <thead>-->
+            <!--                    <tr>-->
+            <!--                        <th>Product Name</th>-->
+            <!--                        <th>Action</th>-->
+            <!--                    </tr>-->
+            <!--                    </thead>-->
+            <!--                    <tbody>-->
+            <!--                    <tr>-->
+            <!--                        <td>Product 1</td>-->
+            <!--                        <td><button class="btn btn-primary add-to-cart">Add to Cart</button></td>-->
+            <!--                    </tr>-->
+            <!--                    <tr>-->
+            <!--                        <td>Product 2</td>-->
+            <!--                        <td><button class="btn btn-primary add-to-cart">Add to Cart</button></td>-->
+            <!--                    </tr>-->
+            <!--                    &lt;!&ndash; Add more products as needed &ndash;&gt;-->
+            <!--                    </tbody>-->
+            <!--                </table>-->
+            <!--            </div>-->
 
         </div>
+
+
+    </div>
 
 </section>
 
 
+<section class="vehicle-details-modal">
+
+    <div class="container-sm vehicle-details-popup ">
+        <div class="x-mark">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+            </svg>
+        </div>
+
+        <div class="container topic  d-flex align-items-center-center justify-content-center">
+            <p class="header">Vehicle details</p>
+        </div>
+
+        <div class="container hotel-data-fields">
+
+            <div class="row">
+
+                <div class="col column01 textcol">
+                    <div class="d-flex">
+                        <p>vehicle id : </p>
+                        <p class="modalVehicleId"></p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Vehicle no : </p>
+                        <p class="modalVehicleNo">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Category : </p>
+                        <p class="modalVehicleCategory">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Fuel type : </p>
+                        <p class="modalVehicleFuelType">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hybrid : </p>
+                        <p class="modalVehicleHybrid">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Seat capacity : </p>
+                        <p class="modalVehicleSeatCapacity">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Vehicle type : </p>
+                        <p class="modalVehicleType">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Transmission type : </p>
+                        <p class="modalVehicleTransmissionType">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Driver id : </p>
+                        <p class="modalVehicleDriverId">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Driver name : </p>
+                        <p class="modalVehicleDriverName">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Remarks : </p>
+                        <p class="modalVehicleDriverContact">hi</p>
+                    </div>
+
+                </div>
+
+                <div class="col column02 textcol" >
+
+<!--                    <div class="vehicleImageModal">-->
+<!--                        <img class="imageVehicleFrontInteriorImage"  alt="">-->
+<!--                    </div>-->
+                    <div class="vehicleImageModal">
+                        <img class="imageVehicleFrontImage"  alt="">
+                    </div>
+                    <div class="vehicleImageModal">
+                        <img class="imageVehicleRearImage" src="/assets/images/heroBanner/image 01.jpg" alt="">
+                    </div>
+                    <div class="vehicleImageModal">
+                        <img class="imageVehicleSideImage" src="/assets/images/heroBanner/image 01.jpg" alt="">
+                    </div>
+<!--                        <div id="list-example" class="list-group">&ndash;&gt;-->
+<!--                        <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>-->
+<!--                        <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>-->
+<!--                        <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>-->
+<!--                        <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>-->
+<!--                    </div>-->
+<!--                    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">-->
+<!--                        <h4 id="list-item-1">Item 1</h4>-->
+<!--                        <div class="vehicleImageModalContainer">-->
+
+<!--                        </div>-->
+<!--                        <h4 id="list-item-2">Item 2</h4>-->
+<!--                        <div class="vehicleImageModalContainer">-->
+
+<!--                        </div>-->
+<!--                        <h4 id="list-item-3">Item 3</h4>-->
+<!--                        <div class="vehicleImageModalContainer">-->
+
+<!--                        </div>-->
+<!--                        <h4 id="list-item-4">Item 4</h4>-->
+<!--                        <p>...</p>-->
+<!--                    </div>-->
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!--*********************************************************************************************-->
 <section class="hotels-details-modal">
 
     <div class="container-sm hotel-details-popup ">
         <div class="x-mark">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+            </svg>
         </div>
 
         <div class="container topic  d-flex align-items-center-center justify-content-center">
             <p class="header">Hotel details</p>
         </div>
 
-        <div class="container gg">
+        <div class="container hotel-data-fields">
 
             <div class="row">
 
@@ -321,7 +452,7 @@
 
                     <div class="d-flex">
                         <p>Hotel contact email : </p>
-                        <p class="modalHotelContactEmail" >hi</p>
+                        <p class="modalHotelContactEmail">hi</p>
                     </div>
 
                     <div class="d-flex">
@@ -333,7 +464,8 @@
                         <p>Hotel contact no2 : </p>
                         <p class="hotelContactNo2">hi</p>
 
-                    </div><div class="d-flex">
+                    </div>
+                    <div class="d-flex">
                         <p>PestsAllowed : </p>
                         <p class="modalPetAllowed">hi</p>
                     </div>

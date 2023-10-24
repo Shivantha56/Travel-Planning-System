@@ -109,11 +109,10 @@
                                 <tr>
                                     <th>Hotel name</th>
                                     <th>Hotel location</th>
-                                    <th>Hotel contact</th>
+                                    <th>Hotel contact1</th>
+                                    <th>Hotel contact2</th>
                                     <th>Hotel email</th>
                                     <th>Star Rate</th>
-                                    <th></th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody class="hotelDetailsBody">
@@ -122,24 +121,12 @@
                                     <td class="dataColumn2" >2</td>
                                     <td class="dataColumn3" >3</td>
                                     <td class="dataColumn4">4</td>
-                                    <td class="dataColumn5">5</td>
+                                    <td class="dataColumn5 hotelEmail">5</td>
                                     <td class="row3">
                                         <button class="btn btn-primary view-hotel-Row-Data">View detailss
                                         </button>
                                     </td>
                                 </tr>
-
-<!--                                <tr class="hotel-table-data">-->
-<!--                                    <td class="dataColumn1">dilsha</td>-->
-<!--                                    <td class="dataColumn2" >2</td>-->
-<!--                                    <td class="dataColumn3" >3</td>-->
-<!--                                    <td class="dataColumn4">4</td>-->
-<!--                                    <td class="dataColumn5">5</td>-->
-<!--                                    <td>-->
-<!--                                        <button class="btn btn-primary view-Row-Data">View details and place order-->
-<!--                                        </button>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
 
                                 </tbody>
                             </table>
@@ -157,7 +144,7 @@
                         </button>
 
                         <div class="collapse show" id="collapseVehicle">
-                            <table class="table table-hotels">
+                            <table class="table table-vehicle">
                                 <thead>
                                 <tr>
                                     <th>HotelId</th>
@@ -175,25 +162,8 @@
                                     <td>Product 1</td>
                                     <td>Product 1</td>
                                     <td>Product 1</td>
-                                    <td>
-                                        <button class="btn btn-primary add-to-cart">View details and place order
-                                        </button>
-                                    </td>
-                                </tr>
 
-                                <tr>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-                                    <td>Product 1</td>
-                                    <td>
-                                        <button class="btn btn-primary add-to-cart">View details and place order
-                                        </button>
-                                    </td>
                                 </tr>
-
-                                </tbody>
                             </table>
                         </div>
 
@@ -309,6 +279,109 @@
 
 
         </div>
+
+</section>
+
+
+<section class="hotels-details-modal">
+
+    <div class="container-sm hotel-details-popup ">
+        <div class="x-mark">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+
+        <div class="container topic  d-flex align-items-center-center justify-content-center">
+            <p class="header">Hotel details</p>
+        </div>
+
+        <div class="container gg">
+
+            <div class="row">
+
+                <div class="col column01 textcol">
+                    <div class="d-flex">
+                        <p>Hotel id : </p>
+                        <p class="modalHotelId"></p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel name : </p>
+                        <p class="modalHotelName">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel location : </p>
+                        <p class="modalHotelLocation">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel location link : </p>
+                        <p class="modalHotelLocationLink">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel contact email : </p>
+                        <p class="modalHotelContactEmail" >hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel contact no1 : </p>
+                        <p class="modalHotelContactNo1">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel contact no2 : </p>
+                        <p class="hotelContactNo2">hi</p>
+
+                    </div><div class="d-flex">
+                        <p>PestsAllowed : </p>
+                        <p class="modalPetAllowed">hi</p>
+                    </div>
+
+                </div>
+
+                <div class="col column02 textcol">
+                    <div class="d-flex">
+                        <p>Star rate =</p>
+                        <p class="modalStarRate">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel fee Option1 = </p>
+                        <p class="modalHotelFeeOption1"></p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel fee Option2 = </p>
+                        <p class="modalHotelFeeOption2"></p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel fee Option3 = </p>
+                        <p class="modalHotelFeeOption3"></p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel fee Option4 = </p>
+                        <p class="modalHotelFeeOption4"></p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Hotel cancellation = </p>
+                        <p class="modalHotelCancellation"></p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Remarks = </p>
+                        <p class="modalHotelRemarks"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
 
 </section>
 

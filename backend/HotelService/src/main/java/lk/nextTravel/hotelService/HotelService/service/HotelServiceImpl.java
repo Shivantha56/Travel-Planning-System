@@ -38,6 +38,7 @@ public class HotelServiceImpl implements HotelService{
         Optional<Hotel> hotel = hotelRepository.findByHotelContactEmail(hotelEmail);
 
         if (hotel.isPresent()){
+            String hotelId = hotel.get().getHotelId();
             String hotelName = hotel.get().getHotelName();
             int starRate = hotel.get().getStarRate();
             String hotelLocation = hotel.get().getHotelLocation();
@@ -53,7 +54,7 @@ public class HotelServiceImpl implements HotelService{
             String cancellation = hotel.get().getCancellation();
             String remarks = hotel.get().getRemarks();
 
-            Hotel hotelDetails = new Hotel(hotelName,starRate,hotelLocation,hotelLocationLink,hotelContactEmail,
+            Hotel hotelDetails = new Hotel(hotelId,hotelName,starRate,hotelLocation,hotelLocationLink,hotelContactEmail,
                     contactNoOne,contactNoTwo,petsAllowedOrNot,hotelFeeOption1,hotelFeeOption2,hotelFeeOption3,
                     hotelFeeOption4,cancellation,remarks);
 

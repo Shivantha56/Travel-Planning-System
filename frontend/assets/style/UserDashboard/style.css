@@ -538,10 +538,18 @@
     display: none;
 
 }
+
+.addToHotelPackageContainer>div>div:nth-child(2){
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    background-color: white;
+}
+
 .addToHotelPackageContainer>div>div:nth-child(1){
     width: 100%;
     height: 100%;
-    background-color: deeppink;
+    background-color: white;
     display: flex;
     justify-content: center;
     /*font-size: 35px;*/
@@ -572,4 +580,66 @@
     scroll-behavior: smooth;
 
 
+}
+
+/*/////*/
+.addToVehiclePackageContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.2);
+    position: absolute;
+    top: 0;
+    z-index: 555555555;
+    padding: 50px;
+    display: none;
+
+}
+
+.addToVehiclePackageContainer>div>div:nth-child(2){
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    background-color: white;
+}
+
+.addToVehiclePackageContainer>div>div:nth-child(1){
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    /*font-size: 35px;*/
+    /*font-weight: bold;*/
+    position: relative;
+    align-items: center;
+
+}
+
+.addToVehiclePackageContainer>div>div:nth-child(1)>p{
+
+    font-size: 35px;
+    font-weight: bold;
+
+
+}
+.addToVehiclePackageContainer>div>div:nth-child(1)>button{
+
+    position: absolute;
+    right: 0;
+    height: 30px;
+
+}
+.addToVehiclePackageContainer>div>div:nth-child(2){
+
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+
+}
+
+
+/*btns*/
+.hotel-add-to-cart-btn{
+    display: none;
 }

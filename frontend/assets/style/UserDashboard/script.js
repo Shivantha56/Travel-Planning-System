@@ -6,6 +6,10 @@ $(document).ready(function () {
     getAllVehicleData();
     getAllGuideData();
     requestAllHotelDetailsForPackage();
+    requestAllVehicleDetailsForPackage();
+    $('.dashboardContainer').css("display", "block");
+    $('.package-container').css("display", "none");
+
 
 });
 
@@ -19,6 +23,8 @@ let hotelContactEmail;
 let starRate;
 
 let tableElement = [];
+let hotelAddToCartBtn = $('.hotel-add-to-cart-btn');
+let rowDetailsHotelAddToCart = $('.row-details-hotel-add-to-cart');
 
 //hotel details table row data fetch variables
 
@@ -49,6 +55,7 @@ hotelRow.on('click', '.hotelDetailsBody > .hotel-table-data', function (event) {
 
     hotelDetailsModal.css("display", "flex")
     hotelDetailsModal.css("transition", "1s")
+    rowDetailsHotelAddToCart.css("display","none")
 
 
 });
@@ -58,6 +65,7 @@ let hotelRowPackage = $('.table-hotels-packages');
 
 hotelRowPackage.on('click', '.hotelDetailsBodyPackages > .hotel-package-table-data', function (event) {
 
+    rowDetailsHotelAddToCart.css("display", "block")
     console.log("A");
 
     // console.log(event.target.parentElement.attributes);
@@ -102,6 +110,30 @@ vehicleRow.on('click', '.vehicleDetailsBody > .vehicle-table-data', function (ev
 
 });
 
+let vehicleRowPackage = $('.table-vehicle-packages');
+// let hotelRow = document.querySelector(".hotelDetailsBody tr")
+
+vehicleRowPackage.on('click', '.vehicleDetailsBodyPackages > .vehicle-package-table-data', function (event) {
+
+
+    // console.log(event.target.parentElement.attributes);
+    let attributes = event.target.parentElement.attributes;
+
+    tableId = attributes.item(0).value;
+    console.log(tableId);
+
+
+    let vehicleId = $(`#${tableId} > .vehicleColIdPackage`).text();
+    console.log(vehicleId);
+    console.log(vehicleId);
+    getVehicleById(vehicleId);
+
+    vehicleDetailsModal.css("display", "flex")
+    vehicleDetailsModal.css("transition", "1s")
+
+
+});
+
 //get table value when click
 let guideRow = $('.table-guides');
 // let hotelRow = document.querySelector(".hotelDetailsBody tr")
@@ -126,13 +158,7 @@ guideRow.on('click', '.guideDetailsBody > .guide-table-data', function (event) {
 });
 
 
-
-
-
-
-
-
-$('#vehicleDetails').on('click',function () {
+$('#vehicleDetails').on('click', function () {
 
     getAllVehicleData();
 
@@ -232,7 +258,7 @@ let guideDetailsModal = $('.guide-details-modal');
 modalClose.on("click", function () {
     hotelDetailsModal.css("display", "none");
     vehicleDetailsModal.css("display", "none");
-    guideDetailsModal.css("display","none");
+    guideDetailsModal.css("display", "none");
 
 });
 
@@ -342,7 +368,7 @@ function getVehicleById(vehicleId) {
         error: function (error) {
             console.log(error);
         },
-        url: "http://localhost:8086/business/api/v1/vehicle/" +vehicleId,
+        url: "http://localhost:8086/business/api/v1/vehicle/" + vehicleId,
         // enctype: 'multipart/form-data',
         // processData: false,  // Important!
         // contentType: false,
@@ -385,9 +411,9 @@ function getVehicleById(vehicleId) {
             $('.modalVehicleDriverName').text(driverName);
             $('.modalVehicleDriverContact').text(driverContactNo);
 
-            $('.imageVehicleFrontImage').attr("src",`data:image/jpeg;base64,${vehicleFrontImage}`);
-            $('.imageVehicleRearImage').attr("src",`data:image/jpeg;base64,${vehicleRearImage}`);
-            $('.imageVehicleSideImage').attr("src",`data:image/jpeg;base64,${vehicleSideImage}`);
+            $('.imageVehicleFrontImage').attr("src", `data:image/jpeg;base64,${vehicleFrontImage}`);
+            $('.imageVehicleRearImage').attr("src", `data:image/jpeg;base64,${vehicleRearImage}`);
+            $('.imageVehicleSideImage').attr("src", `data:image/jpeg;base64,${vehicleSideImage}`);
 
         },
 
@@ -395,7 +421,7 @@ function getVehicleById(vehicleId) {
 
 }
 
-$('#guideDetailsBtn').on('click',function () {
+$('#guideDetailsBtn').on('click', function () {
     getAllGuideData();
 });
 
@@ -459,7 +485,7 @@ function getGuideDetailsByNumber(number) {
         error: function (error) {
             console.log(error);
         },
-        url: "http://localhost:8080/business/api/v1/guide/" +number,
+        url: "http://localhost:8080/business/api/v1/guide/" + number,
         // enctype: 'multipart/form-data',
         // processData: false,  // Important!
         // contentType: false,
@@ -493,11 +519,11 @@ function getGuideDetailsByNumber(number) {
             $('.modalGuideManDayValue').text(manDayValue);
             $('.remarks').text(remarks);
 
-            $('.modalGuideImage').attr("src",`data:image/jpeg;base64,${guideImage}`);
-            $('.modalNicImageFront').attr("src",`data:image/jpeg;base64,${nicImageFront}`);
-            $('.modalNicImageBack').attr("src",`data:image/jpeg;base64,${nicImageBack}`);
-            $('.modalGuideIdFront').attr("src",`data:image/jpeg;base64,${guideIdFront}`);
-            $('.modalGuideIdBack').attr("src",`data:image/jpeg;base64,${guideIdBack}`);
+            $('.modalGuideImage').attr("src", `data:image/jpeg;base64,${guideImage}`);
+            $('.modalNicImageFront').attr("src", `data:image/jpeg;base64,${nicImageFront}`);
+            $('.modalNicImageBack').attr("src", `data:image/jpeg;base64,${nicImageBack}`);
+            $('.modalGuideIdFront').attr("src", `data:image/jpeg;base64,${guideIdFront}`);
+            $('.modalGuideIdBack').attr("src", `data:image/jpeg;base64,${guideIdBack}`);
 
 
         },
@@ -506,30 +532,39 @@ function getGuideDetailsByNumber(number) {
 
 }
 
-$('.dashboard-nav').on('click',function () {
+$('.dashboard-nav').on('click', function () {
 
-    $('.dashboardContainer').css("display","block");
-    $('.package-container').css("display","none");
+    $('.dashboardContainer').css("display", "block");
+    $('.package-container').css("display", "none");
 
 })
 
-$('.notification-nav').on('click',function (){
+$('.notification-nav').on('click', function () {
 
-   $('.dashboardContainer').css("display","none");
-    $('.package-container').css("display","block");
+    $('.dashboardContainer').css("display", "none");
+    $('.package-container').css("display", "block");
 
 });
 
 let addToHotelPackageContainer = $('.addToHotelPackageContainer');
-$('#closeAddToHotelPackageContainer').on('click',function () {
-    addToHotelPackageContainer.css("display","none");
+let addToVehiclePackageContainer = $('.addToVehiclePackageContainer');
+$('.closeAddToHotelPackageContainer').on('click', function () {
+    console.log("close btn");
+    addToHotelPackageContainer.css("display", "none");
+    addToVehiclePackageContainer.css("display", "none");
 })
-$('#navigationPackageHotelTable').on('click',function () {
+$('#navigationPackageHotelTable').on('click', function () {
 
     requestAllHotelDetailsForPackage();
-    addToHotelPackageContainer.css("display","block");
+    addToHotelPackageContainer.css("display", "block");
 
 })
+$('#navigationPackageVehicleTable').on('click', function () {
+
+    requestAllHotelDetailsForPackage();
+    addToVehiclePackageContainer.css("display", "block");
+
+});
 
 function requestAllHotelDetailsForPackage() {
 
@@ -554,7 +589,6 @@ function requestAllHotelDetailsForPackage() {
                 contactNoTwo = response[i].contactNoTwo;
                 hotelContactEmail = response[i].hotelContactEmail;
                 starRate = response[i].starRate;
-
 
 
                 let setTableRow = `<tr id="rowhotelPackage${count}" class="hotel-package-table-data">
@@ -582,17 +616,70 @@ function requestAllHotelDetailsForPackage() {
 
     });
 
-    // console.log(tableElement);
-    // document.querySelector('.hotelDetailsBody').innerHTML = tableElement[0];
-
-    // <td className='${btnClass}'>
-    //     <button className="btn btn-primary view-hotel-Row-Data">View details and place order</button>
-    // </td>
 
 }
 
 
+function requestAllVehicleDetailsForPackage() {
 
+    let count = 1;
+
+    $('.vehicleDetailsBody>tr').empty();
+
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:8086/business/api/v1/vehicle`,
+        // dataType: 'JSON',
+        error: function (error) {
+
+        },
+
+        success: function (response) {
+
+            for (const responseKey in response) {
+
+                let driverId = response[responseKey].driverId;
+                let driverName = response[responseKey].driverName;
+                let driverContactNo = response[responseKey].driverContactNo;
+                let vehicleId = response[responseKey].vehicleId;
+                let vehicleNo = response[responseKey].vehicleNo;
+                let vehicleBrand = response[responseKey].vehicleBrand;
+                let category = response[responseKey].category;
+                let fuelType = response[responseKey].fuelType;
+                let hybrid = response[responseKey].hybrid;
+                let fuelUsage = response[responseKey].fuelUsage;
+                let vehicleFrontImage = response[responseKey].vehicleFrontImage;
+                let vehicleRearImage = response[responseKey].vehicleRearImage;
+                let vehicleSideImage = response[responseKey].vehicleSideImage;
+                let vehicleFrontInteriorImage = response[responseKey].vehicleFrontInteriorImage;
+                let vehicleRearInteriorImage = response[responseKey].vehicleRearInteriorImage;
+                let seatCapacity = response[responseKey].seatCapacity;
+                let vehicleType = response[responseKey].vehicleType;
+                let transmissionType = response[responseKey].transmissionType;
+                let remarks = response[responseKey].remarks;
+
+
+                let vehicleTableTemplate = `<tr id="rowVehiclePackage${count}" class="vehicle-package-table-data">
+<td>${vehicleId}</td>
+<td>${category}</td>
+<td class="vehicleColIdPackage">${vehicleNo}</td>
+<td>${vehicleBrand}</td>
+<td>${driverName}</td>
+<td>${fuelType}</td>
+<td>${seatCapacity}</td>
+<td>${vehicleType}</td>
+</tr>`;
+
+                $('.vehicleDetailsBodyPackages').append(vehicleTableTemplate);
+
+                count++;
+            }
+        }
+
+
+    });
+
+}
 
 
 

@@ -5,6 +5,7 @@ $(document).ready(function () {
     requestAllHotelDetails();
     getAllVehicleData();
     getAllGuideData();
+    requestAllHotelDetailsForPackage();
 
 });
 
@@ -43,6 +44,30 @@ hotelRow.on('click', '.hotelDetailsBody > .hotel-table-data', function (event) {
 
 
     let hotelEmail = $(`#${tableId} > .hotelEmail`).text();
+    console.log(hotelEmail)
+    getAllHotelData(hotelEmail);
+
+    hotelDetailsModal.css("display", "flex")
+    hotelDetailsModal.css("transition", "1s")
+
+
+});
+//get table value when click
+let hotelRowPackage = $('.table-hotels-packages');
+// let hotelRow = document.querySelector(".hotelDetailsBody tr")
+
+hotelRowPackage.on('click', '.hotelDetailsBodyPackages > .hotel-package-table-data', function (event) {
+
+    console.log("A");
+
+    // console.log(event.target.parentElement.attributes);
+    let attributes = event.target.parentElement.attributes;
+
+    tableId = attributes.item(0).value;
+    console.log(tableId);
+
+
+    let hotelEmail = $(`#${tableId} > .hotelPackageEmail`).text();
     console.log(hotelEmail)
     getAllHotelData(hotelEmail);
 
@@ -112,65 +137,6 @@ $('#vehicleDetails').on('click',function () {
     getAllVehicleData();
 
 })
-
-// function getRequestedHotelDataData(){
-//
-//
-//
-//
-// }
-//
-
-
-// function countTableRowId(){
-//     console.log($('.hotel-table-data').attr("id"))
-// }
-
-
-//
-// hotelRow.addEventListener('click', .hotelDetailsBody tr,function () {
-//     console.log("a");
-// })
-
-
-// Attach a click event listener to the table
-// table.addEventListener("click", function(event) {
-//     // Check if the clicked element is a table cell (td)
-//     // if (event.target.tagName === "TD") {
-//         // // Get the clicked cell's content
-//         // var cellData = event.target.textContent;
-//         // console.log("Clicked cell data: " + cellData);
-//
-//         if (event.target.tagName === "TR") {
-//             // Get the clicked row's data
-//             var rowData = [];
-//             var cells = event.target.querySelectorAll("td");
-//             cells.forEach(function(cell) {
-//                 rowData.push(cell.textContent);
-//             });
-//             console.log("Clicked row data: " + rowData.join(", "));
-//         }
-//     // }
-// });
-
-
-// $('.table-hotels .hotelDetailsBody').on( 'click', 'tr', function () {
-//     console.log( dataTable.row( this ).data() );
-// } );
-
-// function getHotelTableRowData(){
-//
-//         hotelColumn1 =$('.dataColumn1').text();
-//         hotelColumn2 =$('.dataColumn2').text();
-//         hotelColumn3 =$('.dataColumn3').text();
-//         hotelColumn4 =$('.dataColumn4').text();
-//         hotelColumn5 =$('.dataColumn5').text();
-//
-//         console.log(hotelColumn1);
-//         console.log(hotelColumn2);
-//
-//
-// }
 
 
 $('.show-hotel-details').on('click', function () {
@@ -540,14 +506,90 @@ function getGuideDetailsByNumber(number) {
 
 }
 
+$('.dashboard-nav').on('click',function () {
+
+    $('.dashboardContainer').css("display","block");
+    $('.package-container').css("display","none");
+
+})
+
+$('.notification-nav').on('click',function (){
+
+   $('.dashboardContainer').css("display","none");
+    $('.package-container').css("display","block");
+
+});
+
+let addToHotelPackageContainer = $('.addToHotelPackageContainer');
+$('#closeAddToHotelPackageContainer').on('click',function () {
+    addToHotelPackageContainer.css("display","none");
+})
+$('#navigationPackageHotelTable').on('click',function () {
+
+    requestAllHotelDetailsForPackage();
+    addToHotelPackageContainer.css("display","block");
+
+})
+
+function requestAllHotelDetailsForPackage() {
+
+
+    let count = 1;
+
+    let tableBody = $('.hotelDetailsBodyPackages>tr');
+    tableBody.empty();
+
+
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8085/business/api/v1/hotel",
+        // data:"JSON",
+        success: function (response) {
+
+            for (const i in response) {
+
+                hotelName = response[i].hotelName;
+                hotelLocation = response[i].hotelLocation;
+                contactNoOne = response[i].contactNoOne;
+                contactNoTwo = response[i].contactNoTwo;
+                hotelContactEmail = response[i].hotelContactEmail;
+                starRate = response[i].starRate;
 
 
 
+                let setTableRow = `<tr id="rowhotelPackage${count}" class="hotel-package-table-data">
+<td>${hotelName}</td>
+<td>${hotelLocation}</td>
+<td>${contactNoOne}</td>
+<td>${contactNoTwo}</td>
+<td class="hotelPackageEmail">${hotelContactEmail}</td>
+<td>${starRate}</td>
+</tr>`;
+                count++;
 
+                // let tabless = document.querySelector('.hotelDetailsBody').innerHTML = setTableRow;
+                //
+                // // console.log(tabless);
+                //
+                // $('.hotelDetailsBody').append(tabless)
+                //
+                // // tableElement.push(setTableRow)
+                $('.hotelDetailsBodyPackages').append(setTableRow);
 
+            }
 
+        }
 
+    });
 
+    // console.log(tableElement);
+    // document.querySelector('.hotelDetailsBody').innerHTML = tableElement[0];
+
+    // <td className='${btnClass}'>
+    //     <button className="btn btn-primary view-hotel-Row-Data">View details and place order</button>
+    // </td>
+
+}
 
 
 

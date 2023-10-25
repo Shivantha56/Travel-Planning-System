@@ -7,6 +7,7 @@ $(document).ready(function () {
     getAllGuideData();
     requestAllHotelDetailsForPackage();
     requestAllVehicleDetailsForPackage();
+    requestAllGuideDetailsForPackage();
     $('.dashboardContainer').css("display", "block");
     $('.package-container').css("display", "none");
 
@@ -230,6 +231,31 @@ function requestAllHotelDetails() {
     // </td>
 
 }
+
+
+let guideRowPackage = $('.table-guide-packages');
+// let hotelRow = document.querySelector(".hotelDetailsBody tr")
+
+guideRowPackage.on('click', '.guideDetailsBodyPackages > .guide-package-table-data', function (event) {
+
+
+    // console.log(event.target.parentElement.attributes);
+    let attributes = event.target.parentElement.attributes;
+
+    tableId = attributes.item(0).value;
+    console.log(tableId);
+
+
+    let guideNo = $(`#${tableId} > .guideContactNo`).text();
+    getGuideDetailsByNumber(guideNo)
+    requestAllGuideDetailsForPackage();
+
+    guideDetailsModal.css("display", "flex")
+    guideDetailsModal.css("transition", "1s")
+
+
+});
+
 
 
 //hotel details pop up model controller
@@ -548,21 +574,30 @@ $('.notification-nav').on('click', function () {
 
 let addToHotelPackageContainer = $('.addToHotelPackageContainer');
 let addToVehiclePackageContainer = $('.addToVehiclePackageContainer');
+let addToGuidePackageContainer = $('.addToGuidePackageContainer');
 $('.closeAddToHotelPackageContainer').on('click', function () {
     console.log("close btn");
     addToHotelPackageContainer.css("display", "none");
     addToVehiclePackageContainer.css("display", "none");
-})
+    addToGuidePackageContainer.css("display", "none");
+});
 $('#navigationPackageHotelTable').on('click', function () {
 
     requestAllHotelDetailsForPackage();
     addToHotelPackageContainer.css("display", "block");
 
-})
+});
+
 $('#navigationPackageVehicleTable').on('click', function () {
 
     requestAllHotelDetailsForPackage();
     addToVehiclePackageContainer.css("display", "block");
+
+});
+$('#navigationPackageGuideTable').on('click', function () {
+
+    requestAllHotelDetailsForPackage();
+    addToGuidePackageContainer.css("display", "block");
 
 });
 
@@ -681,5 +716,57 @@ function requestAllVehicleDetailsForPackage() {
 
 }
 
+
+function requestAllGuideDetailsForPackage() {
+
+    let count = 1;
+
+    $('.guideDetailsBody>tr').empty();
+
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:8080/business/api/v1/guide`,
+        // dataType: 'JSON',
+        error: function (error) {
+
+        },
+
+        success: function (response) {
+
+            for (const responseKey in response) {
+
+                let guideId = response[responseKey].guideId;
+                let guideName = response[responseKey].guideName;
+                let guideAddress = response[responseKey].guideAddress;
+                let guideAge = response[responseKey].guideAge;
+                let gender = response[responseKey].gender;
+                let guideContactNo = response[responseKey].guideContactNo;
+                let guideImage = response[responseKey].guideImage;
+                let nicImageFront = response[responseKey].nicImageFront;
+                let guideIdBack = response[responseKey].guideIdBack;
+                let manDayValue = response[responseKey].manDayValue;
+                let remarks = response[responseKey].remarks;
+
+
+                let vehicleTableTemplate = `<tr id="rowGuidePackage${count}" class="guide-package-table-data">
+<td>${guideId}</td>
+<td>${guideName}</td>
+<td>${guideAddress}</td>
+<td>${guideAge}</td>
+<td>${gender}</td>
+<td class="guideContactNo">${guideContactNo}</td>
+<td>${manDayValue}</td>
+</tr>`;
+
+                $('.guideDetailsBodyPackages').append(vehicleTableTemplate);
+
+                count++;
+            }
+        }
+
+
+    });
+
+}
 
 

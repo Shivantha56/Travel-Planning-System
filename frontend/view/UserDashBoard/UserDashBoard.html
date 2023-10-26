@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="../../assets/fontAwesome/fontawesome-free-6.4.2-web/css/all.min.css">
     <link rel="stylesheet" href="/assets/style/UserDashboard/style.css">
     <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap.css">
+<!--    /////-->
+
+    <script src="/src/icon.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/dist/css/Alerthub.min.css">
+    <script src="/dist/js/alerthub.min.js"></script>
+
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"/>
 
@@ -243,24 +251,72 @@
 
                     <div class="package-items-container">
 
-                        <div>
+                        <div class="cart-item-container">
+                            <div>
+                                <div class="hotel-cart-container">
+                                    <div>
+                                        <p id="hotelIdCart">HotelId : </p>
+                                        <p id="hotelNameCart">Hotel Name : </p>
+                                    </div>
+                                    <div>
+                                        <p id="hotelPriceCart">Price : </p>
+                                        <p id="hotelPackageCart">Package : </p>
+                                    </div>
+                                    <div>
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                                                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
 
+                                <div class="hotel-cart-container">
+                                    <div>
+                                        <p>HotelId</p>
+                                        <p>Hotel Name</p>
+                                    </div>
+                                    <div>
+                                        <p>Price</p>
+                                        <p>Package</p>
+                                    </div>
+                                    <div>
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                                                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="hotel-cart-container">
+                                    <div>
+                                        <p>HotelId</p>
+                                        <p>Hotel Name</p>
+                                    </div>
+                                    <div>
+                                        <p>Price</p>
+                                        <p>Package</p>
+                                    </div>
+                                    <div>
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                                                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button id="bookingBtn">
+                                    Booking
+                                </button>
+                            </div>
                         </div>
 
-
-                        <div>
-
-                            <div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-
-                            <div>
-
-                            </div>
-
+                        <div class="booking-details">
 
                         </div>
 
@@ -311,7 +367,7 @@
         <div>
             <p>Table vehicles</p>
 
-            <button class= "closeAddToHotelPackageContainer">
+            <button class="closeAddToHotelPackageContainer">
                 close
             </button>
 
@@ -349,7 +405,7 @@
         <div>
             <p>Table guides</p>
 
-            <button class= "closeAddToHotelPackageContainer">
+            <button class="closeAddToHotelPackageContainer">
                 close
             </button>
 
@@ -537,11 +593,19 @@
                         <p class="modalPetAllowed">hi</p>
                     </div>
                     <div>
-                        <button class="btn btn-primary row-details-hotel-add-to-cart" >
-                            Add to Package
+
+                        <select  class="form-select mb-3 hotelRoomType" aria-label="Default select example">
+                            <option selected>Select the room type</option>
+                            <option value="hotelFeeOption1">1 Full Board with A/C Luxury Room – Double</option>
+                            <option value="hotelFeeOption2">2 Half Board with A/C Luxury Room - Double</option>
+                            <option value="hotelFeeOption3">3 Full Board with A/C Luxury Room – Triple</option>
+                            <option value="hotelFeeOption4">4 Half Board with A/C Luxury Room - Triple</option>
+                        </select>
+
+                        <button class="btn btn-primary row-details-hotel-add-to-cart">
+                            Add hotel to Package
                         </button>
                     </div>
-
                 </div>
 
                 <div class="col column02 textcol">

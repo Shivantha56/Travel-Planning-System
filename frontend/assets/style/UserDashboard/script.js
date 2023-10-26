@@ -1,5 +1,14 @@
-// let dataTable;
-//
+//alert hub
+
+const alertInstance = new AlertHub({
+    timeout: 300,
+    animation: 'fade-in',
+    closeButton: false,
+    // type: "success "
+})
+
+
+
 $(document).ready(function () {
 
     requestAllHotelDetails();
@@ -288,6 +297,12 @@ modalClose.on("click", function () {
 
 });
 
+let hotelId;
+let hotelNameD;
+let hotelOption1;
+let hotelOption2;
+let hotelOption3;
+let hotelOption4;
 
 function getAllHotelData(email) {
     $.ajax({
@@ -300,14 +315,14 @@ function getAllHotelData(email) {
             modalHotelContactNo1.text(response.contactNoOne);
             modalHotelContactNo2.text(response.contactNoTwo);
             modalHotelContactEmail.text(response.hotelContactEmail);
-            modalHotelFeeOption1.text(response.hotelFeeOption1);
-            modalHotelFeeOption2.text(response.hotelFeeOption2);
-            modalHotelFeeOption3.text(response.hotelFeeOption3);
-            modalHotelFeeOption4.text(response.hotelFeeOption4);
-            modalHotelId.text(response.hotelId);
+            hotelOption1 = modalHotelFeeOption1.text(response.hotelFeeOption1);
+            hotelOption2 = modalHotelFeeOption2.text(response.hotelFeeOption2);
+            hotelOption3 = modalHotelFeeOption3.text(response.hotelFeeOption3);
+            hotelOption4 = modalHotelFeeOption4.text(response.hotelFeeOption4);
+            hotelId = modalHotelId.text(response.hotelId);
             modalHotelLocation.text(response.hotelLocation);
             modalHotelLocationLink.text(response.hotelLocationLink);
-            modalHotelName.text(response.hotelName);
+            hotelNameD = modalHotelName.text(response.hotelName);
             modalPetAllowed.text(response.petsAllowedOrNot);
             modalHotelRemarks.text(response.remarks);
             modalStarRate.text(response.starRate);
@@ -769,4 +784,72 @@ function requestAllGuideDetailsForPackage() {
 
 }
 
+let hotelCartName = $('#hotelNameCart');
+let hotelCartId = $('#hotelIdCart');
+let hotelCartPrice = $('#hotelPriceCart');
+let hotelCartPackage = $('#hotelPackageCart');
+let hotelRoomType = $('.hotelRoomType');
 
+let hotelFeeOption;
+
+rowDetailsHotelAddToCart.on('click',function () {
+
+
+    let hotelName = hotelNameD.text();
+    let hotelIds = hotelId.text();
+
+
+    hotelCartName.text(`Hotel Name : ${hotelName}`)
+    hotelCartId.text(`HotelId : ${hotelIds}`)
+
+    hotelFeeOption = hotelRoomType.val();
+
+    if (hotelFeeOption === "hotelFeeOption1") {
+        console.log(hotelFeeOption);
+        hotelCartPackage.text(`Package : FullBoard-double`);
+        hotelCartPrice.text(`Price : ${hotelOption1.text()}`);
+
+    } else if (hotelFeeOption === "hotelFeeOption2") {
+        hotelCartPackage.text(`Package : HalfBoard-double`);
+        hotelCartPrice.text(`Price : ${hotelOption2.text()}`);
+
+    } else if (hotelFeeOption === "hotelFeeOption3") {
+        hotelCartPackage.text(`Package : FullBoard-triple`);
+        hotelCartPrice.text(`Price : ${hotelOption3.text()}`);
+
+    } else if (hotelFeeOption === "hotelFeeOption4") {
+        hotelCartPackage.text(`Package : HalfBoard-triple`);
+        hotelCartPrice.text(`Price : ${hotelOption4.text()}`);
+    } else {
+        errorNotification1("please select the hotel options")
+        throw new Error("some thing happen");
+    }
+
+    successNotification1("Hotel add to the cart")
+ // console.log(hotelNameD.text());
+    // console.log();
+    console.log("this sis the add to cart btn");
+
+});
+
+function successNotification1(message) {
+
+    alertInstance.showAlert({
+        type: "success",
+        description: `<h2>${message}</h2>`,
+        timeout: 4,
+        // position: 'top-right'
+    });
+
+}
+function errorNotification1(message) {
+
+    alertInstance.showAlert({
+        title: `${message}`,
+        description: `${message}`,
+        timeout: 4,
+        type: "danger",
+        // position: 'bottom-right'
+    });
+
+}

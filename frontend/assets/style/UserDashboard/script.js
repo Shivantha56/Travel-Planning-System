@@ -399,7 +399,10 @@ function getAllVehicleData() {
     });
 
 }
-
+let vehicleIds;
+let vehicleBrand;
+let vehicleFeeForDay;
+let vehicleType;
 
 function getVehicleById(vehicleId) {
 
@@ -423,9 +426,9 @@ function getVehicleById(vehicleId) {
             let driverId = response.driverId;
             let driverName = response.driverName;
             let driverContactNo = response.driverContactNo;
-            let vehicleId = response.vehicleId;
+            vehicleIds = response.vehicleId;
             let vehicleNo = response.vehicleNo;
-            let vehicleBrand = response.vehicleBrand;
+            vehicleBrand = response.vehicleBrand;
             let category = response.category;
             let fuelType = response.fuelType;
             let hybrid = response.hybrid;
@@ -436,9 +439,10 @@ function getVehicleById(vehicleId) {
             let vehicleFrontInteriorImage = response.vehicleFrontInteriorImage;
             let vehicleRearInteriorImage = response.vehicleRearInteriorImage;
             let seatCapacity = response.seatCapacity;
-            let vehicleType = response.vehicleType;
+            vehicleType = response.vehicleType;
             let transmissionType = response.transmissionType;
             let remarks = response.remarks;
+            // add vehicle per day value
 
             $('.modalVehicleId').text(vehicleId);
             $('.modalVehicleNo').text(vehicleNo);
@@ -465,6 +469,7 @@ function getVehicleById(vehicleId) {
 $('#guideDetailsBtn').on('click', function () {
     getAllGuideData();
 });
+
 
 function getAllGuideData() {
 
@@ -518,6 +523,11 @@ function getAllGuideData() {
 
 }
 
+let guideId;
+let guideName;
+let manDayValue;
+let guideAge;
+
 function getGuideDetailsByNumber(number) {
 
     $.ajax({
@@ -537,13 +547,13 @@ function getGuideDetailsByNumber(number) {
 
             // for (const responseKey in response) {
 
-            let guideId = response.guideId;
-            let guideName = response.guideName;
+            guideId = response.guideId;
+            guideName = response.guideName;
             let guideAddress = response.guideAddress;
-            let guideAge = response.guideAge;
+            guideAge = response.guideAge;
             let gender = response.gender;
             let guideContactNo = response.guideContactNo;
-            let manDayValue = response.manDayValue;
+            manDayValue = response.manDayValue;
             let remarks = response.remarks;
             let guideImage = response.guideImage;
             let nicImageFront = response.nicImageFront;
@@ -789,8 +799,8 @@ let hotelCartId = $('#hotelIdCart');
 let hotelCartPrice = $('#hotelPriceCart');
 let hotelCartPackage = $('#hotelPackageCart');
 let hotelRoomType = $('.hotelRoomType');
-
 let hotelFeeOption;
+
 
 rowDetailsHotelAddToCart.on('click',function () {
 
@@ -830,6 +840,39 @@ rowDetailsHotelAddToCart.on('click',function () {
     // console.log();
     console.log("this sis the add to cart btn");
 
+});
+
+
+let rowDetailsVehicleAddToCart = $('.row-details-vehicle-add-to-cart');
+let vehicleIdCart = $('.vehicleIdCart');
+let vehicleBrandCart = $('.vehicleBrandCart');
+let vehiclePriceCart = $('.vehiclePriceCart');
+let vehicleTypeCart = $('.vehicleTypeCart');
+
+rowDetailsVehicleAddToCart.on('click',function () {
+
+    vehicleIdCart.text(`Vehicle Id : ${vehicleIds}`);
+    vehicleBrandCart.text(`Vehicle Brand : ${vehicleBrand}`);
+    vehiclePriceCart.text(`Vehicle price : ${vehicleFeeForDay}`);
+    vehicleTypeCart.text(`Vehicle type : ${vehicleType}`);
+
+    successNotification1("You added vehicle to the package")
+
+})
+
+let rowDetailsGuideAddToCart = $('.row-details-guide-add-to-cart');
+let guideIdCart = $('.guideIdCart');
+let guideNameCart = $('.guideNameCart');
+let manDayValueCart = $('.manDayValueCart');
+let guideAgeCart = $('.guideAgeCart');
+rowDetailsGuideAddToCart.on('click',function () {
+
+    guideIdCart.text(`Guide id : ${guideId}`);
+    guideNameCart.text(`Guide name : ${guideName}`);
+    manDayValueCart.text(`Man day value : ${manDayValue}`);
+    guideAgeCart.text(`Guide age cart : ${guideAge}`);
+
+    successNotification1("Guide added to the package")
 });
 
 function successNotification1(message) {

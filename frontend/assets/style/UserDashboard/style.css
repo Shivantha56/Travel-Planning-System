@@ -712,14 +712,14 @@
 .cart-item-container{
     width: 600px;
     height: 100%;
-    background-color: white;
+    /*background-color: white;*/
 
 }
 
 .cart-item-container>div:nth-child(1){
     display: flex;
     flex-direction: column;
-    height: auto;
+    /*height: 100%;*/
     background-color: #ececec;
     /*box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;*/
     /*border: 1px solid black;*/
@@ -778,5 +778,15 @@
     background-color: white;
     cursor: pointer;
 
+}
 
+.booking-details{
+    padding: 0 20px;
+}
+
+.totalValue{
+    display: flex;
+    color: red;
+    margin-left: 5px;
+    background-color: white;
 }

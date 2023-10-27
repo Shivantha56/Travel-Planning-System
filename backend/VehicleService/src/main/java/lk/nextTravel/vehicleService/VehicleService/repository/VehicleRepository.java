@@ -11,6 +11,7 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
 
     Optional<Vehicle> findVehicleByVehicleNo(String vehicleId);
+//    Optional<Vehicle> findVehicleByI(String vehicleId);
 
 //    Vehicle findVehicleByVehicleNo(String vehicleId);
 }

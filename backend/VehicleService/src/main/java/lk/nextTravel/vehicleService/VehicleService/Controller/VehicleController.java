@@ -98,5 +98,16 @@ public class VehicleController {
        return vehicleService.getAll();
     }
 
+    @ResponseBody
+    @GetMapping(value = "id/{vehicleId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public DriverVehicleDTO getVehicleDetailByVehicleId(@PathVariable String vehicleId){
+
+        System.out.println("new method for found vehicle details by the vehicle id");
+
+        return vehicleService.getVehicleDetailsId(vehicleId);
+
+    }
+
+
 
 }

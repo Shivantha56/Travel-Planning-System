@@ -16,4 +16,6 @@ public interface VehicleService {
     void delete(String vehicleId);
 
     List<DriverVehicleDTO> getAll();
+
+    DriverVehicleDTO getVehicleDetailsId(String vehicleId);
 }

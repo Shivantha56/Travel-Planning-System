@@ -32,16 +32,16 @@ public class OrderController {
     public void saveOrder(@ModelAttribute OrderDetailsDTO orderDetailsDTO) {
 
         orderService.saveOrder(orderDetailsDTO);
-//        WebClient webClientVehicle = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
-//        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClientVehicle.get()
-//                .retrieve()
-//                .bodyToMono(VehicleOrderDTO.class);
-//
-//
-//        WebClient webClientHotel = WebClient.create(hotelEndPoint + "/id/" + orderDetailsDTO.getHotelId());
-//        Mono<HotelOrderDTO> hotelOrderDTOMono = webClientHotel
-//                .get()
-//                .retrieve().bodyToMono(HotelOrderDTO.class);
+        WebClient webClientVehicle = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
+        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClientVehicle.get()
+                .retrieve()
+                .bodyToMono(VehicleOrderDTO.class);
+
+
+        WebClient webClientHotel = WebClient.create(hotelEndPoint + "/id/" + orderDetailsDTO.getHotelId());
+        Mono<HotelOrderDTO> hotelOrderDTOMono = webClientHotel
+                .get()
+                .retrieve().bodyToMono(HotelOrderDTO.class);
 
 
 //        WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getHotelId());
@@ -50,8 +50,8 @@ public class OrderController {
 //                .retrieve().bodyToMono(GuideOrderDTO.class);
 
 
-//        orderService.getVehicleDetails(vehicleOrderDTOMono.block(), orderDetailsDTO.getVehicleId());
-//        orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
+        orderService.getVehicleDetails(vehicleOrderDTOMono.block(), orderDetailsDTO.getVehicleId());
+        orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
 
         if (orderDetailsDTO.getNeedGuideOrNO().equals("Yes") || orderDetailsDTO.getNeedGuideOrNO().equals("yes")){
             WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getGuideId());

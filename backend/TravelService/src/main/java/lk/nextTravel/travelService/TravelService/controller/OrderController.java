@@ -1,5 +1,6 @@
 package lk.nextTravel.travelService.TravelService.controller;
 
+import lk.nextTravel.travelService.TravelService.dto.GuideOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
@@ -30,21 +31,37 @@ public class OrderController {
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void saveOrder(@ModelAttribute OrderDetailsDTO orderDetailsDTO) {
 
-//        orderService.saveOrder(orderDetailsDTO);
+        orderService.saveOrder(orderDetailsDTO);
 //        WebClient webClientVehicle = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
 //        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClientVehicle.get()
 //                .retrieve()
 //                .bodyToMono(VehicleOrderDTO.class);
+//
+//
+//        WebClient webClientHotel = WebClient.create(hotelEndPoint + "/id/" + orderDetailsDTO.getHotelId());
+//        Mono<HotelOrderDTO> hotelOrderDTOMono = webClientHotel
+//                .get()
+//                .retrieve().bodyToMono(HotelOrderDTO.class);
 
 
-        WebClient webClientHotel = WebClient.create(hotelEndPoint + "/id/" + orderDetailsDTO.getHotelId());
-        Mono<HotelOrderDTO> hotelOrderDTOMono = webClientHotel
-                .get()
-                .retrieve().bodyToMono(HotelOrderDTO.class);
+//        WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getHotelId());
+//        Mono<GuideOrderDTO> guideOrderDTOMono = webClientGuide
+//                .get()
+//                .retrieve().bodyToMono(GuideOrderDTO.class);
 
 
 //        orderService.getVehicleDetails(vehicleOrderDTOMono.block(), orderDetailsDTO.getVehicleId());
-        orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
+//        orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
+
+        if (orderDetailsDTO.getNeedGuideOrNO().equals("Yes") || orderDetailsDTO.getNeedGuideOrNO().equals("yes")){
+            WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getGuideId());
+            Mono<GuideOrderDTO> guideOrderDTOMono = webClientGuide
+                    .get()
+                    .retrieve().bodyToMono(GuideOrderDTO.class);
+
+            orderService.getGuideDetails(guideOrderDTOMono.block(), orderDetailsDTO.getGuideId());
+        }
+
 
         orderService.saveOrder(orderDetailsDTO);
 

@@ -14,6 +14,7 @@ public class OrderDetailsDTO {
     String userId;
     String vehicleId;
     String hotelId;
+    String guideId;
     String orderDate;
     String packageCategory;
     String startDate;

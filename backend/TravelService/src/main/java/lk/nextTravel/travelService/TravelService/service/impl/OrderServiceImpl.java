@@ -1,6 +1,7 @@
 package lk.nextTravel.travelService.TravelService.service.impl;
 
 import jakarta.persistence.criteria.Order;
+import lk.nextTravel.travelService.TravelService.dto.GuideOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
@@ -39,6 +40,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void getHotelDetails(HotelOrderDTO hotelOrderDTO, String hotelId) {
         System.out.println(hotelOrderDTO.getHotelName());
+    }
+
+    @Override
+    public void getGuideDetails(GuideOrderDTO block, String guideId) {
+        System.out.println(block.getGuideName());
     }
 
 

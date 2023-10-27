@@ -790,3 +790,7 @@
     margin-left: 5px;
     background-color: white;
 }
+
+.hotel-cart-container>div>div{
+    display: flex;
+}

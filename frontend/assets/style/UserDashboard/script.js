@@ -799,43 +799,76 @@ let hotelCartId = $('#hotelIdCart');
 let hotelCartPrice = $('#hotelPriceCart');
 let hotelCartPackage = $('#hotelPackageCart');
 let hotelRoomType = $('.hotelRoomType');
+let totalPriceCal = $('.totalPriceCal');
+
+
 let hotelFeeOption;
 
+let totalPrice = 0.00;
+
+let hotelPrice;
+let vehiclePrice;
+let guidePrice;
 
 rowDetailsHotelAddToCart.on('click',function () {
 
+    hotelPrice = 0
+    console.log(hotelPrice);
 
     let hotelName = hotelNameD.text();
     let hotelIds = hotelId.text();
 
 
-    hotelCartName.text(`Hotel Name : ${hotelName}`)
-    hotelCartId.text(`HotelId : ${hotelIds}`)
+    hotelCartName.text(`${hotelName}`)
+    hotelCartId.text(`${hotelIds}`)
 
     hotelFeeOption = hotelRoomType.val();
 
     if (hotelFeeOption === "hotelFeeOption1") {
-        console.log(hotelFeeOption);
-        hotelCartPackage.text(`Package : FullBoard-double`);
-        hotelCartPrice.text(`Price : ${hotelOption1.text()}`);
+        // console.log(hotelFeeOption);
+        hotelCartPackage.text(`FullBoard-double`);
+
+        hotelCartPrice.text(`${hotelOption1.text()}`);
+        hotelPrice = hotelCartPrice.text();
+        console.log("a");
+        console.log(hotelPrice);
+
+        // totalPrice = totalPrice+hotelPrice;
 
     } else if (hotelFeeOption === "hotelFeeOption2") {
-        hotelCartPackage.text(`Package : HalfBoard-double`);
-        hotelCartPrice.text(`Price : ${hotelOption2.text()}`);
+        hotelCartPackage.text(`HalfBoard-double`);
+        hotelCartPrice.text(`${hotelOption2.text()}`);
+
+        hotelPrice = hotelCartPrice.text();
+        console.log(hotelPrice);
+
+        // totalPrice = totalPrice+hotelOption1.text();
 
     } else if (hotelFeeOption === "hotelFeeOption3") {
-        hotelCartPackage.text(`Package : FullBoard-triple`);
-        hotelCartPrice.text(`Price : ${hotelOption3.text()}`);
+        hotelCartPackage.text(`FullBoard-triple`);
+        hotelCartPrice.text(`${hotelOption3.text()}`);
+
+        hotelPrice = hotelCartPrice.text();
+        console.log(hotelPrice);
+
+        // totalPrice = totalPrice+hotelOption1.text();
 
     } else if (hotelFeeOption === "hotelFeeOption4") {
-        hotelCartPackage.text(`Package : HalfBoard-triple`);
-        hotelCartPrice.text(`Price : ${hotelOption4.text()}`);
+        hotelCartPackage.text(`HalfBoard-triple`);
+        hotelCartPrice.text(`${hotelOption4.text()}`);
+
+        hotelPrice = hotelCartPrice.text();
+        console.log(hotelPrice);
+
+        // totalPrice = totalPrice+hotelOption1.text();
     } else {
         errorNotification1("please select the hotel options")
         throw new Error("some thing happen");
     }
 
+
     successNotification1("Hotel add to the cart")
+    totalPriceCal.text(hotelPrice+totalPrice)
  // console.log(hotelNameD.text());
     // console.log();
     console.log("this sis the add to cart btn");
@@ -855,6 +888,8 @@ rowDetailsVehicleAddToCart.on('click',function () {
     vehicleBrandCart.text(`Vehicle Brand : ${vehicleBrand}`);
     vehiclePriceCart.text(`Vehicle price : ${vehicleFeeForDay}`);
     vehicleTypeCart.text(`Vehicle type : ${vehicleType}`);
+
+    // totalPrice = totalPrice+vehicleFeeForDay;
 
     successNotification1("You added vehicle to the package")
 

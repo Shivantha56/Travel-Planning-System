@@ -12,6 +12,7 @@ public class OrderDetailsDTO {
 
     String orderId;
     String userId;
+    String vehicleId;
     String orderDate;
     String packageCategory;
     String startDate;

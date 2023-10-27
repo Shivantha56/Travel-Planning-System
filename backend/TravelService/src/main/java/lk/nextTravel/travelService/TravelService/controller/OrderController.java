@@ -1,14 +1,25 @@
 package lk.nextTravel.travelService.TravelService.controller;
 
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
+import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
 import lk.nextTravel.travelService.TravelService.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("api/v1/order")
 public class OrderController {
+
+    @Value("${vehicle-service-endpoint}")
+    private String vehicleEndPoint;
+    @Value("${guide-service-endpint}")
+    private String guideEndpoint;
+    @Value("${hotel-service-endpoint}")
+    private String hotelEndPoint;
 
     @Autowired
     OrderService orderService;
@@ -16,7 +27,15 @@ public class OrderController {
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void saveOrder(@ModelAttribute OrderDetailsDTO orderDetailsDTO) {
 
+//        orderService.saveOrder(orderDetailsDTO);
+        WebClient webClient = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
+        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClient.get()
+                .retrieve()
+                .bodyToMono(VehicleOrderDTO.class);
 
+        orderService.getVehicleDetails(vehicleOrderDTOMono.block(),orderDetailsDTO.getVehicleId());
+
+        orderService.saveOrder(orderDetailsDTO);
 
 
     }

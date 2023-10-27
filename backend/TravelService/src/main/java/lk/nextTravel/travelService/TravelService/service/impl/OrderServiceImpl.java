@@ -1,6 +1,7 @@
 package lk.nextTravel.travelService.TravelService.service.impl;
 
 import jakarta.persistence.criteria.Order;
+import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
 import lk.nextTravel.travelService.TravelService.service.OrderService;
@@ -33,6 +34,11 @@ public class OrderServiceImpl implements OrderService {
 
 //        if (vehicleOrderDTO.getVehicleId().equals(vehicleId)) throw new RuntimeException("No vehicle found");
 
+    }
+
+    @Override
+    public void getHotelDetails(HotelOrderDTO hotelOrderDTO, String hotelId) {
+        System.out.println(hotelOrderDTO.getHotelName());
     }
 
 

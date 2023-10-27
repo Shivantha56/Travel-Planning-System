@@ -1,5 +1,6 @@
 package lk.nextTravel.travelService.TravelService.service;
 
+import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ public interface OrderService {
     void saveOrder(OrderDetailsDTO orderDetailsDTO);
 
     void getVehicleDetails(VehicleOrderDTO vehicleOrderDTO,String vehicleId);
+
+    void getHotelDetails(HotelOrderDTO block, String hotelId);
 //    String generateOrderIds();
 
 }

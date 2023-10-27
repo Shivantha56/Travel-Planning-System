@@ -1,5 +1,6 @@
 package lk.nextTravel.travelService.TravelService.controller;
 
+import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
 import lk.nextTravel.travelService.TravelService.service.OrderService;
@@ -13,6 +14,8 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("api/v1/order")
 public class OrderController {
+
+//    WebClient webClient;
 
     @Value("${vehicle-service-endpoint}")
     private String vehicleEndPoint;
@@ -28,12 +31,20 @@ public class OrderController {
     public void saveOrder(@ModelAttribute OrderDetailsDTO orderDetailsDTO) {
 
 //        orderService.saveOrder(orderDetailsDTO);
-        WebClient webClient = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
-        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClient.get()
-                .retrieve()
-                .bodyToMono(VehicleOrderDTO.class);
+//        WebClient webClientVehicle = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
+//        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClientVehicle.get()
+//                .retrieve()
+//                .bodyToMono(VehicleOrderDTO.class);
 
-        orderService.getVehicleDetails(vehicleOrderDTOMono.block(),orderDetailsDTO.getVehicleId());
+
+        WebClient webClientHotel = WebClient.create(hotelEndPoint + "/id/" + orderDetailsDTO.getHotelId());
+        Mono<HotelOrderDTO> hotelOrderDTOMono = webClientHotel
+                .get()
+                .retrieve().bodyToMono(HotelOrderDTO.class);
+
+
+//        orderService.getVehicleDetails(vehicleOrderDTOMono.block(), orderDetailsDTO.getVehicleId());
+        orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
 
         orderService.saveOrder(orderDetailsDTO);
 

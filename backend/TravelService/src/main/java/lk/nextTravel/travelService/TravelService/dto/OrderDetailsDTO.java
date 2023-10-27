@@ -13,6 +13,7 @@ public class OrderDetailsDTO {
     String orderId;
     String userId;
     String vehicleId;
+    String hotelId;
     String orderDate;
     String packageCategory;
     String startDate;

@@ -136,7 +136,7 @@ public class HotelServiceImpl implements HotelService{
 
             return modelsMapper.entityToDtoConversion(hotelDetails);
         }else {
-            throw new RuntimeException("hotel connot found with that email");
+            throw new RuntimeException("hotel connot found with that hotel registered id");
         }
     }
 

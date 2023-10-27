@@ -17,4 +17,6 @@ public interface HotelService {
     void deleteHotel(String email);
 
     List<HotelDTO> getAllHotelData();
+
+    HotelDTO getHotelByHotelId(String hotelId);
 }

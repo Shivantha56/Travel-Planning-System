@@ -109,5 +109,36 @@ public class HotelServiceImpl implements HotelService{
 
     }
 
+    @Override
+    public HotelDTO getHotelByHotelId(String hotelId) {
+        Optional<Hotel> hotel = hotelRepository.findById(hotelId);
+
+        if (hotel.isPresent()){
+            String getHotelId = hotel.get().getHotelId();
+            String hotelName = hotel.get().getHotelName();
+            int starRate = hotel.get().getStarRate();
+            String hotelLocation = hotel.get().getHotelLocation();
+            String hotelLocationLink = hotel.get().getHotelLocationLink();
+            String hotelContactEmail = hotel.get().getHotelContactEmail();
+            int contactNoOne = hotel.get().getContactNoOne();
+            int contactNoTwo = hotel.get().getContactNoTwo();
+            String petsAllowedOrNot = hotel.get().getPetsAllowedOrNot();
+            double hotelFeeOption1 = hotel.get().getHotelFeeOption1();
+            double hotelFeeOption2 = hotel.get().getHotelFeeOption2();
+            double hotelFeeOption3 = hotel.get().getHotelFeeOption3();
+            double hotelFeeOption4 = hotel.get().getHotelFeeOption4();
+            String cancellation = hotel.get().getCancellation();
+            String remarks = hotel.get().getRemarks();
+
+            Hotel hotelDetails = new Hotel(getHotelId,hotelName,starRate,hotelLocation,hotelLocationLink,hotelContactEmail,
+                    contactNoOne,contactNoTwo,petsAllowedOrNot,hotelFeeOption1,hotelFeeOption2,hotelFeeOption3,
+                    hotelFeeOption4,cancellation,remarks);
+
+            return modelsMapper.entityToDtoConversion(hotelDetails);
+        }else {
+            throw new RuntimeException("hotel connot found with that email");
+        }
+    }
+
 
 }

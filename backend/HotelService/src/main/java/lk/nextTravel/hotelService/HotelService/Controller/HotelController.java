@@ -50,6 +50,13 @@ public class HotelController {
 
     }
 
+    @GetMapping("id/{hotelId}")
+    public HotelDTO getHotelByHotelId(@PathVariable String hotelId) {
+
+        return hotelService.getHotelByHotelId(hotelId);
+
+    }
+
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void update(
@@ -90,5 +97,7 @@ public class HotelController {
         return hotelService.getAllHotelData();
 
     }
+
+
 
 }

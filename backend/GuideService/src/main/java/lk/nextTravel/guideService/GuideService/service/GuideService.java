@@ -16,4 +16,5 @@ public interface GuideService {
 
     GuideDTO searchGuide(String phoneNumber);
 
+    GuideDTO getGuideById(String guideId);
 }

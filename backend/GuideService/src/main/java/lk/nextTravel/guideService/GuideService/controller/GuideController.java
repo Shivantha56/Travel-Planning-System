@@ -84,6 +84,11 @@ public class GuideController {
         return guideService.searchGuide(phoneNumber);
     }
 
+    @GetMapping(value = "id/{guideId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public GuideDTO getGuideById(@PathVariable String guideId){
+        return guideService.getGuideById(guideId);
+    }
+
 
 
 }

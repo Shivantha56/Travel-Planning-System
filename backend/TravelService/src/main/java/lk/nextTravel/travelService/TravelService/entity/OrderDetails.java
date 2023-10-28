@@ -2,6 +2,7 @@ package lk.nextTravel.travelService.TravelService.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class OrderDetails {
     @Id
     String orderId;
     String userId;
+    @Timestamp
     String orderDate;
     String packageCategory;
     String startDate;

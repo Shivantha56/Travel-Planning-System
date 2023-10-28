@@ -610,9 +610,9 @@ $('.closeAddToHotelPackageContainer').on('click', function () {
 });
 $('#navigationPackageHotelTable').on('click', function () {
 
-    if (selectedPackage){
+    if (selectedPackage) {
 
-    }else {
+    } else {
         requestAllHotelDetailsForPackage();
     }
 
@@ -622,7 +622,12 @@ $('#navigationPackageHotelTable').on('click', function () {
 
 $('#navigationPackageVehicleTable').on('click', function () {
 
-    requestAllHotelDetailsForPackage();
+    if (selectedPackage) {
+
+    } else {
+        requestAllHotelDetailsForPackage();
+    }
+
     addToVehiclePackageContainer.css("display", "block");
 
 });
@@ -691,7 +696,7 @@ function requestAllVehicleDetailsForPackage() {
 
     let count = 1;
 
-    $('.vehicleDetailsBody>tr').empty();
+    $('.vehicleDetailsBodyPackages>tr').empty();
 
     $.ajax({
         method: "GET",
@@ -970,7 +975,8 @@ let packageCategory = $('.packageCategory').on("click", function () {
 
 function filterPackage(category) {
 
-    filterHotelData(category)
+    filterHotelData(category);
+    filterVehicleData(category);
 
 
 }
@@ -986,7 +992,7 @@ function filterHotelData(category) {
 
     $.ajax({
         method: "GET",
-        url: "http://localhost:8085/business/api/v1/hotel/filter/"+category,
+        url: "http://localhost:8085/business/api/v1/hotel/filter/" + category,
         // data:"JSON",
         success: function (response) {
 
@@ -1022,7 +1028,60 @@ function filterHotelData(category) {
 
 function filterVehicleData(category) {
 
+    let count = 1;
 
+    $('.vehicleDetailsBodyPackages>tr').empty();
+
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:8086/business/api/v1/vehicle/filter/`+category,
+        // dataType: 'JSON',
+        error: function (error) {
+
+        },
+
+        success: function (response) {
+
+            for (const responseKey in response) {
+
+                let driverId = response[responseKey].driverId;
+                let driverName = response[responseKey].driverName;
+                let driverContactNo = response[responseKey].driverContactNo;
+                let vehicleId = response[responseKey].vehicleId;
+                let vehicleNo = response[responseKey].vehicleNo;
+                let vehicleBrand = response[responseKey].vehicleBrand;
+                let category = response[responseKey].category;
+                let fuelType = response[responseKey].fuelType;
+                let hybrid = response[responseKey].hybrid;
+                let fuelUsage = response[responseKey].fuelUsage;
+                let vehicleFrontImage = response[responseKey].vehicleFrontImage;
+                let vehicleRearImage = response[responseKey].vehicleRearImage;
+                let vehicleSideImage = response[responseKey].vehicleSideImage;
+                let vehicleFrontInteriorImage = response[responseKey].vehicleFrontInteriorImage;
+                let vehicleRearInteriorImage = response[responseKey].vehicleRearInteriorImage;
+                let seatCapacity = response[responseKey].seatCapacity;
+                let vehicleType = response[responseKey].vehicleType;
+                let transmissionType = response[responseKey].transmissionType;
+                let remarks = response[responseKey].remarks;
+
+
+                let vehicleTableTemplate = `<tr id="rowVehiclePackage${count}" class="vehicle-package-table-data">
+<td>${vehicleId}</td>
+<td>${category}</td>
+<td class="vehicleColIdPackage">${vehicleNo}</td>
+<td>${vehicleBrand}</td>
+<td>${driverName}</td>
+<td>${fuelType}</td>
+<td>${seatCapacity}</td>
+<td>${vehicleType}</td>
+</tr>`;
+
+                $('.vehicleDetailsBodyPackages').append(vehicleTableTemplate);
+
+                count++;
+            }
+        }
+    });
 }
 
 

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -32,20 +33,25 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void saveOrder(OrderDetailsDTO orderDetailsDTO) {
+        orderDetailsDTO.setOrderDate(getTimeInstant());
+        orderDetailsDTO.setCountDays(getPeriods(orderDetailsDTO.getStartDate(),orderDetailsDTO.getEndDate()));
+        orderDetailsDTO.setCountNights(orderDetailsDTO.getCountDays()-1);
 
 
-//        orderDetailsRepository.save();
-        System.out.println(getTimeInstant());
 
 
     }
 
-    //get order placed time
 
+    //get current time
     public String getTimeInstant(){
 
         LocalDate now = LocalDate.now();
         return now.toString();
+    }
+
+    public int getPeriods(String startDate,String endDate){
+       return Period.between(LocalDate.parse(startDate),LocalDate.parse(endDate)).getDays()+1;
     }
 
 

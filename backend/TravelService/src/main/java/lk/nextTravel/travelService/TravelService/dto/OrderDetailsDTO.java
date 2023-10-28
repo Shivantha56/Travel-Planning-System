@@ -19,8 +19,8 @@ public class OrderDetailsDTO {
     String packageCategory;
     String startDate;
     String endDate;
-    String countDays;
-    String countNights;
+    int countDays;
+    int countNights;
     String travelArea;
     int noOfAdults;
     int noOfChildren;
@@ -33,7 +33,7 @@ public class OrderDetailsDTO {
     double totalValue;
     String remarks;
 
-    public OrderDetailsDTO(String userId, String vehicleId, String hotelId, String guideId, String packageCategory, String startDate, String endDate, String countDays, String countNights, String travelArea, int noOfAdults, int noOfChildren, String withPetsOrNot, String needGuideOrNO) {
+    public OrderDetailsDTO(String userId, String vehicleId, String hotelId, String guideId, String packageCategory, String startDate, String endDate, int countDays, int countNights, String travelArea, int noOfAdults, int noOfChildren, String withPetsOrNot, String needGuideOrNO) {
         this.userId = userId;
         this.vehicleId = vehicleId;
         this.hotelId = hotelId;

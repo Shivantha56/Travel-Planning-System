@@ -109,5 +109,11 @@ public class VehicleController {
     }
 
 
+    @GetMapping("filter/{category}")
+    public List<DriverVehicleDTO> filterVehicleData(@PathVariable String category){
+        return vehicleService.filterVehicleData(category);
+    }
+
+
 
 }

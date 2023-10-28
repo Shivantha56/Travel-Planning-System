@@ -18,4 +18,6 @@ public interface VehicleService {
     List<DriverVehicleDTO> getAll();
 
     DriverVehicleDTO getVehicleDetailsId(String vehicleId);
+
+    List<DriverVehicleDTO> filterVehicleData(String category);
 }

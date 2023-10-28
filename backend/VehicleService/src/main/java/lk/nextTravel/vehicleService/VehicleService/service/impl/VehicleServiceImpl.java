@@ -296,5 +296,64 @@ public class VehicleServiceImpl implements VehicleService {
         return addVehicle;
     }
 
+    @Override
+    public List<DriverVehicleDTO> filterVehicleData(String category) {
+
+        if (category.equals("1")){
+            return filterVehicle("Economy");
+        }else if (category.equals("2")){
+            return filterVehicle("Mid-range");
+        }else if (category.equals("3")){
+            return filterVehicle("Luxury");
+        }else if (category.equals("4")){
+            return filterVehicle("Super-Luxury");
+        }else {
+            throw new RuntimeException("can not filter the data");
+        }
+
+    }
+
+
+    public List<DriverVehicleDTO> filterVehicle(String vehicleCategory){
+
+        List<DriverVehicleDTO> list = new ArrayList<>();
+        DriverVehicleDTO addVehicle;
+
+            List<Vehicle> vehicles = vehicleRepository.findVehicleByCategoryEquals(vehicleCategory);
+
+            for (Vehicle vehicle: vehicles) {
+
+                Driver driver = vehicle.getDriver();
+
+                addVehicle = new DriverVehicleDTO(
+                        driver.getDriverId(),
+                        driver.getDriverName(),
+                        driver.getDriverContactNo(),
+                        vehicle.getVehicleId(),
+                        vehicle.getVehicleNo(),
+                        vehicle.getVehicleBrand(),
+                        vehicle.getCategory(),
+                        vehicle.getFuelType(),
+                        vehicle.getHybrid(),
+                        vehicle.getFuelUsage(),
+//                    vehicle.getVehicleFrontImage(),
+//                    vehicle.getVehicleRearImage(),
+//                    vehicle.getVehicleSideImage(),
+//                    vehicle.getVehicleFrontInteriorImage(),
+//                    vehicle.getVehicleRearInteriorImage(),
+                        vehicle.getSeatCapacity(),
+                        vehicle.getVehicleType(),
+                        vehicle.getTransmissionType(),
+                        vehicle.getRemarks()
+
+                );
+
+                list.add(addVehicle);
+//            }
+
+        }
+            return list;
+    }
+
 
 }

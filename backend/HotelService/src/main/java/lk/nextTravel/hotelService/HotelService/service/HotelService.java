@@ -4,6 +4,7 @@ import lk.nextTravel.hotelService.HotelService.dto.HotelDTO;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,4 +20,6 @@ public interface HotelService {
     List<HotelDTO> getAllHotelData();
 
     HotelDTO getHotelByHotelId(String hotelId);
+
+    ArrayList<HotelDTO> getDataFromFilterByCategory(String category);
 }

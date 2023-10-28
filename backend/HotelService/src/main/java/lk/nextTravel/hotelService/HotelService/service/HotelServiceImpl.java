@@ -140,5 +140,85 @@ public class HotelServiceImpl implements HotelService{
         }
     }
 
+    @Override
+    public ArrayList<HotelDTO> getDataFromFilterByCategory(String category) {
+
+        ArrayList<HotelDTO> hotels = new ArrayList<>();
+
+        if (category.equals("1")){
+
+            //returning hotel stars equal 2
+            List<Hotel> starRateMatch2 = hotelRepository.findHotelByStarRateEquals(2);
+            List<Hotel> starRateMatch3 = hotelRepository.findHotelByStarRateEquals(3);
+
+
+            //returning hotel stars equal 2
+            for (Hotel hotel:starRateMatch2) {
+                HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+                hotels.add(hotelDTO);
+            }
+
+            //returning hotel stars equal 3
+            for (Hotel hotel : starRateMatch3) {
+                HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+                hotels.add(hotelDTO);
+            }
+
+
+        }else if (category.equals("2")){
+
+            List<Hotel> starRateMatch3 = hotelRepository.findHotelByStarRateEquals(3);
+            List<Hotel> starRateMatch4 = hotelRepository.findHotelByStarRateEquals(4);
+
+
+            //returning hotel stars equal 2
+            for (Hotel hotel:starRateMatch3) {
+                HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+                hotels.add(hotelDTO);
+            }
+
+            //returning hotel stars equal 3
+            for (Hotel hotel : starRateMatch4) {
+                HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+                hotels.add(hotelDTO);
+            }
+
+        }else if (category.equals("3")){
+
+            List<Hotel> starRateMatch4 = hotelRepository.findHotelByStarRateEquals(3);
+            List<Hotel> starRateMatch5 = hotelRepository.findHotelByStarRateEquals(4);
+
+
+            //returning hotel stars equal 2
+            for (Hotel hotel:starRateMatch4) {
+                HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+                hotels.add(hotelDTO);
+            }
+
+            //returning hotel stars equal 3
+            for (Hotel hotel : starRateMatch5) {
+                HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+                hotels.add(hotelDTO);
+            }
+
+        }else if (category.equals("4")){
+
+            List<Hotel> starRateMatch5 = hotelRepository.findHotelByStarRateEquals(5);
+
+            //returning hotel stars equal 2
+            for (Hotel hotel:starRateMatch5) {
+                HotelDTO hotelDTO = modelsMapper.entityToDtoConversion(hotel);
+                hotels.add(hotelDTO);
+            }
+
+
+        }else {
+            throw new RuntimeException("Cannot filter hotelData");
+        }
+
+
+        return hotels;
+    }
+
 
 }

@@ -5,11 +5,18 @@ import lk.nextTravel.travelService.TravelService.dto.GuideOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
+import lk.nextTravel.travelService.TravelService.repository.OrderDetailsRepository;
 import lk.nextTravel.travelService.TravelService.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Autowired
+    OrderDetailsRepository orderDetailsRepository;
 
     int generateIntegerValue = 0;
     @Override
@@ -26,7 +33,33 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void saveOrder(OrderDetailsDTO orderDetailsDTO) {
 
+
+//        orderDetailsRepository.save();
+        System.out.println(getTimeInstant());
+
+
     }
+
+    //get order placed time
+
+    public String getTimeInstant(){
+
+        LocalDate now = LocalDate.now();
+        return now.toString();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void getVehicleDetails(VehicleOrderDTO vehicleOrderDTO,String vehicleId) {

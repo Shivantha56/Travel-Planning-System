@@ -230,12 +230,12 @@
                     <div class="d-flex">
 
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelects" aria-label="Floating label select example">
-                                <option selected>Open this select packages</option>
+                            <select name="packageCategory" class="form-select packageCategory" id="floatingSelects" aria-label="Floating label select example">
+                                <option value="0" selected>Open this select packages</option>
                                 <option value="1">Regular</option>
                                 <option value="2">Mid-level</option>
                                 <option value="3">Luxury</option>
-                                <option value="3">Super Luxury</option>
+                                <option value="4">Super Luxury</option>
                             </select>
                             <label for="floatingSelects">Select your preferred package</label>
                         </div>
@@ -259,7 +259,7 @@
                                     <div>
                                         <div>
                                             <p>HotelId : </p>
-                                            <p id="hotelIdCart"></p>
+                                            <p name="hotelId" id="hotelIdCart"></p>
                                         </div>
                                         <div>
                                             <p>Hotel Name : </p>
@@ -288,7 +288,7 @@
 
                                 <div class="hotel-cart-container">
                                     <div>
-                                        <p class="vehicleIdCart">Vehicle Id</p>
+                                        <p name="vehicleId" class="vehicleIdCart">Vehicle Id</p>
                                         <p class="vehicleBrandCart">Vehicle brand</p>
                                     </div>
                                     <div>
@@ -307,11 +307,14 @@
 
                                 <div class="hotel-cart-container">
                                     <div>
-                                        <p class="guideIdCart">Guide Id</p>
+                                        <p name="guideId" class="guideIdCart">Guide Id</p>
                                         <p class="guideNameCart">Guide Name</p>
                                     </div>
                                     <div>
-                                        <p class="manDayValueCart">Man day value</p>
+                                        <div>
+                                            <p>Man day value : </p>
+                                            <p class="manDayValueCart"></p>
+                                        </div>
                                         <p class="guideAgeCart">Guide age</p>
                                     </div>
                                     <div>
@@ -350,7 +353,7 @@
                         <div class="booking-details">
 
                             <label for="travellingArea" class="form-label">Select travelling area</label>
-                            <select id="travellingArea" class="form-select">
+                            <select name="travelArea" id="travellingArea" class="form-select">
                                 <option selected>Choose...</option>
                                 <option value="Kandy and Upcountry">Kandy and Upcountry</option>
                                 <option value="Eastern Coast">Eastern Coast</option>
@@ -374,17 +377,27 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4">
-                                <label for="withPetOrNOt" class="form-label">With pets or not</label>
-                                <select id="withPetOrNOt" class="form-select">
-                                    <option selected>Choose...</option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
+                            <div class="mt-4 row">
+                                <div class="col">
+                                    <label for="withPetOrNOt" class="form-label">With pets or not</label>
+                                    <select name="withPetsOrNot" id="withPetOrNOt" class="form-select">
+                                        <option selected>Choose...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="guideYesOrNo" class="form-label">Do you need guides</label>
+                                    <select name="needGuideOrNo" id="guideYesOrNo" class="form-select">
+                                        <option selected>Choose...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-floating mt-4">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                <textarea name="remarks" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
                                           style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Remarks</label>
                             </div>
@@ -393,13 +406,26 @@
 
                                 <div class="col">
                                     <label for="startDate" class="form-label">Start date</label><br>
-                                    <input id="startDate" type="date">
+                                    <input name="startDate" id="startDate" type="date">
                                 </div>
 
                                 <div class="col">
                                     <label for="endDate" class="form-label">End date</label><br>
-                                    <input id="endDate" type="date">
+                                    <input name="endDate" id="endDate" type="date">
                                 </div>
+
+                                <div class="col">
+
+                                    <input name="countDays" type="text" class="form-control" placeholder="Days"
+                                    aria-label="First name">
+                                </div>
+
+                                <div class="col">
+
+                                    <input name="countNights" type="text" class="form-control" placeholder="Nights"
+                                    aria-label="First name">
+                                </div>
+
                             </div>
 
 

@@ -8,7 +8,6 @@ const alertInstance = new AlertHub({
 })
 
 
-
 $(document).ready(function () {
 
     requestAllHotelDetails();
@@ -65,7 +64,7 @@ hotelRow.on('click', '.hotelDetailsBody > .hotel-table-data', function (event) {
 
     hotelDetailsModal.css("display", "flex")
     hotelDetailsModal.css("transition", "1s")
-    rowDetailsHotelAddToCart.css("display","none")
+    rowDetailsHotelAddToCart.css("display", "none")
 
 
 });
@@ -75,6 +74,9 @@ let hotelRowPackage = $('.table-hotels-packages');
 
 hotelRowPackage.on('click', '.hotelDetailsBodyPackages > .hotel-package-table-data', function (event) {
 
+    // if (selectedPackage){
+    //     fi
+    // }
     rowDetailsHotelAddToCart.css("display", "block")
     console.log("A");
 
@@ -266,7 +268,6 @@ guideRowPackage.on('click', '.guideDetailsBodyPackages > .guide-package-table-da
 });
 
 
-
 //hotel details pop up model controller
 
 let modalHotelId = $('.modalHotelId');
@@ -399,6 +400,7 @@ function getAllVehicleData() {
     });
 
 }
+
 let vehicleIds;
 let vehicleBrand;
 let vehicleFeeForDay;
@@ -608,7 +610,12 @@ $('.closeAddToHotelPackageContainer').on('click', function () {
 });
 $('#navigationPackageHotelTable').on('click', function () {
 
-    requestAllHotelDetailsForPackage();
+    if (selectedPackage){
+
+    }else {
+        requestAllHotelDetailsForPackage();
+    }
+
     addToHotelPackageContainer.css("display", "block");
 
 });
@@ -810,9 +817,17 @@ let hotelPrice;
 let vehiclePrice;
 let guidePrice;
 
-rowDetailsHotelAddToCart.on('click',function () {
+rowDetailsHotelAddToCart.on('click', function () {
 
-    hotelPrice = 0
+    // if (hotelPrice !== 0){
+    //     totalPrice = totalPrice-hotelPrice
+    // }
+
+    if (hotelPrice) {
+        totalPrice = totalPrice - hotelPrice
+    }
+
+    hotelPrice = 0.00
     console.log(hotelPrice);
 
     let hotelName = hotelNameD.text();
@@ -867,11 +882,17 @@ rowDetailsHotelAddToCart.on('click',function () {
     }
 
 
-    successNotification1("Hotel add to the cart")
-    totalPriceCal.text(hotelPrice+totalPrice)
- // console.log(hotelNameD.text());
-    // console.log();
-    console.log("this sis the add to cart btn");
+    successNotification1("Hotel add to the cart");
+    // totalPriceCal.text().remove();
+
+    let hotelPriceIntConverter = Number(hotelPrice);
+
+    totalPriceCal.text(totalPrice += hotelPriceIntConverter);
+    console.log("total" + totalPrice);
+
+    // // console.log(hotelNameD.text());
+    //    // console.log();
+    //    console.log("this sis the add to cart btn");
 
 });
 
@@ -882,7 +903,13 @@ let vehicleBrandCart = $('.vehicleBrandCart');
 let vehiclePriceCart = $('.vehiclePriceCart');
 let vehicleTypeCart = $('.vehicleTypeCart');
 
-rowDetailsVehicleAddToCart.on('click',function () {
+rowDetailsVehicleAddToCart.on('click', function () {
+
+    if (vehiclePrice) {
+        totalPrice = totalPrice - vehiclePrice;
+    }
+
+    vehiclePrice = 0.00
 
     vehicleIdCart.text(`Vehicle Id : ${vehicleIds}`);
     vehicleBrandCart.text(`Vehicle Brand : ${vehicleBrand}`);
@@ -890,6 +917,12 @@ rowDetailsVehicleAddToCart.on('click',function () {
     vehicleTypeCart.text(`Vehicle type : ${vehicleType}`);
 
     // totalPrice = totalPrice+vehicleFeeForDay;
+
+    vehiclePrice = vehiclePriceCart.text();
+    let convertVehiclePriceToInt = Number(vehiclePrice)
+
+
+    totalPriceCal.text(totalPrice += convertVehiclePriceToInt);
 
     successNotification1("You added vehicle to the package")
 
@@ -900,15 +933,98 @@ let guideIdCart = $('.guideIdCart');
 let guideNameCart = $('.guideNameCart');
 let manDayValueCart = $('.manDayValueCart');
 let guideAgeCart = $('.guideAgeCart');
-rowDetailsGuideAddToCart.on('click',function () {
+rowDetailsGuideAddToCart.on('click', function () {
+
+    if (guidePrice) {
+        totalPrice = totalPrice - guidePrice;
+    }
+
+    guidePrice = 0.00
 
     guideIdCart.text(`Guide id : ${guideId}`);
     guideNameCart.text(`Guide name : ${guideName}`);
-    manDayValueCart.text(`Man day value : ${manDayValue}`);
+    manDayValueCart.text(`${manDayValue}`);
     guideAgeCart.text(`Guide age cart : ${guideAge}`);
+
+    guidePrice = manDayValueCart.text();
+
+    let guidePriceIntConverter = Number(guidePrice);
+    let totalPriceConvertToNumber = Number(totalPrice);
+
+    // totalPriceCal.clear();
+    totalPriceCal.text(totalPrice += guidePriceIntConverter);
+    console.log("total = " + totalPrice);
 
     successNotification1("Guide added to the package")
 });
+
+let selectedPackage;
+
+let packageCategory = $('.packageCategory').on("click", function () {
+
+    selectedPackage = 0
+    selectedPackage = packageCategory.val();
+    filterPackage(selectedPackage)
+
+});
+
+function filterPackage(category) {
+
+    filterHotelData(category)
+
+
+}
+
+function filterHotelData(category) {
+
+
+    let count = 1;
+
+    let tableBody = $('.hotelDetailsBodyPackages>tr');
+    tableBody.empty();
+
+
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8085/business/api/v1/hotel/filter/"+category,
+        // data:"JSON",
+        success: function (response) {
+
+            for (const i in response) {
+
+                hotelName = response[i].hotelName;
+                hotelLocation = response[i].hotelLocation;
+                contactNoOne = response[i].contactNoOne;
+                contactNoTwo = response[i].contactNoTwo;
+                hotelContactEmail = response[i].hotelContactEmail;
+                starRate = response[i].starRate;
+
+
+                let setTableRow = `<tr id="rowhotelPackage${count}" class="hotel-package-table-data">
+<td>${hotelName}</td>
+<td>${hotelLocation}</td>
+<td>${contactNoOne}</td>
+<td>${contactNoTwo}</td>
+<td class="hotelPackageEmail">${hotelContactEmail}</td>
+<td>${starRate}</td>
+</tr>`;
+                count++;
+
+                $('.hotelDetailsBodyPackages').append(setTableRow);
+
+            }
+
+        }
+
+    });
+
+}
+
+function filterVehicleData(category) {
+
+
+}
+
 
 function successNotification1(message) {
 
@@ -920,6 +1036,7 @@ function successNotification1(message) {
     });
 
 }
+
 function errorNotification1(message) {
 
     alertInstance.showAlert({

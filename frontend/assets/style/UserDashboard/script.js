@@ -1111,7 +1111,7 @@ $('#bookingBtn').on("click",function () {
                             packageCategory:selectedPackage,startDate:startDate,
                             endDate:endDate,countDays:countDays,countNights:countNights,
                             travelArea:travellingArea,noOfChildren:noOfChilds,noOfAdults:noOfAdults,
-                            withPetsOrNot:withPetsOrNot,needGuideOrNot:needGuideOrNot,
+                            withPetsOrNot:withPetsOrNot,needGuideOrNo:needGuideOrNot,
                             totalValue:totalPrice,remarks:remarks}
     console.log(orderDetails);
 
@@ -1120,7 +1120,7 @@ $('#bookingBtn').on("click",function () {
     $.ajax({
         method: "POST",
         data: orderDetails,
-        url: "http://localhost:8085/business/api/v1/order",
+        url: "http://localhost:8087/business/api/v1/order",
 
         contentType: "application/x-www-form-urlencoded",
         success:function (response) {

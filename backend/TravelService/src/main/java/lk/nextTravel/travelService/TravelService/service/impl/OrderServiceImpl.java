@@ -7,6 +7,7 @@ import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
 import lk.nextTravel.travelService.TravelService.repository.OrderDetailsRepository;
 import lk.nextTravel.travelService.TravelService.service.OrderService;
+import lk.nextTravel.travelService.TravelService.util.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderDetailsRepository orderDetailsRepository;
-
+    @Autowired
+    Converter converter;
     int generateIntegerValue = 0;
 
     @Override
@@ -35,11 +37,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void saveOrder(OrderDetailsDTO orderDetailsDTO, VehicleOrderDTO vehicleOrderDTO ,
+    public void saveOrder(OrderDetailsDTO orderDetailsDTO, VehicleOrderDTO vehicleOrderDTO,
                           HotelOrderDTO hotelOrderDTO, GuideOrderDTO guideOrderDTO) {
 
 
-        int totalHeadCount = orderDetailsDTO.getNoOfAdults()+orderDetailsDTO.getNoOfChildren();
+        int totalHeadCount = orderDetailsDTO.getNoOfAdults() + orderDetailsDTO.getNoOfChildren();
 
         orderDetailsDTO.setOrderDate(getTimeInstant());
         orderDetailsDTO.setCountDays(getPeriods(orderDetailsDTO.getStartDate(), orderDetailsDTO.getEndDate()));
@@ -48,15 +50,15 @@ public class OrderServiceImpl implements OrderService {
 
         double hotelFee;
 
-        if (orderDetailsDTO.getPackageCategory().equals("1")){
-           hotelFee = hotelOrderDTO.getHotelFeeOption1();
-        }else if (orderDetailsDTO.getPackageCategory().equals("2")){
+        if (orderDetailsDTO.getPackageCategory().equals("1")) {
+            hotelFee = hotelOrderDTO.getHotelFeeOption1();
+        } else if (orderDetailsDTO.getPackageCategory().equals("2")) {
             hotelFee = hotelOrderDTO.getHotelFeeOption2();
-        }else if (orderDetailsDTO.getPackageCategory().equals("3")){
+        } else if (orderDetailsDTO.getPackageCategory().equals("3")) {
             hotelFee = hotelOrderDTO.getHotelFeeOption3();
-        }else if (orderDetailsDTO.getPackageCategory().equals("4")){
+        } else if (orderDetailsDTO.getPackageCategory().equals("4")) {
             hotelFee = hotelOrderDTO.getHotelFeeOption4();
-        }else {
+        } else {
             throw new RuntimeException("enter valid data");
         }
 
@@ -70,8 +72,7 @@ public class OrderServiceImpl implements OrderService {
         orderDetailsDTO.setTotalGuideFee(totalPrices[2]);
         orderDetailsDTO.setTotalValue(totalPrices[3]);
 
-
-
+        orderDetailsRepository.save(converter.convertToGuideEntity(orderDetailsDTO));
 
 
     }
@@ -103,7 +104,7 @@ public class OrderServiceImpl implements OrderService {
         priceCount[2] = guidePrice * days;
 
         // calculate total price
-        priceCount[3] = priceCount[0]+priceCount[1]+priceCount[2];
+        priceCount[3] = priceCount[0] + priceCount[1] + priceCount[2];
 
         System.out.println(Arrays.toString(priceCount));
 

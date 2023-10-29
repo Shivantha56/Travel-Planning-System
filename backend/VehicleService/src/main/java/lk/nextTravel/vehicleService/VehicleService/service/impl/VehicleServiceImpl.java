@@ -64,7 +64,8 @@ public class VehicleServiceImpl implements VehicleService {
                     vehicle.getVehicleType(),
                     vehicle.getTransmissionType(),
                     driver,
-                    vehicle.getRemarks()
+                    vehicle.getRemarks(),
+                    vehicle.getVehiclePrice()
 
             );
 
@@ -110,7 +111,8 @@ public class VehicleServiceImpl implements VehicleService {
                     vehicle.getVehicleType(),
                     vehicle.getTransmissionType(),
                     driver,
-                    vehicle.getRemarks()
+                    vehicle.getRemarks(),
+                    vehicle.getVehiclePrice()
 
             );
 

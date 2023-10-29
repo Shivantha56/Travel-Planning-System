@@ -29,8 +29,9 @@ public class VehicleDTO {
     String transmissionType;
     String driverId;
     String remarks;
+    double vehiclePrice;
 
-    public VehicleDTO(String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, byte[] vehicleFrontImage, byte[] vehicleRearImage, byte[] vehicleSideImage, byte[] vehicleFrontInteriorImage, byte[] vehicleRearInteriorImage, int seatCapacity, String vehicleType, String transmissionType, String driverId, String remarks) {
+    public VehicleDTO(String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, byte[] vehicleFrontImage, byte[] vehicleRearImage, byte[] vehicleSideImage, byte[] vehicleFrontInteriorImage, byte[] vehicleRearInteriorImage, int seatCapacity, String vehicleType, String transmissionType, String driverId, String remarks, double vehiclePrice) {
         this.vehicleNo = vehicleNo;
         this.vehicleBrand = vehicleBrand;
         this.category = category;
@@ -47,5 +48,6 @@ public class VehicleDTO {
         this.transmissionType = transmissionType;
         this.driverId = driverId;
         this.remarks = remarks;
+        this.vehiclePrice = vehiclePrice;
     }
 }

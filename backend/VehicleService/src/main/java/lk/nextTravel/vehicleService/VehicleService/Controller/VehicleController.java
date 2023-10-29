@@ -35,13 +35,14 @@ public class VehicleController {
                             @RequestPart String vehicleType,
                             @RequestPart String transmissionType,
                             @RequestPart String driverId,
-                            @RequestPart String remarks){
+                            @RequestPart String remarks,
+                            @RequestPart String vehiclePrice){
 
 
         VehicleDTO vehicleDTO = new VehicleDTO(vehicleNo,
                 vehicleBrand,category,fuelType,hybrid,Double.parseDouble(fuelUsage),vehicleFrontImage,vehicleRearImage,
                 vehicleSideImage,vehicleFrontInteriorImage,vehicleRearInteriorImage,Integer.parseInt(seatCapacity),
-                vehicleType,transmissionType,driverId,remarks);
+                vehicleType,transmissionType,driverId,remarks,Double.parseDouble(vehiclePrice));
 
 
         vehicleService.saveVehicle(vehicleDTO);
@@ -66,13 +67,14 @@ public class VehicleController {
                        @RequestPart String vehicleType,
                        @RequestPart String transmissionType,
                        @RequestPart String driverId,
-                       @RequestPart String remarks){
+                       @RequestPart String remarks,
+                        @RequestPart String vehiclePrice){
 
 
         VehicleDTO vehicleDTO = new VehicleDTO(Long.parseLong(vehicleId),vehicleNo,
                 vehicleBrand,category,fuelType,hybrid,Double.parseDouble(fuelUsage),vehicleFrontImage,vehicleRearImage,
                 vehicleSideImage,vehicleFrontInteriorImage,vehicleRearInteriorImage,Integer.parseInt(seatCapacity),
-                vehicleType,transmissionType,driverId,remarks);
+                vehicleType,transmissionType,driverId,remarks,Double.parseDouble(vehiclePrice));
 
         vehicleService.updateVehicleDetails(vehicleDTO);
 

@@ -1,6 +1,8 @@
 package lk.nextTravel.travelService.TravelService.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
@@ -16,7 +18,8 @@ import lombok.Setter;
 public class OrderDetails {
 
     @Id
-    String orderId;
+            @GeneratedValue(strategy = GenerationType.AUTO)
+    int orderId;
     String userId;
     @Timestamp
     String orderDate;

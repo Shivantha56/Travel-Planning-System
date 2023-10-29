@@ -38,7 +38,7 @@ public class OrderController {
                 orderDetailsDTO.getEndDate(),orderDetailsDTO.getCountDays(),
                 orderDetailsDTO.getCountNights(),orderDetailsDTO.getTravelArea(),
                 orderDetailsDTO.getNoOfAdults(),orderDetailsDTO.getNoOfChildren(),
-                orderDetailsDTO.getWithPetsOrNot(),orderDetailsDTO.getNeedGuideOrNO()
+                orderDetailsDTO.getWithPetsOrNot(),orderDetailsDTO.getNeedGuideOrNo()
         );
 
         WebClient webClientVehicle = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
@@ -57,7 +57,7 @@ public class OrderController {
         HotelOrderDTO hotelDetails = orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
 
         GuideOrderDTO guideOrderDTO = null;
-        if (orderDetailsDTO.getNeedGuideOrNO().equals("Yes") || orderDetailsDTO.getNeedGuideOrNO().equals("yes")){
+        if (orderDetailsDTO.getNeedGuideOrNo().equals("Yes") || orderDetailsDTO.getNeedGuideOrNo().equals("yes")){
             WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getGuideId());
             Mono<GuideOrderDTO> guideOrderDTOMono = webClientGuide
                     .get()

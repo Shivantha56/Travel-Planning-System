@@ -26,7 +26,7 @@ public class OrderDetailsDTO {
     int noOfChildren;
     int totalHeadCount;
     String withPetsOrNot;
-    String needGuideOrNO;
+    String needGuideOrNo;
     double totalHotelValue;
     double totalGuideFee;
     double totalVehicleFee;
@@ -47,6 +47,6 @@ public class OrderDetailsDTO {
         this.noOfAdults = noOfAdults;
         this.noOfChildren = noOfChildren;
         this.withPetsOrNot = withPetsOrNot;
-        this.needGuideOrNO = needGuideOrNO;
+        this.needGuideOrNo = needGuideOrNO;
     }
 }

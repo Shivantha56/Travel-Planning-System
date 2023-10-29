@@ -34,9 +34,10 @@ public class DriverVehicleDTO {
     String transmissionType;
 //    Driver driverAssignDriver;
     String remarks;
+    double vehiclePrice;
 
 
-    public DriverVehicleDTO(long driverId, String driverName, String driverContactNo, long vehicleId, String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, int seatCapacity, String vehicleType, String transmissionType, String remarks) {
+    public DriverVehicleDTO(long driverId, String driverName, String driverContactNo, long vehicleId, String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, int seatCapacity, String vehicleType, String transmissionType, String remarks, double vehiclePrice) {
         this.driverId = driverId;
         this.driverName = driverName;
         this.driverContactNo = driverContactNo;
@@ -51,5 +52,6 @@ public class DriverVehicleDTO {
         this.vehicleType = vehicleType;
         this.transmissionType = transmissionType;
         this.remarks = remarks;
+        this.vehiclePrice = vehiclePrice;
     }
 }

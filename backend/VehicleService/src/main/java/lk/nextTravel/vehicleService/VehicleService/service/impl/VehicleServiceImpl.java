@@ -158,7 +158,8 @@ public class VehicleServiceImpl implements VehicleService {
                     vehicle.get().getVehicleType(),
                     vehicle.get().getTransmissionType(),
 //                    vehicle.get().getDriver(),
-                    vehicle.get().getRemarks()
+                    vehicle.get().getRemarks(),
+                    vehicle.get().getVehiclePrice()
 
                     );
 
@@ -226,7 +227,8 @@ public class VehicleServiceImpl implements VehicleService {
                     vehicle.getSeatCapacity(),
                     vehicle.getVehicleType(),
                     vehicle.getTransmissionType(),
-                    vehicle.getRemarks()
+                    vehicle.getRemarks(),
+                    vehicle.getVehiclePrice()
 
             );
 
@@ -274,7 +276,8 @@ public class VehicleServiceImpl implements VehicleService {
                     vehicle.get().getVehicleType(),
                     vehicle.get().getTransmissionType(),
 //                    vehicle.get().getDriver(),
-                    vehicle.get().getRemarks()
+                    vehicle.get().getRemarks(),
+                    vehicle.get().getVehiclePrice()
 
             );
 
@@ -346,7 +349,8 @@ public class VehicleServiceImpl implements VehicleService {
                         vehicle.getSeatCapacity(),
                         vehicle.getVehicleType(),
                         vehicle.getTransmissionType(),
-                        vehicle.getRemarks()
+                        vehicle.getRemarks(),
+                        vehicle.getVehiclePrice()
 
                 );
 

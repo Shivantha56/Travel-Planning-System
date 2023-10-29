@@ -10,8 +10,10 @@ import lk.nextTravel.travelService.TravelService.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Arrays;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -20,22 +22,54 @@ public class OrderServiceImpl implements OrderService {
     OrderDetailsRepository orderDetailsRepository;
 
     int generateIntegerValue = 0;
+
     @Override
     public String generateOrderId() {
 
         String prefix = "NEXT";
-        generateIntegerValue+= 1;
+        generateIntegerValue += 1;
 
-        String generatedId = prefix+generateIntegerValue;
+        String generatedId = prefix + generateIntegerValue;
         System.out.println(generatedId);
         return generatedId;
     }
 
     @Override
-    public void saveOrder(OrderDetailsDTO orderDetailsDTO) {
+    public void saveOrder(OrderDetailsDTO orderDetailsDTO, VehicleOrderDTO vehicleOrderDTO ,
+                          HotelOrderDTO hotelOrderDTO, GuideOrderDTO guideOrderDTO) {
+
+
+        int totalHeadCount = orderDetailsDTO.getNoOfAdults()+orderDetailsDTO.getNoOfChildren();
+
         orderDetailsDTO.setOrderDate(getTimeInstant());
-        orderDetailsDTO.setCountDays(getPeriods(orderDetailsDTO.getStartDate(),orderDetailsDTO.getEndDate()));
-        orderDetailsDTO.setCountNights(orderDetailsDTO.getCountDays()-1);
+        orderDetailsDTO.setCountDays(getPeriods(orderDetailsDTO.getStartDate(), orderDetailsDTO.getEndDate()));
+        orderDetailsDTO.setCountNights(orderDetailsDTO.getCountDays() - 1);
+        orderDetailsDTO.setTotalHeadCount(totalHeadCount);
+
+        double hotelFee;
+
+        if (orderDetailsDTO.getPackageCategory().equals("1")){
+           hotelFee = hotelOrderDTO.getHotelFeeOption1();
+        }else if (orderDetailsDTO.getPackageCategory().equals("2")){
+            hotelFee = hotelOrderDTO.getHotelFeeOption2();
+        }else if (orderDetailsDTO.getPackageCategory().equals("3")){
+            hotelFee = hotelOrderDTO.getHotelFeeOption3();
+        }else if (orderDetailsDTO.getPackageCategory().equals("4")){
+            hotelFee = hotelOrderDTO.getHotelFeeOption4();
+        }else {
+            throw new RuntimeException("enter valid data");
+        }
+
+
+        double[] totalPrices = calculatePrice(vehicleOrderDTO.getVehiclePrice(), hotelFee,
+                guideOrderDTO.getManDayValue(), orderDetailsDTO.getCountDays()
+        );
+
+        orderDetailsDTO.setTotalVehicleFee(totalPrices[1]);
+        orderDetailsDTO.setTotalHotelValue(totalPrices[0]);
+        orderDetailsDTO.setTotalGuideFee(totalPrices[2]);
+        orderDetailsDTO.setTotalValue(totalPrices[3]);
+
 
 
 
@@ -44,46 +78,58 @@ public class OrderServiceImpl implements OrderService {
 
 
     //get current time
-    public String getTimeInstant(){
+    public String getTimeInstant() {
 
         LocalDate now = LocalDate.now();
         return now.toString();
     }
 
-    public int getPeriods(String startDate,String endDate){
-       return Period.between(LocalDate.parse(startDate),LocalDate.parse(endDate)).getDays()+1;
+    public int getPeriods(String startDate, String endDate) {
+        return Period.between(LocalDate.parse(startDate), LocalDate.parse(endDate)).getDays() + 1;
+    }
+
+    public double[] calculatePrice(double vehiclePrice, double hotelPrice, double guidePrice, int days) {
+
+
+        double[] priceCount = new double[4];
+
+        // calculate total hotel price
+        priceCount[0] = hotelPrice * days;
+
+        // calculate total vehicle price
+        priceCount[1] = vehiclePrice * days;
+
+        // calculate total guide price
+        priceCount[2] = guidePrice * days;
+
+        // calculate total price
+        priceCount[3] = priceCount[0]+priceCount[1]+priceCount[2];
+
+        System.out.println(Arrays.toString(priceCount));
+
+        return priceCount;
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
-    public void getVehicleDetails(VehicleOrderDTO vehicleOrderDTO,String vehicleId) {
+    public VehicleOrderDTO getVehicleDetails(VehicleOrderDTO vehicleOrderDTO, String vehicleId) {
+
 
         System.out.println(vehicleOrderDTO.getVehicleId());
-
 //        if (vehicleOrderDTO.getVehicleId().equals(vehicleId)) throw new RuntimeException("No vehicle found");
-
+        return vehicleOrderDTO;
     }
 
     @Override
-    public void getHotelDetails(HotelOrderDTO hotelOrderDTO, String hotelId) {
+    public HotelOrderDTO getHotelDetails(HotelOrderDTO hotelOrderDTO, String hotelId) {
         System.out.println(hotelOrderDTO.getHotelName());
+        return hotelOrderDTO;
     }
 
     @Override
-    public void getGuideDetails(GuideOrderDTO block, String guideId) {
-        System.out.println(block.getGuideName());
+    public GuideOrderDTO getGuideDetails(GuideOrderDTO guideOrderDTO, String guideId) {
+        System.out.println(guideOrderDTO.getGuideName());
+        return guideOrderDTO;
     }
 
 

@@ -11,13 +11,13 @@ public interface OrderService {
 
     String generateOrderId();
 
-    void saveOrder(OrderDetailsDTO orderDetailsDTO);
+    void saveOrder(OrderDetailsDTO orderDetailsDTO, VehicleOrderDTO vehicleOrderDTO, HotelOrderDTO hotelOrderDTO, GuideOrderDTO guideOrderDTO);
 
-    void getVehicleDetails(VehicleOrderDTO vehicleOrderDTO,String vehicleId);
+    VehicleOrderDTO getVehicleDetails(VehicleOrderDTO vehicleOrderDTO,String vehicleId);
 
-    void getHotelDetails(HotelOrderDTO block, String hotelId);
+    HotelOrderDTO getHotelDetails(HotelOrderDTO block, String hotelId);
 
-    void getGuideDetails(GuideOrderDTO block, String guideId);
+    GuideOrderDTO getGuideDetails(GuideOrderDTO block, String guideId);
 //    String generateOrderIds();
 
 }

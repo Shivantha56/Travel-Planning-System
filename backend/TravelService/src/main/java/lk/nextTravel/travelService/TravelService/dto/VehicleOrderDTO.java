@@ -13,5 +13,6 @@ public class VehicleOrderDTO {
     String vehicleName;
     String driverId;
     String driverName;
+    double vehiclePrice;
 
 }

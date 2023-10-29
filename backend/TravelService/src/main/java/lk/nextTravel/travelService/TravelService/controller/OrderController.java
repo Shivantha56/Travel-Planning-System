@@ -41,39 +41,35 @@ public class OrderController {
                 orderDetailsDTO.getWithPetsOrNot(),orderDetailsDTO.getNeedGuideOrNO()
         );
 
-        orderService.saveOrder(orderData);
-//        WebClient webClientVehicle = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
-//        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClientVehicle.get()
-//                .retrieve()
-//                .bodyToMono(VehicleOrderDTO.class);
-//
-//
-//        WebClient webClientHotel = WebClient.create(hotelEndPoint + "/id/" + orderDetailsDTO.getHotelId());
-//        Mono<HotelOrderDTO> hotelOrderDTOMono = webClientHotel
-//                .get()
-//                .retrieve().bodyToMono(HotelOrderDTO.class);
-//
-//
-////        WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getHotelId());
-////        Mono<GuideOrderDTO> guideOrderDTOMono = webClientGuide
-////                .get()
-////                .retrieve().bodyToMono(GuideOrderDTO.class);
-//
-//
-//        orderService.getVehicleDetails(vehicleOrderDTOMono.block(), orderDetailsDTO.getVehicleId());
-//        orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
-//
-//        if (orderDetailsDTO.getNeedGuideOrNO().equals("Yes") || orderDetailsDTO.getNeedGuideOrNO().equals("yes")){
-//            WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getGuideId());
-//            Mono<GuideOrderDTO> guideOrderDTOMono = webClientGuide
-//                    .get()
-//                    .retrieve().bodyToMono(GuideOrderDTO.class);
-//
-//            orderService.getGuideDetails(guideOrderDTOMono.block(), orderDetailsDTO.getGuideId());
-//        }
+        WebClient webClientVehicle = WebClient.create(vehicleEndPoint + "/id/" + orderDetailsDTO.getVehicleId());
+        Mono<VehicleOrderDTO> vehicleOrderDTOMono = webClientVehicle.get()
+                .retrieve()
+                .bodyToMono(VehicleOrderDTO.class);
 
 
-//        orderService.saveOrder(orderDetailsDTO);
+        WebClient webClientHotel = WebClient.create(hotelEndPoint + "/id/" + orderDetailsDTO.getHotelId());
+        Mono<HotelOrderDTO> hotelOrderDTOMono = webClientHotel
+                .get()
+                .retrieve().bodyToMono(HotelOrderDTO.class);
+
+
+        VehicleOrderDTO vehicleDetails = orderService.getVehicleDetails(vehicleOrderDTOMono.block(), orderDetailsDTO.getVehicleId());
+        HotelOrderDTO hotelDetails = orderService.getHotelDetails(hotelOrderDTOMono.block(), orderDetailsDTO.getHotelId());
+
+        GuideOrderDTO guideOrderDTO = null;
+        if (orderDetailsDTO.getNeedGuideOrNO().equals("Yes") || orderDetailsDTO.getNeedGuideOrNO().equals("yes")){
+            WebClient webClientGuide = WebClient.create(guideEndpoint + "/id/" + orderDetailsDTO.getGuideId());
+            Mono<GuideOrderDTO> guideOrderDTOMono = webClientGuide
+                    .get()
+                    .retrieve().bodyToMono(GuideOrderDTO.class);
+
+            guideOrderDTO = orderService.getGuideDetails(guideOrderDTOMono.block(), orderDetailsDTO.getGuideId());
+        }else {
+            guideOrderDTO = new GuideOrderDTO();
+            guideOrderDTO.setManDayValue(0.00);
+        }
+
+        orderService.saveOrder(orderData,vehicleDetails,hotelDetails,guideOrderDTO);
 
 
     }

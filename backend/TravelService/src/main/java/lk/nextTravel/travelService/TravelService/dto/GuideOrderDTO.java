@@ -13,5 +13,6 @@ public class GuideOrderDTO {
 
     private String guideId;
     private String guideName;
+    double manDayValue;
 
 }

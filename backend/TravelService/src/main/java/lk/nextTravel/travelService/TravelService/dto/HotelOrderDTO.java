@@ -11,6 +11,11 @@ public class HotelOrderDTO {
 
     String hotelId;
     String hotelName;
+    double hotelFeeOption1;
+    double hotelFeeOption2;
+    double hotelFeeOption3;
+    double hotelFeeOption4;
+    int starRate;
 
 
 

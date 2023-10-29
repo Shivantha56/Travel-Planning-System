@@ -222,219 +222,240 @@
 
 
         <section class="package-container">
+            <form id="saveOrderDetails">
 
-            <div class="package-details-container">
+                <div class="package-details-container">
 
-                <div id="packageContainer">
+                    <div id="packageContainer">
 
-                    <div class="d-flex">
+                        <div class="d-flex">
 
-                        <div class="form-floating">
-                            <select name="packageCategory" class="form-select packageCategory" id="floatingSelects" aria-label="Floating label select example">
-                                <option value="0" selected>Open this select packages</option>
-                                <option value="1">Regular</option>
-                                <option value="2">Mid-level</option>
-                                <option value="3">Luxury</option>
-                                <option value="4">Super Luxury</option>
-                            </select>
-                            <label for="floatingSelects">Select your preferred package</label>
+                            <div class="form-floating">
+                                <select name="packageCategory" class="form-select packageCategory" id="floatingSelects"
+                                        aria-label="Floating label select example">
+                                    <option value="0" selected>Open this select packages</option>
+                                    <option value="1">Regular</option>
+                                    <option value="2">Mid-level</option>
+                                    <option value="3">Luxury</option>
+                                    <option value="4">Super Luxury</option>
+                                </select>
+                                <label for="floatingSelects">Select your preferred package</label>
+                            </div>
+
+                            <button type="button" id="navigationPackageHotelTable" class="btn btn-primary">
+                                add new hotel
+                            </button>
+                            <button type="button" id="navigationPackageVehicleTable" class="btn btn-primary">
+                                add new vehicle
+                            </button>
+                            <button type="button" id="navigationPackageGuideTable" class="btn btn-primary">
+                                add new Guide
+                            </button>
                         </div>
 
-                        <button id="navigationPackageHotelTable" class="btn btn-primary">
-                            add new hotel
-                        </button>
-                        <button id="navigationPackageVehicleTable" class="btn btn-primary">
-                            add new vehicle
-                        </button>
-                        <button id="navigationPackageGuideTable" class="btn btn-primary">
-                            add new Guide
-                        </button>
-                    </div>
+                        <div class="package-items-container">
 
-                    <div class="package-items-container">
+                            <div class="cart-item-container">
+                                <div>
+                                    <div class="hotel-cart-container">
+                                        <div>
+                                            <div>
+                                                <p>HotelId : </p>
+                                                <p name="hotelId" id="hotelIdCart"></p>
+                                            </div>
+                                            <div>
+                                                <p>Hotel Name : </p>
+                                                <p id="hotelNameCart"></p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <p>Price : </p>
+                                                <p id="hotelPriceCart"></p>
+                                            </div>
+                                            <div>
+                                                <p>Package : </p>
+                                                <p id="hotelPackageCart"></p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                     viewBox="0 0 384 512">
+                                                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                                    <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                        <div class="cart-item-container">
-                            <div>
-                                <div class="hotel-cart-container">
-                                    <div>
+                                    <div class="hotel-cart-container">
                                         <div>
-                                            <p>HotelId : </p>
-                                            <p name="hotelId" id="hotelIdCart"></p>
+                                            <div>
+                                                <p name="vehicleId">Vehicle Id</p>
+                                                <p class="vehicleIdCart"></p>
+                                            </div>
+                                            <div>
+                                                <p>Vehicle brand</p>
+                                                <p class="vehicleBrandCart"></p>
+                                            </div>
+
+
                                         </div>
                                         <div>
-                                            <p>Hotel Name : </p>
-                                            <p id="hotelNameCart"></p>
+                                            <div>
+                                                <p>Vehicle price : </p>
+                                                <p class="vehiclePriceCart"></p>
+                                            </div>
+                                            <div>
+                                                <p>Vehicle type : </p>
+                                                <p class="vehicleTypeCart"></p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                     viewBox="0 0 384 512">
+                                                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                                    <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div>
+
+                                    <div class="hotel-cart-container">
                                         <div>
-                                            <p>Price : </p>
-                                            <p id="hotelPriceCart"></p>
+                                            <p name="guideId" class="guideIdCart">Guide Id</p>
+                                            <p class="guideNameCart">Guide Name</p>
                                         </div>
                                         <div>
-                                            <p>Package : </p>
-                                            <p id="hotelPackageCart"></p>
+                                            <div>
+                                                <p>Man day value : </p>
+                                                <p class="manDayValueCart"></p>
+                                            </div>
+                                            <p class="guideAgeCart">Guide age</p>
+                                        </div>
+                                        <div>
+                                            <button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                     viewBox="0 0 384 512">
+                                                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                                    <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div>
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                                                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
-                                            </svg>
-                                        </button>
+
+                                    <div class="totalValue">
+                                        <p>total = </p>
+                                        <p class="totalPriceCal">0.00</p>
                                     </div>
+
+                                    <button type="button" id="bookingBtn">
+                                        Booking
+                                    </button>
+
+
                                 </div>
 
-                                <div class="hotel-cart-container">
-                                    <div>
-                                        <p name="vehicleId" class="vehicleIdCart">Vehicle Id</p>
-                                        <p class="vehicleBrandCart">Vehicle brand</p>
-                                    </div>
-                                    <div>
-                                        <p class="vehiclePriceCart">Vehicle price</p>
-                                        <p class="vehicleTypeCart">Vehicle type</p>
-                                    </div>
-                                    <div>
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                                                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="hotel-cart-container">
-                                    <div>
-                                        <p name="guideId" class="guideIdCart">Guide Id</p>
-                                        <p class="guideNameCart">Guide Name</p>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <p>Man day value : </p>
-                                            <p class="manDayValueCart"></p>
-                                        </div>
-                                        <p class="guideAgeCart">Guide age</p>
-                                    </div>
-                                    <div>
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                                                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="totalValue">
-                                    <p>total = </p>
-                                    <p class="totalPriceCal">0.00</p>
-                                </div>
-
-                                <button id="bookingBtn">
-                                    Booking
-                                </button>
-
+                                <!--                            <div class="row g-3 mt-3">-->
+                                <!--                                <div class="col">-->
+                                <!--                                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">-->
+                                <!--                                </div>-->
+                                <!--                                <div class="col">-->
+                                <!--                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
 
                             </div>
 
-                            <!--                            <div class="row g-3 mt-3">-->
-                            <!--                                <div class="col">-->
-                            <!--                                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">-->
-                            <!--                                </div>-->
-                            <!--                                <div class="col">-->
-                            <!--                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
+                            <div class="booking-details">
 
-                        </div>
+                                <label for="travellingArea" class="form-label">Select travelling area</label>
+                                <select name="travelArea" id="travellingArea" class="form-select">
+                                    <option selected>Choose...</option>
+                                    <option value="Kandy and Upcountry">Kandy and Upcountry</option>
+                                    <option value="Eastern Coast">Eastern Coast</option>
+                                    <option value="Capital Colombo">Capital Colombo</option>
+                                    <option value="Western Coast">Western Coast</option>
+                                    <option value="North Peninsula">North Peninsula</option>
+                                    <option value="Down South">Down South</option>
+                                    <option value="Sigiriya and Dambulla">Sigiriya and Dambulla</option>
+                                    <option value="Anuradhapura and Polonnaruwa">Anuradhapura and Polonnaruwa</option>
+                                    <option value="Matale">Matale</option>
+                                </select>
 
-                        <div class="booking-details">
-
-                            <label for="travellingArea" class="form-label">Select travelling area</label>
-                            <select name="travelArea" id="travellingArea" class="form-select">
-                                <option selected>Choose...</option>
-                                <option value="Kandy and Upcountry">Kandy and Upcountry</option>
-                                <option value="Eastern Coast">Eastern Coast</option>
-                                <option value="Capital Colombo">Capital Colombo</option>
-                                <option value="Western Coast">Western Coast</option>
-                                <option value="North Peninsula">North Peninsula</option>
-                                <option value="Down South">Down South</option>
-                                <option value="Sigiriya and Dambulla">Sigiriya and Dambulla</option>
-                                <option value="Anuradhapura and Polonnaruwa">Anuradhapura and Polonnaruwa</option>
-                                <option value="Matale">Matale</option>
-                            </select>
-
-                            <div class="row g-3 mt-3">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="No of adults"
-                                           aria-label="First name">
+                                <div class="row g-3 mt-3">
+                                    <div class="col">
+                                        <input id="noOfAdults" type="text" class="form-control" placeholder="No of adults"
+                                               aria-label="First name">
+                                    </div>
+                                    <div class="col">
+                                        <input id="noOfChilds" type="text" class="form-control" placeholder="No of child"
+                                               aria-label="Last name">
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="No of child"
-                                           aria-label="Last name">
-                                </div>
-                            </div>
 
-                            <div class="mt-4 row">
-                                <div class="col">
-                                    <label for="withPetOrNOt" class="form-label">With pets or not</label>
-                                    <select name="withPetsOrNot" id="withPetOrNOt" class="form-select">
-                                        <option selected>Choose...</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
+                                <div class="mt-4 row">
+                                    <div class="col">
+                                        <label for="withPetOrNOt" class="form-label">With pets or not</label>
+                                        <select name="withPetsOrNot" id="withPetOrNOt" class="form-select">
+                                            <option selected>Choose...</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label for="guideYesOrNo" class="form-label">Do you need guides</label>
+                                        <select name="needGuideOrNo" id="guideYesOrNo" class="form-select">
+                                            <option selected>Choose...</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <label for="guideYesOrNo" class="form-label">Do you need guides</label>
-                                    <select name="needGuideOrNo" id="guideYesOrNo" class="form-select">
-                                        <option selected>Choose...</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <div class="form-floating mt-4">
-                                <textarea name="remarks" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                <div class="form-floating mt-4">
+                                <textarea  name="remarks" class="form-control" placeholder="Leave a comment here"
+                                          id="floatingTextarea2"
                                           style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Remarks</label>
-                            </div>
-
-                            <div class="row mt-4">
-
-                                <div class="col">
-                                    <label for="startDate" class="form-label">Start date</label><br>
-                                    <input name="startDate" id="startDate" type="date">
+                                    <label for="floatingTextarea2">Remarks</label>
                                 </div>
 
-                                <div class="col">
-                                    <label for="endDate" class="form-label">End date</label><br>
-                                    <input name="endDate" id="endDate" type="date">
+                                <div class="row mt-4">
+
+                                    <div class="col">
+                                        <label for="startDate" class="form-label">Start date</label><br>
+                                        <input name="startDate" id="startDate" type="date">
+                                    </div>
+
+                                    <div class="col">
+                                        <label for="endDate" class="form-label">End date</label><br>
+                                        <input name="endDate" id="endDate" type="date">
+                                    </div>
+
+                                    <div class="col">
+
+                                        <input id="countDays" name="countDays" type="text" class="form-control" placeholder="Days"
+                                               aria-label="First name">
+                                    </div>
+
+                                    <div class="col">
+
+                                        <input id="countNights" name="countNights" type="text" class="form-control" placeholder="Nights"
+                                               aria-label="First name">
+                                    </div>
+
                                 </div>
 
-                                <div class="col">
-
-                                    <input name="countDays" type="text" class="form-control" placeholder="Days"
-                                    aria-label="First name">
-                                </div>
-
-                                <div class="col">
-
-                                    <input name="countNights" type="text" class="form-control" placeholder="Nights"
-                                    aria-label="First name">
-                                </div>
 
                             </div>
 
 
                         </div>
-
-
                     </div>
                 </div>
-            </div>
+            </form>
         </section>
     </div>
 </section>
@@ -619,6 +640,11 @@
                     <div class="d-flex">
                         <p>Remarks : </p>
                         <p class="modalVehicleDriverContact">hi</p>
+                    </div>
+
+                    <div class="d-flex">
+                        <p>Vehicle price : </p>
+                        <p class="modalVehiclePrice"></p>
                     </div>
                     <button class="btn btn-primary row-details-vehicle-add-to-cart">
                         Add vehicle to Package

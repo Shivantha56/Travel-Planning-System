@@ -445,8 +445,9 @@ function getVehicleById(vehicleId) {
             let transmissionType = response.transmissionType;
             let remarks = response.remarks;
             // add vehicle per day value
+            vehicleFeeForDay = response.vehiclePrice;
 
-            $('.modalVehicleId').text(vehicleId);
+            $('.modalVehicleId').text(vehicleIds);
             $('.modalVehicleNo').text(vehicleNo);
             $('.modalVehicleCategory').text(category);
             $('.modalVehicleFuelType').text(fuelType);
@@ -457,6 +458,7 @@ function getVehicleById(vehicleId) {
             $('.modalVehicleDriverId').text(driverId);
             $('.modalVehicleDriverName').text(driverName);
             $('.modalVehicleDriverContact').text(driverContactNo);
+            $('.modalVehiclePrice').text(vehicleFeeForDay);
 
             $('.imageVehicleFrontImage').attr("src", `data:image/jpeg;base64,${vehicleFrontImage}`);
             $('.imageVehicleRearImage').attr("src", `data:image/jpeg;base64,${vehicleRearImage}`);
@@ -916,10 +918,10 @@ rowDetailsVehicleAddToCart.on('click', function () {
 
     vehiclePrice = 0.00
 
-    vehicleIdCart.text(`Vehicle Id : ${vehicleIds}`);
-    vehicleBrandCart.text(`Vehicle Brand : ${vehicleBrand}`);
-    vehiclePriceCart.text(`Vehicle price : ${vehicleFeeForDay}`);
-    vehicleTypeCart.text(`Vehicle type : ${vehicleType}`);
+    vehicleIdCart.text(`${vehicleIds}`);
+    vehicleBrandCart.text(`${vehicleBrand}`);
+    vehiclePriceCart.text(`${vehicleFeeForDay}`);
+    vehicleTypeCart.text(`${vehicleType}`);
 
     // totalPrice = totalPrice+vehicleFeeForDay;
 
@@ -1083,6 +1085,51 @@ function filterVehicleData(category) {
         }
     });
 }
+
+
+
+$('#bookingBtn').on("click",function () {
+    // let serialize = $('#saveOrderDetails').serialize();
+    // console.log(serialize);
+
+    let hotelId = hotelCartId.text();
+    let guideId = guideIdCart.text();
+    let vehicleId = vehicleIdCart.text();
+    let startDate = $('#startDate').val();
+    let endDate = $('#endDate').val();
+    let countDays = $('#countDays').val();
+    let countNights = $('#countNights').val();
+    let travellingArea = $('#travellingArea').val();
+    let noOfAdults = $("#noOfAdults").val();
+    let noOfChilds = $("#noOfChilds").val();
+    let withPetsOrNot = $('#withPetOrNOt').val();
+    let needGuideOrNot = $('#guideYesOrNo').val();
+    let remarks = $('#floatingTextarea2').val();
+
+
+    let orderDetails = {hotelId:hotelId,guideId:guideId,vehicleId:vehicleId,
+                            packageCategory:selectedPackage,startDate:startDate,
+                            endDate:endDate,countDays:countDays,countNights:countNights,
+                            travelArea:travellingArea,noOfChildren:noOfChilds,noOfAdults:noOfAdults,
+                            withPetsOrNot:withPetsOrNot,needGuideOrNot:needGuideOrNot,
+                            totalValue:totalPrice,remarks:remarks}
+    console.log(orderDetails);
+
+
+
+    $.ajax({
+        method: "POST",
+        data: orderDetails,
+        url: "http://localhost:8085/business/api/v1/order",
+
+        contentType: "application/x-www-form-urlencoded",
+        success:function (response) {
+            // searchHotelDetails();
+        }
+    });
+
+
+})
 
 
 function successNotification1(message) {

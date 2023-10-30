@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap-utilities.css">
+    <link rel="stylesheet" href="/assets/boostrap/bootstrap-5.3.0-dist/css/bootstrap-utilities.min.css">
+
+
+    <link rel="stylesheet" href="/assets/style/AdminTravel/style.css">
+</head>
+<body>
+
+<section class="main-admin-travel-container">
+
+    <nav class="navbar navbar-expand-lg " style="background-color: #1C054C">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Next Travel.com</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Navigation menu
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="hotelSaveNavigation" class="dropdown-item" href="#">Save hotels</a></li>
+                            <li><a id="updateSaveNavigation" class="dropdown-item" href="#">Delete and Update</a></li>
+                            <!--                                            <li><hr class="dropdown-divider"></li>-->
+                            <li><a id="hotelsViewnavigation" class="dropdown-item" href="#">View details</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a data-bs-toggle="modal" data-bs-target="#viewMap" class="nav-link" href="#">Location</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="hotelSearchInputField" class="form-control me-2" type="search" placeholder="Search"
+                           aria-label="Search">
+                    <button id="searchBtn" class="btn btn-outline-success" type="button">Search</button>
+                </form>
+
+                <div class="dropdown navigation-admin-image">
+                    <img
+                            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                            class="rounded-circle"
+                            height="40"
+                            alt="Black and White Portrait of a Man"
+                            loading="lazy"
+                    />
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="hotel-save-context">
+        <section class="contact-details">
+            <form id="hotelSaveForm">
+                <div class="container-fluid">
+
+                    <div class="container">
+                        <!-- Title -->
+                        <div class="d-flex justify-content-between align-items-lg-center py-3 flex-column flex-lg-row">
+                            <h2 class="h5 mb-3 mb-lg-0"><a href="../../pages/admin/customers.html" class="text-muted"><i
+                                    class="bi bi-arrow-left-square me-2"></i></a> Add new booking </h2>
+                            <div class="hstack gap-3">
+                                <button type="reset" class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i>
+                                    <span
+                                            class="text">Cancel</span>
+                                </button>
+                                <button type="button" id="packageSaveBtn" class="btn btn-primary btn-sm btn-icon-text">
+                                    <i
+                                            class="bi bi-save"></i> <span
+                                        class="text">Save</span>
+                                </button>
+
+                                <button type="button" id="packageUpdateBtn"
+                                        class="btn btn-warning btn-sm btn-icon-text"><i
+                                        class="bi bi-save"></i> <span
+                                        class="text">Update</span>
+                                </button>
+
+                                <button type="button" id="packageDeleteBtn" class="btn btn-danger btn-sm btn-icon-text">
+                                    <i
+                                            class="bi bi-save"></i> <span
+                                        class="text">Delete</span>
+                                </button>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Main content -->
+                        <div class="row">
+                            <!-- Left side -->
+                            <div class="col">
+                                <!-- Basic information -->
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3 class="h6 mb-4">Basic information</h3>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Hotel name</label>
+                                                    <input type="text" class="form-control" name="hotelName">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Hotel Location</label>
+                                                    <input type="text" class="form-control" name="hotelLocation">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Hotel email</label>
+                                                    <input type="email" class="form-control" name="hotelContactEmail">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Hotel location link</label>
+                                                    <input type="text" class="form-control" name="hotelLocationLink">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </section>
+
+</section>
+
+</body>
+</html>

@@ -4,6 +4,7 @@ let modalCloseBtn = $('.x-mark');
 
 modalCloseBtn.on("click",function () {
     hotelDetailsModal.css("display","none")
+    vehicleDetailsModal.css("display","none")
 })
 
 $('#tableHotelDetails').on("click",function () {
@@ -211,6 +212,96 @@ function getAllVehicleData() {
             }
         }
 
+
+    });
+
+}
+
+let vehicleDetailsModal = $('.vehicle-details-modal');
+
+let vehicleRow = $('.table-vehicle');
+// let hotelRow = document.querySelector(".hotelDetailsBody tr")
+
+vehicleRow.on('click', '.vehicleDetailsBody > .vehicle-table-data', function (event) {
+
+
+    // console.log(event.target.parentElement.attributes);
+    let attributes = event.target.parentElement.attributes;
+
+    tableId = attributes.item(0).value;
+    console.log(tableId);
+
+
+    let vehicleId = $(`#${tableId} > .vehicleColId`).text();
+    console.log(vehicleId);
+    console.log(vehicleId);
+    getVehicleById(vehicleId);
+
+    vehicleDetailsModal.css("display", "flex")
+    vehicleDetailsModal.css("transition", "1s")
+
+
+});
+
+function getVehicleById(vehicleId) {
+
+    $.ajax({
+        dataType: "json",
+        // data: vehicleForm,
+        error: function (error) {
+            console.log(error);
+        },
+        url: "http://localhost:8086/business/api/v1/vehicle/" + vehicleId,
+        // enctype: 'multipart/form-data',
+        // processData: false,  // Important!
+        // contentType: false,
+        // cache: false,
+        method: "GET",
+        // timeout: 600000
+        success: function (response) {
+
+            // for (const responseKey in response) {
+
+            let driverId = response.driverId;
+            let driverName = response.driverName;
+            let driverContactNo = response.driverContactNo;
+            vehicleIds = response.vehicleId;
+            let vehicleNo = response.vehicleNo;
+            vehicleBrand = response.vehicleBrand;
+            let category = response.category;
+            let fuelType = response.fuelType;
+            let hybrid = response.hybrid;
+            let fuelUsage = response.fuelUsage;
+            let vehicleFrontImage = response.vehicleFrontImage;
+            let vehicleRearImage = response.vehicleRearImage;
+            let vehicleSideImage = response.vehicleSideImage;
+            let vehicleFrontInteriorImage = response.vehicleFrontInteriorImage;
+            let vehicleRearInteriorImage = response.vehicleRearInteriorImage;
+            let seatCapacity = response.seatCapacity;
+            vehicleType = response.vehicleType;
+            let transmissionType = response.transmissionType;
+            let remarks = response.remarks;
+            // add vehicle per day value
+            vehicleFeeForDay = response.vehiclePrice;
+
+            $('.modalVehicleId').text(vehicleIds);
+            $('.modalVehicleNo').text(vehicleNo);
+            $('.modalVehicleCategory').text(category);
+            $('.modalVehicleFuelType').text(fuelType);
+            $('.modalVehicleHybrid').text(hybrid);
+            $('.modalVehicleSeatCapacity').text(seatCapacity);
+            $('.modalVehicleType').text(vehicleType);
+            $('.modalVehicleTransmissionType').text(transmissionType);
+            $('.modalVehicleDriverId').text(driverId);
+            $('.modalVehicleDriverName').text(driverName);
+            $('.modalVehicleDriverContact').text(driverContactNo);
+            $('.modalVehiclePrice').text(vehicleFeeForDay);
+
+            $('.imageVehicleFrontImage').attr("src", `data:image/jpeg;base64,${vehicleFrontImage}`);
+            $('.imageVehicleRearImage').attr("src", `data:image/jpeg;base64,${vehicleRearImage}`);
+            $('.imageVehicleSideImage').attr("src", `data:image/jpeg;base64,${vehicleSideImage}`);
+
+        },
 
     });
 

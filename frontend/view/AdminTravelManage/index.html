@@ -108,7 +108,30 @@
                                 <!-- Basic information -->
                                 <div class="card mb-4">
                                     <div class="card-body">
-                                        <h3 class="h6 mb-4">Basic information</h3>
+                                        <div class="row">
+                                            <div class="col-2">
+                                            <h3 class="h6 mb-4">Basic information</h3>
+                                            </div>
+                                            <div class="col-3">
+                                                <button type="button" id="tableVehicleDetails"
+                                                        class="btn btn-dark btn-sm btn-icon-text"><i
+                                                        class="bi bi-save"></i> <span
+                                                        class="text">show vehicles</span>
+                                                </button>
+                                                <button type="button" id="tableHotelDetails"
+                                                        class="btn btn-dark btn-sm btn-icon-text"><i
+                                                        class="bi bi-save"></i> <span
+                                                        class="text">show hotels</span>
+                                                </button>
+                                                <button type="button" id="tableGuideDetails"
+                                                        class="btn btn-dark btn-sm btn-icon-text"><i
+                                                        class="bi bi-save"></i> <span
+                                                        class="text">show guide</span>
+                                                </button>
+                                            </div>
+
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
@@ -198,10 +221,40 @@
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                             <textarea  name="remarks" class="form-control" placeholder="Enter remark"
-                                                        id="floatingTextarea2"
-                                                        style="height: 100px"></textarea>
+                                        <div class="row remarkContainer">
+                                             <textarea name="remarks" class="form-control inputRemark"
+                                                       placeholder="Enter remark"
+                                                       id="floatingTextarea2"
+                                                       style="height: 100px"></textarea>
+                                        </div>
+
+
+                                        <div class="row mt-4">
+
+                                            <div class="col">
+                                                <label for="startDate" class="form-label">Start date</label><br>
+                                                <input name="startDate" id="startDate" type="date">
+                                            </div>
+
+                                            <div class="col">
+                                                <label for="endDate" class="form-label">End date</label><br>
+                                                <input name="endDate" id="endDate" type="date">
+                                            </div>
+
+                                            <div class="col">
+
+                                                <input id="countDays" name="countDays" type="text" class="form-control"
+                                                       placeholder="Days"
+                                                       aria-label="First name">
+                                            </div>
+
+                                            <div class="col">
+
+                                                <input id="countNights" name="countNights" type="text"
+                                                       class="form-control" placeholder="Nights"
+                                                       aria-label="First name">
+                                            </div>
+
                                         </div>
 
 
@@ -216,6 +269,52 @@
     </section>
 
 </section>
+
+
+<section class="hotelTableContainer">
+
+    <div class="container-fluid">
+        <table class="table table-hotels">
+            <thead>
+            <tr>
+                <th>Hotel name</th>
+                <th>Hotel location</th>
+                <th>Hotel contact1</th>
+                <th>Hotel contact2</th>
+                <th>Hotel email</th>
+                <th>Star Rate</th>
+            </tr>
+            </thead>
+            <tbody class="hotelDetailsBody">
+            <tr id="row3" class="hotel-table-data">
+                <td class="dataColumn1">1</td>
+                <td class="dataColumn2">2</td>
+                <td class="dataColumn3">3</td>
+                <td class="dataColumn4">4</td>
+                <td class="dataColumn5 hotelEmail">5</td>
+                <td class="row3">
+                    <button class="btn btn-primary view-hotel-Row-Data">Add to package</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</section>
+
+<section class="vehicleTableContainer">
+
+
+
+</section>
+
+<section class="guideTableContainer">
+
+
+
+</section>
+
 
 </body>
 </html>

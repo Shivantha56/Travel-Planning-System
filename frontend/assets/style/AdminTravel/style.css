@@ -1,7 +1,22 @@
 *{
-
+    margin: 0;
+    padding: 0;
 }
 
 nav a{
     color: white;
+}
+
+.remarkContainer{
+    padding: 0 10px;
+}
+
+.hotelTableContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    /*padding-top: 100px;*/
+    padding: 100px 20px;
 }

@@ -19,4 +19,10 @@ nav a{
     top: 0;
     /*padding-top: 100px;*/
     padding: 100px 20px;
+    display: none;
+}
+
+.closeBtnContainer{
+    display: flex;
+    justify-content: right;
 }

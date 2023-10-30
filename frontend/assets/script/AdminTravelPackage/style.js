@@ -1,4 +1,5 @@
 let hotelTableContainer = $('.hotelTableContainer');
+let vehicleTableContainer = $('.vehicleTableContainer');
 let modalCloseBtn = $('.x-mark');
 
 modalCloseBtn.on("click",function () {
@@ -12,9 +13,19 @@ $('#tableHotelDetails').on("click",function () {
 
 
 });
+$('#tableVehicleDetails').on("click",function () {
+
+    vehicleTableContainer.css("display","block");
+    getAllVehicleData();
+
+
+});
 
 $('#hotelContainerCloseBtn').on("click",function () {
     hotelTableContainer.css("display","none")
+});
+$('#vehicleContainerCloseBtn').on("click",function () {
+    vehicleTableContainer.css("display","none")
 });
 
 
@@ -136,5 +147,71 @@ function getAllHotelData(email) {
         }
 
     })
+
+}
+
+
+
+// get vehicle table data
+
+
+function getAllVehicleData() {
+
+    let count = 1;
+
+    $('.vehicleDetailsBody>tr').empty();
+
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:8086/business/api/v1/vehicle`,
+        // dataType: 'JSON',
+        error: function (error) {
+
+        },
+
+        success: function (response) {
+
+            for (const responseKey in response) {
+
+                let driverId = response[responseKey].driverId;
+                let driverName = response[responseKey].driverName;
+                let driverContactNo = response[responseKey].driverContactNo;
+                let vehicleId = response[responseKey].vehicleId;
+                let vehicleNo = response[responseKey].vehicleNo;
+                let vehicleBrand = response[responseKey].vehicleBrand;
+                let category = response[responseKey].category;
+                let fuelType = response[responseKey].fuelType;
+                let hybrid = response[responseKey].hybrid;
+                let fuelUsage = response[responseKey].fuelUsage;
+                let vehicleFrontImage = response[responseKey].vehicleFrontImage;
+                let vehicleRearImage = response[responseKey].vehicleRearImage;
+                let vehicleSideImage = response[responseKey].vehicleSideImage;
+                let vehicleFrontInteriorImage = response[responseKey].vehicleFrontInteriorImage;
+                let vehicleRearInteriorImage = response[responseKey].vehicleRearInteriorImage;
+                let seatCapacity = response[responseKey].seatCapacity;
+                let vehicleType = response[responseKey].vehicleType;
+                let transmissionType = response[responseKey].transmissionType;
+                let remarks = response[responseKey].remarks;
+
+
+                let vehicleTableTemplate = `<tr id="row${count}" class="vehicle-table-data">
+<td>${vehicleId}</td>
+<td>${category}</td>
+<td class="vehicleColId">${vehicleNo}</td>
+<td>${vehicleBrand}</td>
+<td>${driverName}</td>
+<td>${fuelType}</td>
+<td>${seatCapacity}</td>
+<td>${vehicleType}</td>
+</tr>`;
+
+                $('.vehicleDetailsBody').append(vehicleTableTemplate);
+
+                count++;
+            }
+        }
+
+
+    });
 
 }

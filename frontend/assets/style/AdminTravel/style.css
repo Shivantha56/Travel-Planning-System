@@ -32,6 +32,16 @@ nav a{
     padding: 100px 50px;
     display: none;
 }
+.guideTableContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    /*padding-top: 100px;*/
+    padding: 100px 50px;
+    display: none;
+}
 
 .closeBtnContainer{
     display: flex;

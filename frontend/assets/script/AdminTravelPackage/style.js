@@ -129,6 +129,8 @@ let modalHotelFeeOption4 = $('.modalHotelFeeOption4');
 let modalHotelCancellation = $('.modalHotelCancellation');
 let modalHotelRemarks = $('.modalHotelRemarks');
 
+let hotelId;
+
 function getAllHotelData(email) {
     $.ajax({
         url: "http://localhost:8085/business/api/v1/hotel/" + email,
@@ -151,6 +153,8 @@ function getAllHotelData(email) {
             modalPetAllowed.text(response.petsAllowedOrNot);
             modalHotelRemarks.text(response.remarks);
             modalStarRate.text(response.starRate);
+
+             hotelId = response.hotelId;
             //
             // console.log(resp.cancellation)
 
@@ -254,6 +258,8 @@ vehicleRow.on('click', '.vehicleDetailsBody > .vehicle-table-data', function (ev
 
 
 });
+
+let vehicleIds;
 
 function getVehicleById(vehicleId) {
 
@@ -394,6 +400,8 @@ guideRow.on('click', '.guideDetailsBody > .guide-table-data', function (event) {
 
 });
 
+let guideId;
+
 function getGuideDetailsByNumber(number) {
 
     $.ajax({
@@ -449,3 +457,38 @@ function getGuideDetailsByNumber(number) {
 
 }
 
+$('#hotelAddtoCartBtn').on("click",function () {
+
+    $('#textHotelId').val(hotelId);
+})
+
+$('#vehicleAddtoCartBtn').on("click",function () {
+    $('#textVehicleId').val(vehicleIds)
+})
+
+$('#guideAddToCartBtn').on("click",function () {
+    $('#textGuideId').val(guideId)
+})
+
+$('#orderSaveBtn').on("click",function () {
+    saveOrderDetails();
+})
+
+function saveOrderDetails() {
+
+
+
+
+    $.ajax({
+        method: "POST",
+        data: form,
+        url: "http://localhost:8087/business/api/v1/order",
+
+        contentType: "application/x-www-form-urlencoded",
+        // processData:false,
+        success:function (response) {
+            // searchHotelDetails();
+        }
+    });
+
+}

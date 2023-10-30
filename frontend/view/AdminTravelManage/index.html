@@ -79,7 +79,7 @@
                                     <span
                                             class="text">Cancel</span>
                                 </button>
-                                <button type="button" id="packageSaveBtn" class="btn btn-primary btn-sm btn-icon-text">
+                                <button type="button" id="orderSaveBtn" class="btn btn-primary btn-sm btn-icon-text">
                                     <i
                                             class="bi bi-save"></i> <span
                                         class="text">Save</span>
@@ -101,167 +101,182 @@
                             </div>
                         </div>
 
-                        <!-- Main content -->
-                        <div class="row">
-                            <!-- Left side -->
-                            <div class="col">
-                                <!-- Basic information -->
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <h3 class="h6 mb-4">Basic information</h3>
-                                            </div>
-                                            <div class="col-3">
-                                                <button type="button" id="tableVehicleDetails"
-                                                        class="btn btn-dark btn-sm btn-icon-text"><i
-                                                        class="bi bi-save"></i> <span
-                                                        class="text">show vehicles</span>
-                                                </button>
-                                                <button type="button" id="tableHotelDetails"
-                                                        class="btn btn-dark btn-sm btn-icon-text"><i
-                                                        class="bi bi-save"></i> <span
-                                                        class="text">show hotels</span>
-                                                </button>
-                                                <button type="button" id="tableGuideDetails"
-                                                        class="btn btn-dark btn-sm btn-icon-text"><i
-                                                        class="bi bi-save"></i> <span
-                                                        class="text">show guide</span>
-                                                </button>
+                        <form id="saveOrder">
+
+
+                            <!-- Main content -->
+                            <div class="row">
+                                <!-- Left side -->
+                                <div class="col">
+                                    <!-- Basic information -->
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <h3 class="h6 mb-4">Basic information</h3>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button type="button" id="tableVehicleDetails"
+                                                            class="btn btn-dark btn-sm btn-icon-text"><i
+                                                            class="bi bi-save"></i> <span
+                                                            class="text">show vehicles</span>
+                                                    </button>
+                                                    <button type="button" id="tableHotelDetails"
+                                                            class="btn btn-dark btn-sm btn-icon-text"><i
+                                                            class="bi bi-save"></i> <span
+                                                            class="text">show hotels</span>
+                                                    </button>
+                                                    <button type="button" id="tableGuideDetails"
+                                                            class="btn btn-dark btn-sm btn-icon-text"><i
+                                                            class="bi bi-save"></i> <span
+                                                            class="text">show guide</span>
+                                                    </button>
+                                                </div>
+
                                             </div>
 
-                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label ">Hotel id</label>
+                                                        <input id="textHotelId" type="text" class="form-control "
+                                                               name="hotelId">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Vehicle id</label>
+                                                        <input id="textVehicleId" type="text" class="form-control"
+                                                               name="vehicleId">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Guide id</label>
+                                                        <input id="textGuideId" type="email" class="form-control"
+                                                               name="guideId">
+                                                    </div>
+                                                </div>
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Hotel name</label>
-                                                    <input type="text" class="form-control" name="hotelName">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Hotel Location</label>
-                                                    <input type="text" class="form-control" name="hotelLocation">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Hotel email</label>
-                                                    <input type="email" class="form-control" name="hotelContactEmail">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Hotel location link</label>
-                                                    <input type="text" class="form-control" name="hotelLocationLink">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Travel area</label>
-                                                    <select name="travelArea" id="travellingArea" class="form-select">
-                                                        <option selected>Choose...</option>
-                                                        <option value="Kandy and Upcountry">Kandy and Upcountry</option>
-                                                        <option value="Eastern Coast">Eastern Coast</option>
-                                                        <option value="Capital Colombo">Capital Colombo</option>
-                                                        <option value="Western Coast">Western Coast</option>
-                                                        <option value="North Peninsula">North Peninsula</option>
-                                                        <option value="Down South">Down South</option>
-                                                        <option value="Sigiriya and Dambulla">Sigiriya and Dambulla
-                                                        </option>
-                                                        <option value="Anuradhapura and Polonnaruwa">Anuradhapura and
-                                                            Polonnaruwa
-                                                        </option>
-                                                        <option value="Matale">Matale</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="mb-3">
-                                                    <label class="form-label">No of adults</label>
-                                                    <input type="text" class="form-control" name="hotelLocationLink">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">User id</label>
+                                                        <input id="textGuideUserId" type="email" class="form-control"
+                                                               name="userId">
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-3">
-                                                <div class="mb-3">
-                                                    <label class="form-label">No of child</label>
-                                                    <input type="text" class="form-control" name="hotelLocationLink">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Travel area</label>
+                                                        <select name="travelArea" id="travellingArea"
+                                                                class="form-select">
+                                                            <option selected>Choose...</option>
+                                                            <option value="Kandy and Upcountry">Kandy and Upcountry
+                                                            </option>
+                                                            <option value="Eastern Coast">Eastern Coast</option>
+                                                            <option value="Capital Colombo">Capital Colombo</option>
+                                                            <option value="Western Coast">Western Coast</option>
+                                                            <option value="North Peninsula">North Peninsula</option>
+                                                            <option value="Down South">Down South</option>
+                                                            <option value="Sigiriya and Dambulla">Sigiriya and Dambulla
+                                                            </option>
+                                                            <option value="Anuradhapura and Polonnaruwa">Anuradhapura
+                                                                and
+                                                                Polonnaruwa
+                                                            </option>
+                                                            <option value="Matale">Matale</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                <div class="col-lg-3">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">No of adults</label>
+                                                        <input type="text" class="form-control" name="noOfAdults">
+                                                    </div>
+                                                </div>
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Hotel email</label>
-                                                    <select name="withPetsOrNot" id="withPetOrNOt" class="form-select">
-                                                        <option selected>Choose...</option>
-                                                        <option value="Yes">Yes</option>
-                                                        <option value="No">No</option>
-                                                    </select>
+                                                <div class="col-lg-3">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">No of child</label>
+                                                        <input type="text" class="form-control" name="noOfChildren">
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="guideYesOrNo" class="form-label">Do you need
-                                                        guides</label>
-                                                    <select name="needGuideOrNo" id="guideYesOrNo" class="form-select">
-                                                        <option selected>Choose...</option>
-                                                        <option value="Yes">Yes</option>
-                                                        <option value="No">No</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="row remarkContainer">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Have pets</label>
+                                                        <select name="withPetsOrNot" id="withPetOrNOt"
+                                                                class="form-select">
+                                                            <option selected>Choose...</option>
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="guideYesOrNo" class="form-label">Do you need
+                                                            guides</label>
+                                                        <select name="needGuideOrNo" id="guideYesOrNo"
+                                                                class="form-select">
+                                                            <option selected>Choose...</option>
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row remarkContainer">
                                              <textarea name="remarks" class="form-control inputRemark"
                                                        placeholder="Enter remark"
                                                        id="floatingTextarea2"
                                                        style="height: 100px"></textarea>
+                                            </div>
+
+
+                                            <div class="row mt-4">
+
+                                                <div class="col">
+                                                    <label for="startDate" class="form-label">Start date</label><br>
+                                                    <input name="startDate" id="startDate" type="date">
+                                                </div>
+
+                                                <div class="col">
+                                                    <label for="endDate" class="form-label">End date</label><br>
+                                                    <input name="endDate" id="endDate" type="date">
+                                                </div>
+
+                                                <div class="col">
+
+                                                    <input id="countDays" name="countDays" type="text"
+                                                           class="form-control"
+                                                           placeholder="Days"
+                                                           aria-label="First name">
+                                                </div>
+
+                                                <div class="col">
+
+                                                    <input id="countNights" name="countNights" type="text"
+                                                           class="form-control" placeholder="Nights"
+                                                           aria-label="First name">
+                                                </div>
+
+                                            </div>
+
+
                                         </div>
-
-
-                                        <div class="row mt-4">
-
-                                            <div class="col">
-                                                <label for="startDate" class="form-label">Start date</label><br>
-                                                <input name="startDate" id="startDate" type="date">
-                                            </div>
-
-                                            <div class="col">
-                                                <label for="endDate" class="form-label">End date</label><br>
-                                                <input name="endDate" id="endDate" type="date">
-                                            </div>
-
-                                            <div class="col">
-
-                                                <input id="countDays" name="countDays" type="text" class="form-control"
-                                                       placeholder="Days"
-                                                       aria-label="First name">
-                                            </div>
-
-                                            <div class="col">
-
-                                                <input id="countNights" name="countNights" type="text"
-                                                       class="form-control" placeholder="Nights"
-                                                       aria-label="First name">
-                                            </div>
-
-                                        </div>
-
-
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </form>
@@ -431,7 +446,7 @@
                             <option value="hotelFeeOption4">4 Half Board with A/C Luxury Room - Triple</option>
                         </select>
 
-                        <button class="btn btn-primary row-details-hotel-add-to-cart">
+                        <button id="hotelAddtoCartBtn" class="btn btn-primary row-details-hotel-add-to-cart">
                             Add hotel to Package
                         </button>
                     </div>
@@ -557,7 +572,7 @@
                         <p>Vehicle price : </p>
                         <p class="modalVehiclePrice"></p>
                     </div>
-                    <button class="btn btn-primary row-details-vehicle-add-to-cart">
+                    <button id="vehicleAddtoCartBtn" class="btn btn-primary row-details-vehicle-add-to-cart">
                         Add vehicle to Package
                     </button>
 
@@ -641,7 +656,7 @@
                         <p>Remarks :</p>
                         <p class="modalGuideRemarks">hi</p>
                     </div>
-                    <button class="btn btn-primary row-details-guide-add-to-cart">
+                    <button id="guideAddToCartBtn" class="btn btn-primary row-details-guide-add-to-cart">
                         Add guide to Package
                     </button>
 

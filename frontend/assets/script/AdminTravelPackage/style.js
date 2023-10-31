@@ -492,8 +492,8 @@ function saveOrderDetails() {
     let endDate = $('#endDate').val();
     let countDays = $('#countDays').val();
     let countNights = $('#countNights').val();
-    let selectedPackage = null
-    let totalPrice = null;
+    let selectedPackage = 1
+    let totalPrice = 0.00;
 
     let orderDetails = {hotelId:hotelId,guideId:guideId,vehicleId:vehicleId,
         packageCategory:selectedPackage,startDate:startDate,

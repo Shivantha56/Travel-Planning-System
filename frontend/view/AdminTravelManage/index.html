@@ -75,6 +75,17 @@
                             <h2 class="h5 mb-3 mb-lg-0"><a href="../../pages/admin/customers.html" class="text-muted"><i
                                     class="bi bi-arrow-left-square me-2"></i></a> Add new booking </h2>
                             <div class="hstack gap-3">
+                                <div class="form-floating">
+                                    <select name="packageCategory" class="form-select packageCategory" id="floatingSelects"
+                                            aria-label="Floating label select example">
+                                        <option value="0" selected>Open this select packages</option>
+                                        <option value="1">Regular</option>
+                                        <option value="2">Mid-level</option>
+                                        <option value="3">Luxury</option>
+                                        <option value="4">Super Luxury</option>
+                                    </select>
+                                    <label for="floatingSelects">Select your preferred package</label>
+                                </div>
                                 <button type="reset" class="btn btn-light btn-sm btn-icon-text"><i class="bi bi-x"></i>
                                     <span
                                             class="text">Cancel</span>
@@ -116,6 +127,7 @@
                                                     <h3 class="h6 mb-4">Basic information</h3>
                                                 </div>
                                                 <div class="col-3">
+
                                                     <button type="button" id="tableVehicleDetails"
                                                             class="btn btn-dark btn-sm btn-icon-text"><i
                                                             class="bi bi-save"></i> <span
@@ -132,7 +144,6 @@
                                                             class="text">show guide</span>
                                                     </button>
                                                 </div>
-
                                             </div>
 
                                             <div class="row">
@@ -196,7 +207,7 @@
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label class="form-label">No of adults</label>
-                                                        <input type="text" class="form-control" name="noOfAdults">
+                                                        <input id="noOfAdults" type="text" class="form-control" name="noOfAdults">
                                                     </div>
                                                 </div>
 
@@ -237,7 +248,7 @@
                                             <div class="row remarkContainer">
                                              <textarea name="remarks" class="form-control inputRemark"
                                                        placeholder="Enter remark"
-                                                       id="floatingTextarea2 remarks"
+                                                       id="remarks"
                                                        style="height: 100px"></textarea>
                                             </div>
 

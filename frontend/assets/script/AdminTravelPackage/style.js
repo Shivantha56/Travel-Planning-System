@@ -474,14 +474,38 @@ $('#orderSaveBtn').on("click",function () {
     saveOrderDetails();
 })
 
+
+
 function saveOrderDetails() {
 
+    let hotelId = $('#textHotelId').val();
+    let vehicleId = $('#textVehicleId').val();
+    let guideId = $('#textGuideId').val();
+    let userId = $('#textUserId').val();
+    let travellingArea = $('#travellingArea').val();
+    let noOfAdults = $('#noOfAdults').val();
+    let noOfChilds = $('#noOfChildren').val();
+    let withPetsOrNot = $('#withPetOrNOt').val();
+    let needGuideOrNot = $('#guideYesOrNo').val();
+    let remarks = $('#remarks').val();
+    let startDate = $('#startDate').val();
+    let endDate = $('#endDate').val();
+    let countDays = $('#countDays').val();
+    let countNights = $('#countNights').val();
+    let selectedPackage = null
+    let totalPrice = null;
 
+    let orderDetails = {hotelId:hotelId,guideId:guideId,vehicleId:vehicleId,
+        packageCategory:selectedPackage,startDate:startDate,
+        endDate:endDate,countDays:countDays,countNights:countNights,
+        travelArea:travellingArea,noOfChildren:noOfChilds,noOfAdults:noOfAdults,
+        withPetsOrNot:withPetsOrNot,needGuideOrNo:needGuideOrNot,
+        totalValue:totalPrice,remarks:remarks,userId:userId}
 
 
     $.ajax({
         method: "POST",
-        data: form,
+        data: orderDetails,
         url: "http://localhost:8087/business/api/v1/order",
 
         contentType: "application/x-www-form-urlencoded",

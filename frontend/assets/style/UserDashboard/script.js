@@ -18,9 +18,13 @@ $(document).ready(function () {
     requestAllGuideDetailsForPackage();
     $('.dashboardContainer').css("display", "block");
     $('.package-container').css("display", "none");
-
+    $('.user-data-container').css("display","none");
 
 });
+
+$('.notification-nav')
+
+
 
 let tableId;
 
@@ -591,6 +595,7 @@ $('.dashboard-nav').on('click', function () {
 
     $('.dashboardContainer').css("display", "block");
     $('.package-container').css("display", "none");
+    $('.user-data-container').css("display","none");
 
 })
 
@@ -598,8 +603,14 @@ $('.notification-nav').on('click', function () {
 
     $('.dashboardContainer').css("display", "none");
     $('.package-container').css("display", "block");
-
+    $('.user-data-container').css("display","none");
 });
+
+$('.inbox-nav').on("click",function () {
+    $('.dashboardContainer').css("display", "none");
+    $('.package-container').css("display", "none");
+    $('.user-data-container').css("display","block");
+})
 
 let addToHotelPackageContainer = $('.addToHotelPackageContainer');
 let addToVehiclePackageContainer = $('.addToVehiclePackageContainer');
@@ -1130,6 +1141,9 @@ $('#bookingBtn').on("click",function () {
 
 
 })
+
+
+//add user details
 
 
 function successNotification1(message) {

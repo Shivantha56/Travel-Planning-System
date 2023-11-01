@@ -34,9 +34,9 @@ public class UserController {
     }
 
     @ResponseBody
-    @GetMapping(value = {"/login"} , consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void userLoginDetails(@RequestBody UserDTO userDTO){
-        userService.checkUserLogin(userDTO.getUserEmail(),userDTO.getUserPassword());
+    @GetMapping(value = {"/login"})
+    public UserDTO userLoginDetails(@ModelAttribute UserDTO userDTO){
+        return userService.checkUserLogin(userDTO.getUserEmail(),userDTO.getUserPassword());
     }
 
     @GetMapping("{userEmail}")

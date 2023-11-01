@@ -47,7 +47,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void checkUserLogin(String userEmail,String userPassword) {
+    public UserDTO checkUserLogin(String userEmail,String userPassword) {
+
+        UserDTO userDTO;
 
         userEmail = userEmail.toLowerCase();
 
@@ -62,12 +64,9 @@ public class UserServiceImpl implements UserService {
                 String generatedHashPaw = BCrypt.hashpw(userPassword, generatedSalt);
 
                 if ((userEmail1.equals(userEmail)) && generatedHashPaw.equals(user.get().getUserPassword()) ){
-                    System.out.println("password ok");
 
-                    // use webflux for return all data related to the customer
-                    // if user enable OTP send a otp to the client
-                    // if OTP wrong 5 times set the google recaptcha
-
+                    userDTO = modelMapping.convertToDTO(userRepository.findUserByUserId(user.get().getUserId()));
+                    userDTO.setUserPassword(null);
                 }else {
                     throw new RuntimeException("user password not ok");
                 }
@@ -79,6 +78,9 @@ public class UserServiceImpl implements UserService {
             System.out.println("Please check your email and password");
             throw new RuntimeException("error");
         }
+
+        return userDTO;
+
     }
 
     @Override

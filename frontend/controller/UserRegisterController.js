@@ -55,12 +55,14 @@ $('#signUpBtn').on("click",function () {
         url : "http://localhost:9095/business/api/v1/user/register",
         contentType : "application/x-www-form-urlencoded; charset=UTF-8",
         method : "POST",
-        data:userRegisterForm.serialize()
+        data:userRegisterForm.serialize(),
+        error:function (error) {
+            alert("can not create account");
+        },
+        success:function () {
+
+        }
     })
-
-
-
-
 
 });
 

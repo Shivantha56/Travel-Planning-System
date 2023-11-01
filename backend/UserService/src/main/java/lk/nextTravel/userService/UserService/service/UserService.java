@@ -6,7 +6,7 @@ public interface UserService {
 
     void registerUser(UserDTO userDTO);
 
-    void checkUserLogin(String userEmail,String userPassword);
+    UserDTO checkUserLogin(String userEmail,String userPassword);
 
     void deleteUser(String userEmail);
 

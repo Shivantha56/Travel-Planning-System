@@ -5,6 +5,7 @@ import lk.nextTravel.travelService.TravelService.dto.GuideOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
+import lk.nextTravel.travelService.TravelService.entity.OrderDetails;
 import lk.nextTravel.travelService.TravelService.repository.OrderDetailsRepository;
 import lk.nextTravel.travelService.TravelService.service.OrderService;
 import lk.nextTravel.travelService.TravelService.util.Converter;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -72,7 +75,7 @@ public class OrderServiceImpl implements OrderService {
         orderDetailsDTO.setTotalGuideFee(totalPrices[2]);
         orderDetailsDTO.setTotalValue(totalPrices[3]);
 
-        orderDetailsRepository.save(converter.convertToGuideEntity(orderDetailsDTO));
+        orderDetailsRepository.save(converter.convertToOrderEntity(orderDetailsDTO));
 
 
     }
@@ -131,6 +134,24 @@ public class OrderServiceImpl implements OrderService {
     public GuideOrderDTO getGuideDetails(GuideOrderDTO guideOrderDTO, String guideId) {
         System.out.println(guideOrderDTO.getGuideName());
         return guideOrderDTO;
+    }
+
+
+    @Override
+    public ArrayList<OrderDetailsDTO> getUserOrderDetails(String userId) {
+
+        ArrayList<OrderDetailsDTO>getAllOrders = new ArrayList<>();
+
+        List<OrderDetails> orderDetailsByUserId =
+                orderDetailsRepository.getOrderDetailsByUserId(userId);
+
+        for (OrderDetails order: orderDetailsByUserId){
+
+            getAllOrders.add(converter.convertToOrderDTO(order));
+        }
+
+        return getAllOrders;
+
     }
 
 

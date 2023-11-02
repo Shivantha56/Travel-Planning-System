@@ -1,16 +1,20 @@
 package lk.nextTravel.travelService.TravelService.controller;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import lk.nextTravel.travelService.TravelService.dto.GuideOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.HotelOrderDTO;
 import lk.nextTravel.travelService.TravelService.dto.OrderDetailsDTO;
 import lk.nextTravel.travelService.TravelService.dto.VehicleOrderDTO;
 import lk.nextTravel.travelService.TravelService.service.OrderService;
+import lk.nextTravel.travelService.TravelService.util.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("api/v1/order")
@@ -27,6 +31,9 @@ public class OrderController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    Converter converter;
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void saveOrder(@ModelAttribute OrderDetailsDTO orderDetailsDTO) {
@@ -71,6 +78,13 @@ public class OrderController {
 
         orderService.saveOrder(orderData,vehicleDetails,hotelDetails,guideOrderDTO);
 
+    }
+
+
+    @GetMapping(value = "{userId}")
+    public ArrayList<OrderDetailsDTO> getOrderDetails(@PathVariable String userId){
+
+        return orderService.getUserOrderDetails(userId);
 
     }
 

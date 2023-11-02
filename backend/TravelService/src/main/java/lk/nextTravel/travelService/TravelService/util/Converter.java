@@ -13,11 +13,11 @@ public class Converter {
     @Autowired
     ModelMapper mapper;
 
-    public OrderDetailsDTO convertToGuideDTO(OrderDetails orderDetails){
+    public OrderDetailsDTO convertToOrderDTO(OrderDetails orderDetails){
         return mapper.map(orderDetails,OrderDetailsDTO.class);
     }
 
-    public OrderDetails convertToGuideEntity(OrderDetailsDTO orderDetails){
+    public OrderDetails convertToOrderEntity(OrderDetailsDTO orderDetails){
         return mapper.map(orderDetails,OrderDetails.class);
     }
 

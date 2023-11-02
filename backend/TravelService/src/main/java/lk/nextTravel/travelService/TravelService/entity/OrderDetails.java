@@ -23,6 +23,11 @@ public class OrderDetails {
     String userId;
     @Timestamp
     String orderDate;
+    //
+    String vehicleId;
+    String hotelId;
+    String guideId;
+    //
     String packageCategory;
     String startDate;
     String endDate;

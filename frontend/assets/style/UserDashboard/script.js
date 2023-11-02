@@ -1178,6 +1178,25 @@ $('#bookingBtn').on("click",function () {
 })
 
 
+function getAllUserOrderDetails(){
+
+    $.ajax({
+       url:"",
+       data:"json",
+       success:function (response) {
+
+
+
+       },
+       error:function (error) {
+
+       }
+    });
+
+
+
+}
+
 //add user details
 
 

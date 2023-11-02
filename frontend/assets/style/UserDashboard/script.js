@@ -1180,11 +1180,14 @@ $('#bookingBtn').on("click",function () {
 
 
 function getAllUserOrderDetails(){
+    let item = localStorage.getItem("userdata");
+    let parse = JSON.parse(item);
+
 
     $('.orderDetailsBody').empty();
 
     $.ajax({
-       url:"http://localhost:8087/business/api/v1/order/6541ed28e31670660d4a315b",
+       url:"http://localhost:8087/business/api/v1/order/"+parse.userId,
        data:"json",
        success:function (response) {
 

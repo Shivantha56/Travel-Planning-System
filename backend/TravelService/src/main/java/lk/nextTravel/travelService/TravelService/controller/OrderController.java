@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("api/v1/order")
+@CrossOrigin("*")
 public class OrderController {
 
 //    WebClient webClient;

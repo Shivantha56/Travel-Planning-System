@@ -1181,6 +1181,8 @@ $('#bookingBtn').on("click",function () {
 
 function getAllUserOrderDetails(){
 
+    $('.orderDetailsBody').empty();
+
     $.ajax({
        url:"http://localhost:8087/business/api/v1/order/6541ed28e31670660d4a315b",
        data:"json",
@@ -1197,7 +1199,7 @@ function getAllUserOrderDetails(){
 <td>${response[i].orderDate}</td>
 <td>${response[i].startDate}</td>
 <td>${response[i].endDate}</td>
-<td>${response[i].totalPrice}</td>
+<td>${response[i].totalValue}</td>
 
 </tr>`
                );

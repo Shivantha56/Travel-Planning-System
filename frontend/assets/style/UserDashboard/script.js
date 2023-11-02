@@ -1153,6 +1153,10 @@ $('#bookingBtn').on("click",function () {
         contentType: "application/x-www-form-urlencoded",
         success:function (response) {
             // searchHotelDetails();
+            $('.triggerBtns')[0].click();
+        },
+        error:function () {
+
         }
     });
 

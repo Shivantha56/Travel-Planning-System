@@ -1,4 +1,5 @@
 //alert hub
+import UserModel from "/model/UserModel.js";
 
 const alertInstance = new AlertHub({
     timeout: 300,
@@ -10,6 +11,10 @@ const alertInstance = new AlertHub({
 
 $(document).ready(function () {
 
+    let item = localStorage.getItem("userdata");
+    let parse = JSON.parse(item);
+    $('#mainUserName').text(parse.userName.toUpperCase());
+
     requestAllHotelDetails();
     getAllVehicleData();
     getAllGuideData();
@@ -20,10 +25,11 @@ $(document).ready(function () {
     $('.package-container').css("display", "none");
     $('.user-data-container').css("display","none");
 
+    // $('#userProfileName').text(userProfile.getUserName());
+    console.log("use "+userProfile.getUserName());
+    // console.log("use "+);
+
 });
-
-$('.notification-nav')
-
 
 
 let tableId;
@@ -610,6 +616,14 @@ $('.inbox-nav').on("click",function () {
     $('.dashboardContainer').css("display", "none");
     $('.package-container').css("display", "none");
     $('.user-data-container').css("display","block");
+
+    let item = localStorage.getItem("userdata");
+    let parse = JSON.parse(item);
+    $('#userProfileName').text(parse.userName);
+    $('#userProfileEmail').text(parse.email);
+    $('#userProfileNic').text(parse.userNic);
+
+
 })
 
 let addToHotelPackageContainer = $('.addToHotelPackageContainer');

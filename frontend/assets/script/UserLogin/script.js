@@ -1,3 +1,5 @@
+import UserModel from "/model/UserModel.js";
+
 
 function login() {
 
@@ -19,6 +21,24 @@ function login() {
         contentType: "application/json",
         dataType: "json",
         success:function (response) {
+
+
+            let userModal = new UserModel();
+            userModal.setUserId(response.userId);
+            userModal.setUserName(response.userName);
+            userModal.setUserNic(response.userNic);
+            userModal.setUserEmail(response.userEmail);
+            // userModal.setUserProfilePic()
+
+            let logUserData = {userId:response.userId,
+                userName:response.userName,userNic:response.userNic,email:response.userEmail}
+
+            let user = JSON.stringify(logUserData);
+
+
+            console.log("this is the user modal"+userModal.getUserName());
+
+            localStorage.setItem("userdata",user);
 
             $('#navigateToLogin')[0].click();
 

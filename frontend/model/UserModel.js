@@ -1,5 +1,10 @@
 export default class UserModel {
 
+
+
+
+
+    #userId;
     #userName;
     #userNic;
     #userEmail;
@@ -7,16 +12,24 @@ export default class UserModel {
     #userPassword;
     #userProfilePic
 
-    constructor(userName,userNic,userEmail,userAddress,userPassword) {
-        this.#userName = userName;
-        this.#userNic = userNic;
-        this.#userEmail = userEmail;
-        this.#userAddress = userAddress;
-        this.#userPassword = userPassword;
+
+    constructor() {
+
     }
 
 
-    //setter methods
+
+
+
+
+    getUserId() {
+        return this.#userId;
+    }
+
+    setUserId(value) {
+        this.#userId = value;
+    }
+
     setUserName(userName){
             this.#userName = userName;
     }

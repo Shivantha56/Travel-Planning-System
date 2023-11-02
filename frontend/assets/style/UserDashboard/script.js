@@ -26,7 +26,7 @@ $(document).ready(function () {
     $('.user-data-container').css("display","none");
 
     // $('#userProfileName').text(userProfile.getUserName());
-    console.log("use "+userProfile.getUserName());
+    // console.log("use "+userProfile.getUserName());
     // console.log("use "+);
 
 });
@@ -1131,13 +1131,16 @@ $('#bookingBtn').on("click",function () {
     let needGuideOrNot = $('#guideYesOrNo').val();
     let remarks = $('#floatingTextarea2').val();
 
+    let item = localStorage.getItem("userdata");
+    let parse = JSON.parse(item);
+
 
     let orderDetails = {hotelId:hotelId,guideId:guideId,vehicleId:vehicleId,
                             packageCategory:selectedPackage,startDate:startDate,
                             endDate:endDate,countDays:countDays,countNights:countNights,
                             travelArea:travellingArea,noOfChildren:noOfChilds,noOfAdults:noOfAdults,
                             withPetsOrNot:withPetsOrNot,needGuideOrNo:needGuideOrNot,
-                            totalValue:totalPrice,remarks:remarks}
+                            totalValue:totalPrice,remarks:remarks,userId:parse.userId}
     console.log(orderDetails);
 
 

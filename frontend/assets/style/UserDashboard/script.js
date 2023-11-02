@@ -636,6 +636,7 @@ $('.orders-nav').on('click',function () {
     $('.package-container').css("display", "none");
     $('.user-data-container').css("display","none");
     $('.userOrderContainer').css("display","block");
+    getAllUserOrderDetails()
 
 });
 
@@ -1181,11 +1182,26 @@ $('#bookingBtn').on("click",function () {
 function getAllUserOrderDetails(){
 
     $.ajax({
-       url:"",
+       url:"http://localhost:8087/business/api/v1/order/6541ed28e31670660d4a315b",
        data:"json",
        success:function (response) {
 
+           for (const i in response) {
+               $('.orderDetailsBody').append(
+                   `<tr> 
+<td>${response[i].orderId}</td>
+<td>${response[i].vehicleId}</td>
+<td>${response[i].hotelId}</td>
+<td>${response[i].noOfChildren}</td>
+<td>${response[i].noOfAdults}</td>
+<td>${response[i].orderDate}</td>
+<td>${response[i].startDate}</td>
+<td>${response[i].endDate}</td>
+<td>${response[i].totalPrice}</td>
 
+</tr>`
+               );
+           }
 
        },
        error:function (error) {

@@ -24,6 +24,7 @@ $(document).ready(function () {
     $('.dashboardContainer').css("display", "block");
     $('.package-container').css("display", "none");
     $('.user-data-container').css("display","none");
+    $('.userOrderContainer').css("display","none")
 
     // $('#userProfileName').text(userProfile.getUserName());
     // console.log("use "+userProfile.getUserName());
@@ -602,6 +603,7 @@ $('.dashboard-nav').on('click', function () {
     $('.dashboardContainer').css("display", "block");
     $('.package-container').css("display", "none");
     $('.user-data-container').css("display","none");
+    $('.userOrderContainer').css("display","none");
 
 })
 
@@ -610,12 +612,14 @@ $('.notification-nav').on('click', function () {
     $('.dashboardContainer').css("display", "none");
     $('.package-container').css("display", "block");
     $('.user-data-container').css("display","none");
+    $('.userOrderContainer').css("display","none");
 });
 
 $('.inbox-nav').on("click",function () {
     $('.dashboardContainer').css("display", "none");
     $('.package-container').css("display", "none");
     $('.user-data-container').css("display","block");
+    $('.userOrderContainer').css("display","none");
 
     let item = localStorage.getItem("userdata");
     let parse = JSON.parse(item);
@@ -624,7 +628,17 @@ $('.inbox-nav').on("click",function () {
     $('#userProfileNic').text(parse.userNic);
 
 
-})
+});
+
+$('.orders-nav').on('click',function () {
+
+    $('.dashboardContainer').css("display", "none");
+    $('.package-container').css("display", "none");
+    $('.user-data-container').css("display","none");
+    $('.userOrderContainer').css("display","block");
+
+});
+
 
 let addToHotelPackageContainer = $('.addToHotelPackageContainer');
 let addToVehiclePackageContainer = $('.addToVehiclePackageContainer');

@@ -877,3 +877,8 @@
 .packageSuccess{
     display: none;
 }
+
+.userOrderContainer{
+    display: none;
+    padding: 10px 50px;
+}

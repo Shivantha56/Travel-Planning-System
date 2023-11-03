@@ -1158,6 +1158,59 @@ $('#bookingBtn').on("click",function () {
                             totalValue:totalPrice,remarks:remarks,userId:parse.userId}
     console.log(orderDetails);
 
+    if (!hotelId){
+        errorNotification1("hotelId is empty");
+        throw new Error("can not have empty value");
+    }else if(!guideId){
+        errorNotification1("guide id is empty");
+        throw new Error("can not have empty value");
+    }else if(!vehicleId){
+        errorNotification1("vehicle id is empty");
+        throw new Error("can not have empty value");
+    }else if(!selectedPackage){
+        errorNotification1("package id is empty");
+        throw new Error("can not have empty value");
+    }else if(!selectedPackage){
+        errorNotification1("package id is empty");
+        throw new Error("can not have empty value");
+    }else if(!startDate){
+        errorNotification1("start date id is empty");
+        throw new Error("can not have empty value");
+    }else if(!endDate){
+        errorNotification1("end date id is empty");
+        throw new Error("can not have empty value");
+    }else if(!countDays && countDays.test("/^[0-9]+$")){
+        errorNotification1("count day id is empty");
+        throw new Error("can not have empty value");
+    }else if(!countNights){
+        errorNotification1("count day id is empty");
+        throw new Error("can not have empty value");
+    }else if(!travellingArea){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }else if(!noOfChilds){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }else if(!noOfAdults){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }else if(!withPetsOrNot){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }else if(!needGuideOrNot){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }else if(!totalPrice){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }else if(!remarks){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }else if(!parse.userId){
+        errorNotification1("can not be empty");
+        throw new Error("can not have empty value");
+    }
+
 
 
     $.ajax({
@@ -1243,3 +1296,9 @@ function errorNotification1(message) {
     });
 
 }
+
+// function validation(){
+//     if (){
+//
+//     }
+// }

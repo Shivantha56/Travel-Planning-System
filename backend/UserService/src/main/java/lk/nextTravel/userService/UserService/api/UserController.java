@@ -3,6 +3,8 @@ package lk.nextTravel.userService.UserService.api;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lk.nextTravel.userService.UserService.dto.UserDTO;
 import lk.nextTravel.userService.UserService.service.UserService;
 import lk.nextTravel.userService.UserService.service.UserServiceImpl;
@@ -41,14 +43,16 @@ public class UserController {
     }
 
     @GetMapping("{userEmail}")
-    public void userDelete(@PathVariable String userEmail){
+    public void userDelete(@PathVariable @NotNull
+                               @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$",message = "enter valid email address")
+                               String userEmail){
 
         userService.deleteUser(userEmail);
 
     }
 
     @PatchMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void userUpdate(UserDTO userDTO){
+    public void userUpdate(@Valid UserDTO userDTO){
 //        System.out.println(String.valueOf(userDTO));
         userService.updateUser(userDTO);
     }

@@ -2,6 +2,7 @@ package lk.nextTravel.userService.UserService.api;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonValue;
+import jakarta.validation.Valid;
 import lk.nextTravel.userService.UserService.dto.UserDTO;
 import lk.nextTravel.userService.UserService.service.UserService;
 import lk.nextTravel.userService.UserService.service.UserServiceImpl;
@@ -25,9 +26,9 @@ public class UserController {
     UserService userService;
 
 
-//    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/register",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public void registerUser(UserDTO userDTO){
+    public void registerUser(@Valid UserDTO userDTO){
 
         userService.registerUser(userDTO);
 

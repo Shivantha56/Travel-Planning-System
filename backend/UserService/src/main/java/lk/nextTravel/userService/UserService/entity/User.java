@@ -31,7 +31,7 @@ public class User{
     @NotNull
     String userProfilePic;
 
-    public User(String userName, String userEmail, String userNic, String userPassword, String userProfilePic) {
+    public User(@NonNull String userName, @NonNull String userEmail, @NonNull String userNic, @NonNull String userPassword, String userProfilePic) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userNic = userNic;

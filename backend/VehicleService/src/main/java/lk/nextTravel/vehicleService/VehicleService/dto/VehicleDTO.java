@@ -1,5 +1,8 @@
 package lk.nextTravel.vehicleService.VehicleService.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,27 +14,38 @@ import lombok.Setter;
 @Setter
 public class VehicleDTO {
 
-//    String vehicleId;
+    //    String vehicleId;
     long vehicleId;
+    @NotNull
     String vehicleNo;
+    @NotNull
     String vehicleBrand;
+    @NotNull
     String category;
+    @NotNull
     String fuelType;
+    @NotNull
     String hybrid;
+    @Size(min = 1)
+            @Pattern(regexp = "^[0-9]+$")
     double fuelUsage;
     byte[] vehicleFrontImage;
     byte[] vehicleRearImage;
     byte[] vehicleSideImage;
     byte[] vehicleFrontInteriorImage;
     byte[] vehicleRearInteriorImage;
+    @Size(min = 1)
+    @Pattern(regexp = "^[0-9]+$")
     int seatCapacity;
+    @Size(min = 1)
+    @Pattern(regexp = "^[0-9]+$")
     String vehicleType;
     String transmissionType;
     String driverId;
     String remarks;
     double vehiclePrice;
 
-    public VehicleDTO(String vehicleNo, String vehicleBrand, String category, String fuelType, String hybrid, double fuelUsage, byte[] vehicleFrontImage, byte[] vehicleRearImage, byte[] vehicleSideImage, byte[] vehicleFrontInteriorImage, byte[] vehicleRearInteriorImage, int seatCapacity, String vehicleType, String transmissionType, String driverId, String remarks, double vehiclePrice) {
+    public VehicleDTO(@NotNull String vehicleNo, @NotNull String vehicleBrand, @NotNull String category, @NotNull String fuelType, @NotNull String hybrid, double fuelUsage, byte[] vehicleFrontImage, byte[] vehicleRearImage, byte[] vehicleSideImage, byte[] vehicleFrontInteriorImage, byte[] vehicleRearInteriorImage, int seatCapacity, String vehicleType, String transmissionType, String driverId, String remarks, double vehiclePrice) {
         this.vehicleNo = vehicleNo;
         this.vehicleBrand = vehicleBrand;
         this.category = category;

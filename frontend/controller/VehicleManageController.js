@@ -72,6 +72,26 @@ function saveDriver() {
 }
 
 $('#vehicleSaveBtn').on('click', function () {
+    let vehicleNo = $('#vehicleNo');
+    let remarks = $('#remarks');
+
+    if (!remarks.val()){
+        errorNotification1("Enter the remarks");
+        remarks.css("border","1px solid red");
+        throw new Error("can not have null value");
+    }else {
+        remarks.css("border","1px solid gray");
+    }
+
+
+    if (!vehicleNo.val()){
+        errorNotification1("vehicle no is null");
+        vehicleNo.css("border","1px solid red");
+        throw new Error("can not have null value");
+    }else {
+        vehicleNo.css("border","1px solid gray");
+    }
+
     let vehicleForm = new FormData($('#vehicleSaveForm')[0]);
 
     $.ajax({
@@ -84,7 +104,10 @@ $('#vehicleSaveBtn').on('click', function () {
         cache: false,
         // timeout: 600000
         success: function (response) {
-
+            successNotification1("vehicle save sucess")
+        },
+        error:function () {
+            errorNotification1("Can not save vehicle")
         }
     });
 
@@ -307,5 +330,35 @@ function getAllData() {
 
     });
 
+
+}
+
+const alertInstance = new AlertHub({
+    timeout: 300,
+    animation: 'fade-in',
+    closeButton: false,
+    // type: "success "
+})
+
+function successNotification1(message) {
+
+    alertInstance.showAlert({
+        type: "success",
+        description: `<h2>${message}</h2>`,
+        timeout: 4,
+        // position: 'top-right'
+    });
+
+}
+
+function errorNotification1(message) {
+
+    alertInstance.showAlert({
+        title: `${message}`,
+        description: `${message}`,
+        timeout: 4,
+        type: "danger",
+        // position: 'bottom-right'
+    });
 
 }

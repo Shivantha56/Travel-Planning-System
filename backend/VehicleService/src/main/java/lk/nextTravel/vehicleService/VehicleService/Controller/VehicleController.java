@@ -1,5 +1,6 @@
 package lk.nextTravel.vehicleService.VehicleService.Controller;
 
+import jakarta.validation.constraints.NotNull;
 import lk.nextTravel.vehicleService.VehicleService.dto.DriverVehicleDTO;
 import lk.nextTravel.vehicleService.VehicleService.dto.VehicleDTO;
 import lk.nextTravel.vehicleService.VehicleService.entity.Driver;
@@ -20,23 +21,23 @@ public class VehicleController {
     VehicleService vehicleService;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void saveVehicle(@RequestPart String vehicleNo,
-                            @RequestPart String vehicleBrand,
-                            @RequestPart String category,
-                            @RequestPart String fuelType,
-                            @RequestPart String hybrid,
-                            @RequestPart String fuelUsage,
+    public void saveVehicle(@RequestPart @NotNull String vehicleNo,
+                            @RequestPart @NotNull String vehicleBrand,
+                            @RequestPart @NotNull String category,
+                            @RequestPart @NotNull String fuelType,
+                            @RequestPart @NotNull String hybrid,
+                            @RequestPart @NotNull String fuelUsage,
                             @RequestPart byte[] vehicleFrontImage,
                             @RequestPart byte[] vehicleRearImage,
                             @RequestPart byte[] vehicleSideImage,
                             @RequestPart byte[] vehicleFrontInteriorImage,
                             @RequestPart byte[] vehicleRearInteriorImage,
-                            @RequestPart String seatCapacity,
-                            @RequestPart String vehicleType,
-                            @RequestPart String transmissionType,
-                            @RequestPart String driverId,
-                            @RequestPart String remarks,
-                            @RequestPart String vehiclePrice){
+                            @RequestPart @NotNull  String seatCapacity,
+                            @RequestPart @NotNull String vehicleType,
+                            @RequestPart @NotNull String transmissionType,
+                            @RequestPart @NotNull String driverId,
+                            @RequestPart @NotNull String remarks,
+                            @RequestPart @NotNull String vehiclePrice){
 
 
         VehicleDTO vehicleDTO = new VehicleDTO(vehicleNo,
